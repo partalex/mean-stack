@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HomePageService} from "../home-page.service";
+import {UnregisteredService} from "../unregistered.service";
 
 @Component({
   selector: 'app-register-patient',
@@ -7,11 +7,8 @@ import {HomePageService} from "../home-page.service";
   styleUrls: ['./register-patient.component.css']
 })
 export class RegisterPatientComponent implements OnInit {
-  constructor() {
+  constructor(private service: UnregisteredService) {
   }
-
-  // constructor(private service: HomePageService) {
-  // }
 
   ngOnInit(): void {
   }
@@ -27,11 +24,11 @@ export class RegisterPatientComponent implements OnInit {
   message: string;
 
   register() {
-    //     this.service.registerPatient(this.firstname, this.lastname, this.username, this.password, this.address, this.phone, this.mail).subscribe(respObj => {
-    //         if (respObj['message'] == 'ok')
-    //             this.message = 'User added'
-    //         else
-    //             this.message = 'Error'
-    //     });
+    this.service.registerPatient(this.firstname, this.lastname, this.username, this.password, this.address, this.phone, this.mail).subscribe(respObj => {
+      if (respObj['message'] == 'ok')
+        this.message = 'User added'
+      else
+        this.message = 'Error'
+    });
   }
 }

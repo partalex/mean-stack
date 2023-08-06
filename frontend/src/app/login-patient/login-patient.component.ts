@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Patient} from "../../model/patient";
 import {Router} from "@angular/router";
-import {HomePageService} from "../home-page.service";
+import {UnregisteredService} from "../unregistered.service";
 
 @Component({
     selector: 'app-login-patient',
@@ -10,7 +10,7 @@ import {HomePageService} from "../home-page.service";
 })
 export class LoginPatientComponent implements OnInit {
 
-    constructor(private service: HomePageService, private router: Router) {
+    constructor(private service: UnregisteredService, private router: Router) {
     }
 
     ngOnInit(): void {
