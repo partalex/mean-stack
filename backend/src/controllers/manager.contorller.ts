@@ -28,5 +28,19 @@ export class ManagerController {
             specialization: req.body.specialization,
             medicineBranch: req.body.medicineBranch
         });
+
+        doctor.save((err, resp) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json({'message': 'error'});
+            } else {
+                res.json({"message": "ok"})
+            }
+        })
     }
+
+    approvePatient = (req: express.Request, res: express.Response) => {
+        console.log("/manager/approvePatient");
+    };
+
 }

@@ -2,7 +2,7 @@ import express from 'express';
 import PatientModel from '../models/patient';
 import DoctorModel from '../models/doctor';
 
-export class UnregistredController {
+export class UnregisteredController {
     loginPatient = (req: express.Request, res: express.Response) => {
         let username = req.body.username;
         let password = req.body.password;

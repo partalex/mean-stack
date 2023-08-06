@@ -1,18 +1,18 @@
 import express from 'express'
-import {UnregistredController} from "../controllers/unregistred.contorller";
+import {UnregisteredController} from "../controllers/unregistred.contorller";
 
 const unregisteredRouter = express.Router();
 
 unregisteredRouter.route('/loginPatient').post(
-    (req, res) => new UnregistredController().loginPatient(req, res)
+    (req, res) => new UnregisteredController().loginPatient(req, res)
 )
 
 unregisteredRouter.route('/loginDoctor').post(
-    (req, res) => new UnregistredController().loginDoctor(req, res)
+    (req, res) => new UnregisteredController().loginDoctor(req, res)
 )
 
 unregisteredRouter.route('/registerPatient').post(
-    (req, res) => new UnregistredController().registerPatient(req, res)
+    (req, res) => new UnregisteredController().registerPatient(req, res)
 )
 
 export default unregisteredRouter;
