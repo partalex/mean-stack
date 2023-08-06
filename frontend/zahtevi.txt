@@ -1,0 +1,52 @@
+roles:
+    unregisterUser
+        homePage:
+            path: /
+                : /index
+        login-patient-doctor:                           // TODO created
+            path: /login
+        register-patient                                // TODO created
+            path: /registerPatient
+
+    manager:
+        login-manager:
+            path: /manager/login
+        register-doctor:
+            hidden path: /manager/registerDoctor
+        approve-patient:
+            hidden path: /manager/approvePatient
+        change-any:
+            hidden path: /manager/changeAny
+
+    patient:
+        patient-profile:
+            path: /patient/
+                : /patient/profile
+        schedule-visit:
+            path: /patient/visit
+        schedule-calendar:
+            path: /patient/calendar
+        views:
+            path: /patient/views
+
+    doctor:
+        doctor-profile:
+            path: /doctor/
+                : /doctor/profile
+        doctor-profile:
+            path: /doctor/profile
+        views:
+            path: /doctor/views
+
+
+// install bootstrap
+1. npm install --save bootstrap jquery
+2.
+"styles": [
+  "src/styles.css", "node_modules/bootstrap/dist/css/bootstrap.min.css"
+],
+"scripts": [
+  "node_modules/jquery/dist/jquery.min.js",
+  "node_modules/bootstrap/dist/js/bootstrap.min.js",
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+ ]

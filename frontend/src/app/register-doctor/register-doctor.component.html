@@ -1,0 +1,88 @@
+<h1>kako se ja zovem</h1>
+
+<table>
+
+  <tr>
+    <td colspan="2">
+      <h2>Register form:</h2>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Ime:</td>
+    <td>
+      <input type="text" name="firstname" [(ngModel)]="firstname">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Prezime:</td>
+    <td>
+      <input type="text" name="lastname" [(ngModel)]="lastname">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Korisnicko ime:</td>
+    <td>
+      <input type="text" name="username" [(ngModel)]="username">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Loznika:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="password">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Adresa:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="address">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Kontakt telefon:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="phone">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Mejl:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="mail">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Broj licence:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="licenceId">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Specijlizacija:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="specialization">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Ogranak medicine:</td>
+    <td>
+      <input type="text" name="password" [(ngModel)]="branch">
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="right">
+      <button (click)="register()">Register</button>
+    </td>
+  </tr>
+
+</table>
+{{message}}
