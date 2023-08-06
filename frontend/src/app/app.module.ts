@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from './app-routing.module';
 import {AboutComponent} from './about/about.component';
-import {DoctorComponent} from './doctor/doctor.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {LoginDoctorComponent} from './login-doctor/login-doctor.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
@@ -17,6 +16,7 @@ import { NavigationUnregisteredComponent } from './navigation-unregistered/navig
 import { NavigationDoctorComponent } from './navigation-doctor/navigation-doctor.component';
 import { NavigationManagerComponent } from './navigation-manager/navigation-manager.component';
 import { NavigationPatientComponent } from './navigation-patient/navigation-patient.component';
+import { DoctorsComponent } from './doctors/doctors.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,6 @@ import { NavigationPatientComponent } from './navigation-patient/navigation-pati
     RegisterDoctorComponent,
     HomePageComponent,
     AboutComponent,
-    DoctorComponent,
     LoginPatientComponent,
     LoginDoctorComponent,
     RegisterPatientComponent,
@@ -33,7 +32,8 @@ import { NavigationPatientComponent } from './navigation-patient/navigation-pati
     NavigationUnregisteredComponent,
     NavigationDoctorComponent,
     NavigationManagerComponent,
-    NavigationPatientComponent
+    NavigationPatientComponent,
+    DoctorsComponent
   ],
     imports: [
         BrowserModule,
