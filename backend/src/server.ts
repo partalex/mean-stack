@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import doctorRouter from './routers/doctor.routes';
 import managerRouter from './routers/manager.routes';
+import patientRouter from './routers/patient.routes';
 import unregisteredRouter from './routers/unregistred.routes';
 
 const app = express();
@@ -16,6 +18,8 @@ connection.once('open', () => {
 
 const router = express.Router();
 router.use('/manager', managerRouter);
+router.use('/doctor', doctorRouter);
+router.use('/patient', patientRouter);
 router.use('/unregistered', unregisteredRouter);
 
 app.use('/', router);
