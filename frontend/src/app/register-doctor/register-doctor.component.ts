@@ -28,7 +28,7 @@ export class RegisterDoctorComponent implements OnInit {
   message: string;
 
   register() {
-    this.managerService.register(this.firstname, this.lastname, this.username, this.password, this.address, this.phone, this.mail, this.licenceId, this.specialization, this.specialization).subscribe(respObj => {
+    this.managerService.registerDoctor(this.firstname, this.lastname, this.username, this.password, this.address, this.phone, this.mail, this.licenceId, this.specialization, this.specialization).subscribe(respObj => {
       if (respObj['message'] == 'ok')
         this.message = 'User added'
       else

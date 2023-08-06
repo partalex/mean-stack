@@ -11,7 +11,7 @@ export class ManagerService {
 
   uri = 'http://127.0.0.1:4000'
 
-  register(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm, licenceIdForm, specializationForm, branchForm) {
+  registerDoctor(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm, licenceIdForm, specializationForm, branchForm) {
     const data = {
       firstname: firstnameForm,
       lastname: lastnameForm,
@@ -25,6 +25,6 @@ export class ManagerService {
       branch: branchForm
     }
 
-    return this.http.post(`${this.uri}/registerDoctor`, data)
+    return this.http.post(`${this.uri}/manager/registerDoctor`, data)
   }
 }
