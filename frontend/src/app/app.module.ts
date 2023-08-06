@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from './app-routing.module';
 import {AboutComponent} from './about/about.component';
-import {HomePageComponent} from './home-page/home-page.component';
 import {LoginDoctorComponent} from './login-doctor/login-doctor.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
@@ -17,12 +16,12 @@ import { NavigationDoctorComponent } from './navigation-doctor/navigation-doctor
 import { NavigationManagerComponent } from './navigation-manager/navigation-manager.component';
 import { NavigationPatientComponent } from './navigation-patient/navigation-patient.component';
 import { DoctorsComponent } from './doctors/doctors.component';
+import { UnregisteredIndexComponent } from './unregistered-index/unregistered-index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterDoctorComponent,
-    HomePageComponent,
     AboutComponent,
     LoginPatientComponent,
     LoginDoctorComponent,
@@ -33,7 +32,8 @@ import { DoctorsComponent } from './doctors/doctors.component';
     NavigationDoctorComponent,
     NavigationManagerComponent,
     NavigationPatientComponent,
-    DoctorsComponent
+    DoctorsComponent,
+    UnregisteredIndexComponent
   ],
     imports: [
         BrowserModule,
