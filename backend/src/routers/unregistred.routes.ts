@@ -11,4 +11,7 @@ unregisteredRouter.route('/loginDoctor').post(
 unregisteredRouter.route('/registerPatient').post(
     (req, res) => new UnregisteredController().registerPatient(req, res)
 )
+unregisteredRouter.route('').post(
+    (req, res) => new UnregisteredController().registerPatient(req, res)
+)
 export default unregisteredRouter;
