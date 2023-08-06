@@ -22,5 +22,4 @@ let Patient = new Scheme({
         type: String
     }
 })
-
 export default mongoose.model('Patient', Patient, 'patients');
