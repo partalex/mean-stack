@@ -8,26 +8,27 @@ import {AppRoutingModule} from './app-routing.module';
 import {AboutComponent} from './about/about.component';
 import {DoctorComponent} from './doctor/doctor.component';
 import {HomePageComponent} from './home-page/home-page.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import {LoginDoctorComponent} from './login-doctor/login-doctor.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import {RegisterDoctorComponent} from './register-doctor/register-doctor.component';
 import {RegisterPatientComponent} from './register-patient/register-patient.component';
+import { NavigationUnregisteredComponent } from './navigation-unregistered/navigation-unregistered.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        RegisterDoctorComponent,
-        HomePageComponent,
-        AboutComponent,
-        DoctorComponent,
-        LoginPatientComponent,
-        LoginDoctorComponent,
-        RegisterPatientComponent,
-        NavigationComponent,
-        DoctorProfileComponent
-    ],
+  declarations: [
+    AppComponent,
+    RegisterDoctorComponent,
+    HomePageComponent,
+    AboutComponent,
+    DoctorComponent,
+    LoginPatientComponent,
+    LoginDoctorComponent,
+    RegisterPatientComponent,
+    DoctorProfileComponent,
+    NavigationUnregisteredComponent,
+    NavigationUnregisteredComponent
+  ],
     imports: [
         BrowserModule,
         AppRoutingModule,
