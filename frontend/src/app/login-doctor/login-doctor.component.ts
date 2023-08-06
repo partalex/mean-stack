@@ -10,11 +10,8 @@ import {HomePageService} from "../home-page.service";
 })
 export class LoginDoctorComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private service: HomePageService, private router: Router) {
   }
-
-  // constructor(private service: HomePageService, private router: Router) {
-  // }
 
   ngOnInit(): void {
   }
@@ -24,11 +21,11 @@ export class LoginDoctorComponent implements OnInit {
   message: string;
 
   loginDoctor() {
-    // this.service.loginDoctor(this.username, this.password).subscribe((patient: Doctor) => {
-    //   if (patient != null)
-    //     this.router.navigate(['doctor']); // TODO
-    //   this.message = "Error"
-    //   return;
-    // })
+    this.service.loginDoctor(this.username, this.password).subscribe((patient: Doctor) => {
+      if (patient != null)
+        this.router.navigate(['doctor']); // TODO
+      this.message = "Error"
+      return;
+    })
   }
 }

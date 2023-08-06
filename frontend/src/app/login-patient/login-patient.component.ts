@@ -10,7 +10,6 @@ import {HomePageService} from "../home-page.service";
 })
 export class LoginPatientComponent implements OnInit {
 
-
     constructor(private service: HomePageService, private router: Router) {
     }
 
