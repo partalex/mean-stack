@@ -12,6 +12,7 @@ import {LoginDoctorComponent} from './login-doctor/login-doctor.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
 import {RegisterDoctorComponent} from './register-doctor/register-doctor.component';
 import {RegisterPatientComponent} from './register-patient/register-patient.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import {RegisterPatientComponent} from './register-patient/register-patient.comp
         DoctorComponent,
         LoginPatientComponent,
         LoginDoctorComponent,
-        RegisterPatientComponent
+        RegisterPatientComponent,
+        NavigationComponent
     ],
     imports: [
         BrowserModule,
