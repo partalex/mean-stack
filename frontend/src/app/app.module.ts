@@ -14,6 +14,9 @@ import { DoctorProfileComponent } from './doctor-profile/doctor-profile.componen
 import {RegisterDoctorComponent} from './register-doctor/register-doctor.component';
 import {RegisterPatientComponent} from './register-patient/register-patient.component';
 import { NavigationUnregisteredComponent } from './navigation-unregistered/navigation-unregistered.component';
+import { NavigationDoctorComponent } from './navigation-doctor/navigation-doctor.component';
+import { NavigationManagerComponent } from './navigation-manager/navigation-manager.component';
+import { NavigationPatientComponent } from './navigation-patient/navigation-patient.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { NavigationUnregisteredComponent } from './navigation-unregistered/navig
     RegisterPatientComponent,
     DoctorProfileComponent,
     NavigationUnregisteredComponent,
-    NavigationUnregisteredComponent
+    NavigationUnregisteredComponent,
+    NavigationDoctorComponent,
+    NavigationManagerComponent,
+    NavigationPatientComponent
   ],
     imports: [
         BrowserModule,
