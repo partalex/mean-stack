@@ -4,3 +4,4 @@
 /backend/node_modules/
 /backend/.idea/
 /backend/dist/
+backend/dist/server.js.map
