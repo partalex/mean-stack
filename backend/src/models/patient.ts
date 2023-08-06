@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Scheme = mongoose.Schema;
 
-let User = new Scheme({
+let Patient = new Scheme({
     firstname: {
         type: String
     },
@@ -15,9 +15,12 @@ let User = new Scheme({
     password: {
         type: String
     },
-    type: {
-        type: Number
+    phone: {
+        type: String
+    },
+    mail: {
+        type: String
     }
 })
 
-export default mongoose.model('User', User, 'users');
+export default mongoose.model('Patient', Patient, 'patients');
