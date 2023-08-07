@@ -11,7 +11,7 @@ export class PatientService {
   }
 
   logOut() {
-    localStorage.clear()
+    localStorage.removeItem("loggedInPatient")
     this.router.navigate([''])
   }
 }

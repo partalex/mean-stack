@@ -13,7 +13,7 @@ export class DoctorService {
     }
 
     logOut() {
-        localStorage.clear()
+        localStorage.removeItem("loggedInDoctor")
         this.router.navigate([''])
     }
 }

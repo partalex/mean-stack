@@ -3,18 +3,6 @@ import ManagerModel from '../models/manager';
 import DoctorModel from "../models/doctor";
 
 export class ManagerController {
-    loginManager = (req: express.Request, res: express.Response) => {
-        let username = req.body.username;
-        let password = req.body.password;
-
-        ManagerModel.findOne({'username': username, 'password': password}, (err, manager) => {
-            if (err) {
-                console.log(err);
-            } else {
-                res.json(manager);
-            }
-        });
-    };
 
     registerDoctor = (req: express.Request, res: express.Response) => {
         let doctor = new DoctorModel({

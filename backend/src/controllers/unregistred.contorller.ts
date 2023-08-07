@@ -1,6 +1,7 @@
 import express from 'express';
 import PatientModel from '../models/patient';
 import DoctorModel from '../models/doctor';
+import ManagerModel from '../models/manager';
 
 export class UnregisteredController {
     loginPatient = (req: express.Request, res: express.Response) => {
@@ -20,6 +21,19 @@ export class UnregisteredController {
         let password = req.body.password;
 
         DoctorModel.findOne({'username': username, 'password': password}, (err, doctor) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(doctor);
+            }
+        });
+    };
+
+    loginManager = (req: express.Request, res: express.Response) => {
+        let username = req.body.username;
+        let password = req.body.password;
+
+        ManagerModel.findOne({'username': username, 'password': password}, (err, doctor) => {
             if (err) {
                 console.log(err);
             } else {

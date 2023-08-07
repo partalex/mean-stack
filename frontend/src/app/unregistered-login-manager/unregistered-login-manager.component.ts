@@ -22,6 +22,10 @@ export class UnregisteredLoginManagerComponent implements OnInit {
 
     loginManager() {
         this.service.loginDoctor(this.username, this.password).subscribe((manager: Manager) => {
+            if (this.username == "" || this.password == "") {
+                this.message = "Niste uneli sve podatke!";
+                return;
+            }
             if (manager != null) {
                 localStorage.setItem("loggedInManager", manager.username)
                 this.router.navigate([manager])

@@ -22,6 +22,10 @@ export class UnregisteredLoginPatientComponent implements OnInit {
 
     loginPatient() {
         this.service.loginPatient(this.username, this.password).subscribe((patient: Patient) => {
+            if (this.username == "" || this.password == "") {
+                this.message = "Niste uneli sve podatke!";
+                return;
+            }
             if (patient != null) {
                 localStorage.setItem("loggedInPatient", patient.username)
                 this.router.navigate([patient])

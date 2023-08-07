@@ -30,7 +30,7 @@ export class ManagerService {
     }
 
     logOut() {
-        localStorage.clear()
+        localStorage.removeItem("loggedInManager")
         this.router.navigate([''])
     }
 }

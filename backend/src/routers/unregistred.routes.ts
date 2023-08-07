@@ -8,10 +8,11 @@ unregisteredRouter.route('/loginPatient').post(
 unregisteredRouter.route('/loginDoctor').post(
     (req, res) => new UnregisteredController().loginDoctor(req, res)
 )
-unregisteredRouter.route('/registerPatient').post(
-    (req, res) => new UnregisteredController().registerPatient(req, res)
+unregisteredRouter.route('/loginManager').post(
+    (req, res) => new UnregisteredController().loginManager(req, res)
 )
-unregisteredRouter.route('').post(
+
+unregisteredRouter.route('/registerPatient').post(
     (req, res) => new UnregisteredController().registerPatient(req, res)
 )
 export default unregisteredRouter;
