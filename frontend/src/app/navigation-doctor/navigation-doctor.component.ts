@@ -16,4 +16,9 @@ export class NavigationDoctorComponent implements OnInit {
 
     protected readonly decodeURI = decodeURI;
     protected readonly decodeURIComponent = decodeURIComponent;
+
+    logOut() {
+        // TODO - close session
+        this.router.navigate(['/']);
+    }
 }
