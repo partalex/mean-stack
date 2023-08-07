@@ -5,7 +5,6 @@ import {FormsModule} from "@angular/forms";
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from './app-routing.module';
-import {AboutComponent} from './about/about.component';
 import {LoginDoctorComponent} from './login-doctor/login-doctor.component';
 import {LoginPatientComponent} from './login-patient/login-patient.component';
 import {DoctorProfileComponent} from './doctor-profile/doctor-profile.component';
@@ -28,12 +27,12 @@ import { ManagerRegisterDoctorComponent } from './manager-register-doctor/manage
 import { ManagerProfileComponent } from './manager-profile/manager-profile.component';
 import { ManagerPromotionsComponent } from './manager-promotions/manager-promotions.component';
 import { ManagerMedicineChangesComponent } from './manager-medicine-changes/manager-medicine-changes.component';
+import { UnregisteredAboutComponent } from './unregistered-about/unregistered-about.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         RegisterDoctorComponent,
-        AboutComponent,
         LoginPatientComponent,
         LoginDoctorComponent,
         RegisterPatientComponent,
@@ -55,7 +54,8 @@ import { ManagerMedicineChangesComponent } from './manager-medicine-changes/mana
         ManagerRegisterDoctorComponent,
         ManagerProfileComponent,
         ManagerPromotionsComponent,
-        ManagerMedicineChangesComponent
+        ManagerMedicineChangesComponent,
+        UnregisteredAboutComponent
     ],
     imports: [
         BrowserModule,
