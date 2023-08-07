@@ -15,8 +15,8 @@ import { NavigationUnregisteredComponent } from './navigation-unregistered/navig
 import { NavigationDoctorComponent } from './navigation-doctor/navigation-doctor.component';
 import { NavigationManagerComponent } from './navigation-manager/navigation-manager.component';
 import { NavigationPatientComponent } from './navigation-patient/navigation-patient.component';
-import { DoctorsComponent } from './doctors/doctors.component';
 import { UnregisteredIndexComponent } from './unregistered-index/unregistered-index.component';
+import { DoctorSkeletonComponent } from './doctor-skeleton/doctor-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { UnregisteredIndexComponent } from './unregistered-index/unregistered-in
     NavigationDoctorComponent,
     NavigationManagerComponent,
     NavigationPatientComponent,
-    DoctorsComponent,
-    UnregisteredIndexComponent
+    UnregisteredIndexComponent,
+    DoctorSkeletonComponent
   ],
     imports: [
         BrowserModule,
