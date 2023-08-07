@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ManagerService} from "../manager.service";
+import {ManagerService} from "../services/manager.service";
 
 @Component({
   selector: 'app-register-doctor',

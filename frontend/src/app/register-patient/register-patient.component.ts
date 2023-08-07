@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UnregisteredService} from "../unregistered.service";
+import {UnregisteredService} from "../services/unregistered.service";
 
 @Component({
   selector: 'app-register-patient',

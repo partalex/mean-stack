@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UnregisteredService} from "../unregistered.service";
+import {UnregisteredService} from "../services/unregistered.service";
 import {Router} from "@angular/router";
 import {Doctor} from "../../model/doctor";
 
@@ -14,6 +14,9 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        let loggedInUser = localStorage.getItem("loggedInUser");
+        loggedInUser = loggedInUser == null ? "" : loggedInUser;
+
     }
 
     username: string;
