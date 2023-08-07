@@ -19,6 +19,16 @@ import {UnregisteredIndexComponent} from './unregistered-index/unregistered-inde
 import {DoctorAnyComponent} from './doctor-any/doctor-any.component';
 import {DoctorViewsComponent} from './doctor-views/doctor-views.component';
 import {DoctorsComponent} from './doctors/doctors.component';
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
+import { PatientDoctorsComponent } from './patient-doctors/patient-doctors.component';
+import { PatientViewsComponent } from './patient-views/patient-views.component';
+import { PatientNotificationsComponent } from './patient-notifications/patient-notifications.component';
+import { PatientCalendarComponent } from './patient-calendar/patient-calendar.component';
+import { PatientDoctorComponent } from './patient-doctor/patient-doctor.component';
+import { ManagerRegisterDoctorComponent } from './manager-register-doctor/manager-register-doctor.component';
+import { ManagerProfileComponent } from './manager-profile/manager-profile.component';
+import { ManagerPromotionsComponent } from './manager-promotions/manager-promotions.component';
+import { ManagerMedicineChangesComponent } from './manager-medicine-changes/manager-medicine-changes.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +47,17 @@ import {DoctorsComponent} from './doctors/doctors.component';
         UnregisteredIndexComponent,
         DoctorAnyComponent,
         DoctorViewsComponent,
-        DoctorsComponent
+        DoctorsComponent,
+        PatientProfileComponent,
+        PatientDoctorsComponent,
+        PatientViewsComponent,
+        PatientNotificationsComponent,
+        PatientCalendarComponent,
+        PatientDoctorComponent,
+        ManagerRegisterDoctorComponent,
+        ManagerProfileComponent,
+        ManagerPromotionsComponent,
+        ManagerMedicineChangesComponent
     ],
     imports: [
         BrowserModule,

@@ -10,19 +10,43 @@ import {DoctorProfileComponent} from "./doctor-profile/doctor-profile.component"
 import {DoctorsComponent} from "./doctors/doctors.component";
 import {DoctorViewsComponent} from "./doctor-views/doctor-views.component";
 import {DoctorAnyComponent} from "./doctor-any/doctor-any.component";
+import {PatientProfileComponent} from "./patient-profile/patient-profile.component";
+import {PatientCalendarComponent} from "./patient-calendar/patient-calendar.component";
+import {PatientDoctorComponent} from "./patient-doctor/patient-doctor.component";
+import {PatientDoctorsComponent} from "./patient-doctors/patient-doctors.component";
+import {PatientNotificationsComponent} from "./patient-notifications/patient-notifications.component";
+import {ManagerRegisterDoctorComponent} from "./manager-register-doctor/manager-register-doctor.component";
+import {ManagerProfileComponent} from "./manager-profile/manager-profile.component";
+import {ManagerPromotionsComponent} from "./manager-promotions/manager-promotions.component";
+import {ManagerMedicineChangesComponent} from "./manager-medicine-changes/manager-medicine-changes.component";
 
 const routes: Routes = [
-    {path: "about", component: AboutComponent},
     {path: "", component: UnregisteredIndexComponent},
+    {path: "about", component: AboutComponent},
     {path: "doctors", component: DoctorsComponent},
-    {path: "index", component: UnregisteredIndexComponent},
     {path: "loginDoctor", component: LoginDoctorComponent},
     {path: "loginPatient", component: LoginPatientComponent},
+    {path: "registerDoctor", component: RegisterDoctorComponent},
+    {path: "registerPatient", component: RegisterPatientComponent},
+
+    {path: "doctor", component: DoctorProfileComponent},
     {path: "doctor/profile", component: DoctorProfileComponent},
     {path: "doctor/views", component: DoctorViewsComponent},
     {path: "doctor/any", component: DoctorAnyComponent},
-    {path: "registerDoctor", component: RegisterDoctorComponent},
-    {path: "registerPatient", component: RegisterPatientComponent}
+
+    {path: "patient", component: PatientProfileComponent},
+    {path: "patient/profile", component: PatientProfileComponent},
+    {path: "patient/calendar", component: PatientCalendarComponent},
+    {path: "patient/doctor", component: PatientDoctorComponent},
+    {path: "patient/doctors", component: PatientDoctorsComponent},
+    {path: "patient/notifications", component: PatientNotificationsComponent},
+
+
+    {path: "manager", component: ManagerProfileComponent},
+    {path: "manager/profile", component: ManagerProfileComponent},
+    {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
+    {path: "manager/promotions", component: ManagerPromotionsComponent},
+    {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
 ];
 
 @NgModule({
