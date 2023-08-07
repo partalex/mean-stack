@@ -18,10 +18,12 @@ import {ManagerMedicineChangesComponent} from "./manager-medicine-changes/manage
 import {UnregisteredAboutComponent} from "./unregistered-about/unregistered-about.component";
 import {UnregisteredLoginDoctorComponent} from "./unregistered-login-doctor/unregistered-login-doctor.component";
 import {UnregisteredLoginPatientComponent} from "./unregistered-login-patient/unregistered-login-patient.component";
+import {UnregisteredDoctorsComponent} from "./unregistered-doctors/unregistered-doctors.component";
 
 const routes: Routes = [
     {path: "", component: UnregisteredIndexComponent},
     {path: "about", component: UnregisteredAboutComponent},
+    {path: "doctors", component: UnregisteredDoctorsComponent},
     {path: "loginDoctor", component: UnregisteredLoginDoctorComponent},
     {path: "loginPatient", component: UnregisteredLoginPatientComponent},
     {path: "registerDoctor", component: RegisterDoctorComponent},
