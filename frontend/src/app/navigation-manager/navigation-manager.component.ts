@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {ManagerService} from "../services/manager.service";
 
 @Component({
     selector: 'app-navigation-manager',
@@ -8,15 +9,14 @@ import {Router} from "@angular/router";
 })
 export class NavigationManagerComponent implements OnInit {
 
-    constructor(public router: Router) {
+    constructor(public router: Router, private service: ManagerService) {
     }
 
     ngOnInit(): void {
     }
 
     logOut() {
-        // TODO - close session
-        this.router.navigate(['/']);
+        this.service.logOut()
     }
 
 }

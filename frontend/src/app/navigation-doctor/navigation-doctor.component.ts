@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {ManagerService} from "../services/manager.service";
+import {DoctorService} from "../services/doctor.service";
 
 @Component({
     selector: 'app-navigation-doctor',
@@ -8,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class NavigationDoctorComponent implements OnInit {
 
-    constructor(public router: Router) {
+    constructor(private http: HttpClient, private service: DoctorService) {
     }
 
     ngOnInit(): void {
@@ -18,7 +21,6 @@ export class NavigationDoctorComponent implements OnInit {
     protected readonly decodeURIComponent = decodeURIComponent;
 
     logOut() {
-        // TODO - close session
-        this.router.navigate(['/']);
+        this.service.logOut()
     }
 }

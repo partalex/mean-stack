@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {PatientService} from "../services/patient.service";
 
 @Component({
     selector: 'app-navigation-patient',
@@ -8,15 +9,14 @@ import {Router} from "@angular/router";
 })
 export class NavigationPatientComponent implements OnInit {
 
-    constructor(public router: Router) {
+    constructor(public router: Router, private service: PatientService) {
     }
 
     ngOnInit(): void {
     }
 
     logOut() {
-        // TODO - close session
-        this.router.navigate(['/']);
+        this.service.logOut()
     }
 
 }
