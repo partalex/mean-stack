@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Doctor} from "../../model/doctor";
-import {Router} from "@angular/router";
 import {UnregisteredService} from "../unregistered.service";
+import {Router} from "@angular/router";
+import {Doctor} from "../../model/doctor";
 
 @Component({
-    selector: 'app-login-doctor',
-    templateUrl: './login-doctor.component.html',
-    styleUrls: ['./login-doctor.component.css']
+    selector: 'app-unregistered-login-doctor',
+    templateUrl: './unregistered-login-doctor.component.html',
+    styleUrls: ['./unregistered-login-doctor.component.css']
 })
-export class LoginDoctorComponent implements OnInit {
+export class UnregisteredLoginDoctorComponent implements OnInit {
 
     constructor(private service: UnregisteredService, private router: Router) {
     }

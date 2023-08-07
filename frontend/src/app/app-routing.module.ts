@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {RegisterDoctorComponent} from "./register-doctor/register-doctor.component";
 import {UnregisteredIndexComponent} from "./unregistered-index/unregistered-index.component";
-import {LoginDoctorComponent} from "./login-doctor/login-doctor.component";
-import {LoginPatientComponent} from "./login-patient/login-patient.component";
 import {RegisterPatientComponent} from "./register-patient/register-patient.component";
 import {DoctorProfileComponent} from "./doctor-profile/doctor-profile.component";
 import {DoctorViewsComponent} from "./doctor-views/doctor-views.component";
@@ -18,12 +16,14 @@ import {ManagerProfileComponent} from "./manager-profile/manager-profile.compone
 import {ManagerPromotionsComponent} from "./manager-promotions/manager-promotions.component";
 import {ManagerMedicineChangesComponent} from "./manager-medicine-changes/manager-medicine-changes.component";
 import {UnregisteredAboutComponent} from "./unregistered-about/unregistered-about.component";
+import {UnregisteredLoginDoctorComponent} from "./unregistered-login-doctor/unregistered-login-doctor.component";
+import {UnregisteredLoginPatientComponent} from "./unregistered-login-patient/unregistered-login-patient.component";
 
 const routes: Routes = [
     {path: "", component: UnregisteredIndexComponent},
     {path: "about", component: UnregisteredAboutComponent},
-    {path: "loginDoctor", component: LoginDoctorComponent},
-    {path: "loginPatient", component: LoginPatientComponent},
+    {path: "loginDoctor", component: UnregisteredLoginDoctorComponent},
+    {path: "loginPatient", component: UnregisteredLoginPatientComponent},
     {path: "registerDoctor", component: RegisterDoctorComponent},
     {path: "registerPatient", component: RegisterPatientComponent},
 
