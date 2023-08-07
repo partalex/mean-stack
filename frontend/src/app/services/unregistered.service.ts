@@ -9,14 +9,14 @@ export class UnregisteredService {
   constructor(private http: HttpClient) {
   }
 
-  uri = 'http://127.0.0.1:4000'
+  uri = 'http://127.0.0.1:4000/unregistered'
 
   loginDoctor(usernameForm, passwordForm) {
     const data = {
       username: usernameForm,
       password: passwordForm
     }
-    return this.http.post(`${this.uri}/unregistered/loginDoctor`, data)
+    return this.http.post(`${this.uri}/loginDoctor`, data)
   }
 
   loginPatient(usernameForm, passwordForm) {
@@ -24,7 +24,7 @@ export class UnregisteredService {
       username: usernameForm,
       password: passwordForm
     }
-    return this.http.post(`${this.uri}/unregistered/loginPatient`, data)
+    return this.http.post(`${this.uri}/loginPatient`, data)
   }
 
   registerPatient(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm) {
@@ -37,6 +37,6 @@ export class UnregisteredService {
       phone: phoneForm,
       mail: mailForm
     }
-    return this.http.post(`${this.uri}/unregistered/registerPatient`, data)
+    return this.http.post(`${this.uri}/registerPatient`, data)
   }
 }
