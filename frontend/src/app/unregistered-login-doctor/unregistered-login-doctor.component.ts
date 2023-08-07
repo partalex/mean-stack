@@ -16,7 +16,6 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
     ngOnInit(): void {
         let loggedInUser = localStorage.getItem("loggedInUser");
         loggedInUser = loggedInUser == null ? "" : loggedInUser;
-
     }
 
     username: string;
@@ -24,11 +23,14 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
     message: string;
 
     loginDoctor() {
-        this.service.loginDoctor(this.username, this.password).subscribe((patient: Doctor) => {
-            if (patient != null)
-                this.router.navigate(['doctor']); // TODO
-            this.message = "Error"
-            return;
+        this.service.loginDoctor(this.username, this.password).subscribe((doctor: Doctor) => {
+            if (doctor != null) {
+                localStorage.setItem("loggedInPatient", doctor.username)
+                this.router.navigate([doctor])
+            } else {
+                this.message = "Losi podaci!";
+                return;
+            }
         })
     }
 }

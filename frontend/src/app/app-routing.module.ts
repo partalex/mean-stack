@@ -19,6 +19,7 @@ import {UnregisteredAboutComponent} from "./unregistered-about/unregistered-abou
 import {UnregisteredLoginDoctorComponent} from "./unregistered-login-doctor/unregistered-login-doctor.component";
 import {UnregisteredLoginPatientComponent} from "./unregistered-login-patient/unregistered-login-patient.component";
 import {UnregisteredDoctorsComponent} from "./unregistered-doctors/unregistered-doctors.component";
+import {UnregisteredLoginManagerComponent} from "./unregistered-login-manager/unregistered-login-manager.component";
 
 const routes: Routes = [
     {path: "", component: UnregisteredIndexComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path: "doctors", component: UnregisteredDoctorsComponent},
     {path: "loginDoctor", component: UnregisteredLoginDoctorComponent},
     {path: "loginPatient", component: UnregisteredLoginPatientComponent},
+    {path: "loginManager", component: UnregisteredLoginManagerComponent},
     {path: "registerDoctor", component: RegisterDoctorComponent},
     {path: "registerPatient", component: RegisterPatientComponent},
 
@@ -41,12 +43,11 @@ const routes: Routes = [
     {path: "patient/doctors", component: PatientDoctorsComponent},
     {path: "patient/notifications", component: PatientNotificationsComponent},
 
-
     {path: "manager", component: ManagerProfileComponent},
     {path: "manager/profile", component: ManagerProfileComponent},
     {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
     {path: "manager/promotions", component: ManagerPromotionsComponent},
-    {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
+    {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent}
 ];
 
 @NgModule({
