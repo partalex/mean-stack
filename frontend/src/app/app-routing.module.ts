@@ -7,7 +7,6 @@ import {LoginDoctorComponent} from "./login-doctor/login-doctor.component";
 import {LoginPatientComponent} from "./login-patient/login-patient.component";
 import {RegisterPatientComponent} from "./register-patient/register-patient.component";
 import {DoctorProfileComponent} from "./doctor-profile/doctor-profile.component";
-import {DoctorsComponent} from "./doctors/doctors.component";
 import {DoctorViewsComponent} from "./doctor-views/doctor-views.component";
 import {DoctorAnyComponent} from "./doctor-any/doctor-any.component";
 import {PatientProfileComponent} from "./patient-profile/patient-profile.component";
@@ -23,7 +22,6 @@ import {ManagerMedicineChangesComponent} from "./manager-medicine-changes/manage
 const routes: Routes = [
     {path: "", component: UnregisteredIndexComponent},
     {path: "about", component: AboutComponent},
-    {path: "doctors", component: DoctorsComponent},
     {path: "loginDoctor", component: LoginDoctorComponent},
     {path: "loginPatient", component: LoginPatientComponent},
     {path: "registerDoctor", component: RegisterDoctorComponent},

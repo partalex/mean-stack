@@ -18,7 +18,6 @@ import {NavigationPatientComponent} from './navigation-patient/navigation-patien
 import {UnregisteredIndexComponent} from './unregistered-index/unregistered-index.component';
 import {DoctorAnyComponent} from './doctor-any/doctor-any.component';
 import {DoctorViewsComponent} from './doctor-views/doctor-views.component';
-import {DoctorsComponent} from './doctors/doctors.component';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { PatientDoctorsComponent } from './patient-doctors/patient-doctors.component';
 import { PatientViewsComponent } from './patient-views/patient-views.component';
@@ -47,7 +46,6 @@ import { ManagerMedicineChangesComponent } from './manager-medicine-changes/mana
         UnregisteredIndexComponent,
         DoctorAnyComponent,
         DoctorViewsComponent,
-        DoctorsComponent,
         PatientProfileComponent,
         PatientDoctorsComponent,
         PatientViewsComponent,
