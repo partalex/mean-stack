@@ -33,11 +33,11 @@ export class UnregisteredController {
         let username = req.body.username;
         let password = req.body.password;
 
-        ManagerModel.findOne({'username': username, 'password': password}, (err, doctor) => {
+        ManagerModel.findOne({'username': username, 'password': password}, (err, manager) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(doctor);
+                res.json(manager);
             }
         });
     };
