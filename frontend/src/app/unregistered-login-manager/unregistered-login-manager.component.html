@@ -1,3 +1,23 @@
 <app-unregistered-login-manager></app-unregistered-login-manager>
 
-<p>unregistered-login-manager works!</p>
+<form>
+  <legend>Prijavite se kao doktor</legend>
+
+  <div class="row mb-3">
+    <label for="inputUsername" class="col-sm-2 col-form-label">Koričniko ime</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" name="username">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Lozinka</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
+    </div>
+  </div>
+
+  <button type="submit" (click)="loginManager()" class="btn btn-dark">Prijavi se</button>
+  {{message}}
+
+</form>

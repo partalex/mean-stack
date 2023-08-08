@@ -4,36 +4,35 @@ import {UnregisteredService} from "../services/unregistered.service";
 import {Router} from "@angular/router";
 
 @Component({
-    selector: 'app-unregistered-login-manager',
-    templateUrl: './unregistered-login-manager.component.html',
-    styleUrls: ['./unregistered-login-manager.component.css']
+  selector: 'app-unregistered-login-manager',
+  templateUrl: './unregistered-login-manager.component.html',
+  styleUrls: ['./unregistered-login-manager.component.css']
 })
 export class UnregisteredLoginManagerComponent implements OnInit {
 
-    constructor(private service: UnregisteredService, private router: Router) {
-    }
+  constructor(private service: UnregisteredService, private router: Router) {
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    username: string;
-    password: string;
-    message: string;
+  username: string;
+  password: string;
+  message: string;
 
-    loginManager() {
-        this.service.loginDoctor(this.username, this.password).subscribe((manager: Manager) => {
-            if (this.username == "" || this.password == "") {
-                this.message = "Niste uneli sve podatke!";
-                return;
-            }
-            if (manager != null) {
-                localStorage.setItem("loggedInManager", manager.username)
-                this.router.navigate([manager])
-            } else {
-                this.message = "Losi podaci!";
-                return;
-            }
-        })
-    }
-
+  loginManager() {
+    this.service.loginManager(this.username, this.password).subscribe((manager: Manager) => {
+      if (this.username == "" || this.password == "") {
+        this.message = "Niste uneli sve podatke!";
+        return;
+      }
+      if (manager != null) {
+        localStorage.setItem("loggedInManager", manager.username)
+        this.router.navigate([manager])
+      } else {
+        this.message = "Losi podaci!";
+        return;
+      }
+    })
+  }
 }

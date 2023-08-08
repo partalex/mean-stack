@@ -19,6 +19,14 @@ export class UnregisteredService {
     return this.http.post(`${this.uri}/loginDoctor`, data)
   }
 
+  loginManager(usernameForm, passwordForm) {
+    const data = {
+      username: usernameForm,
+      password: passwordForm
+    }
+    return this.http.post(`${this.uri}/loginManager`, data)
+  }
+
   loginPatient(usernameForm, passwordForm) {
     const data = {
       username: usernameForm,
@@ -26,6 +34,7 @@ export class UnregisteredService {
     }
     return this.http.post(`${this.uri}/loginPatient`, data)
   }
+
 
   registerPatient(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm) {
     const data = {

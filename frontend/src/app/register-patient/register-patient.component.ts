@@ -23,12 +23,12 @@ export class RegisterPatientComponent implements OnInit {
 
   message: string;
 
-  register() {
+  registerPatient() {
     this.service.registerPatient(this.firstname, this.lastname, this.username, this.password, this.address, this.phone, this.mail).subscribe(respObj => {
       if (respObj['message'] == 'ok')
-        this.message = 'User added'
+        this.message = "Patient added."
       else
-        this.message = 'Error'
+        this.message = "Error!"
     });
   }
 }
