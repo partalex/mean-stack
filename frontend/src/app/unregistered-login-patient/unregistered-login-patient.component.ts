@@ -28,7 +28,7 @@ export class UnregisteredLoginPatientComponent implements OnInit {
             }
             if (patient != null) {
                 localStorage.setItem("loggedInPatient", patient.username)
-                this.router.navigate([patient])
+                this.router.navigate(["patient"])
             } else {
                 this.message = "Losi podaci!";
                 return;
