@@ -26,10 +26,11 @@ export class RegisterPatientComponent implements OnInit {
   address = "";
   phone = "";
   mail = "";
-  image = "./assets/default-user/default-user.jpg"
 
+  image = "./assets/default-user/default-user.jpg"
   message: string;
   alert: HTMLElement;
+  exist = false
 
   onSelectFile(event) {
     if (event.target.files) {
@@ -51,7 +52,9 @@ export class RegisterPatientComponent implements OnInit {
 
     this.service.checkPatientUsername(this.username).subscribe((patient: Patient) => {
       if (patient != null) {
-        console.log(patient)
+        this.exist = true
+      }
+      if (this.exist) {
         this.message = "Paciejent sa ovim korisnickim imenom vec postoji."
         this.alert.style.visibility = "visible"
         return
@@ -60,8 +63,11 @@ export class RegisterPatientComponent implements OnInit {
 
     this.service.checkPatientMail(this.mail).subscribe((patient: Patient) => {
       if (patient != null) {
-        console.log(patient)
+        this.exist = true
+      }
+      if (this.exist) {
         this.message = "Nalog sa ovim mejlom vec postoji."
+        this.message = "Paciejent sa ovim korisnickim imenom vec postoji."
         this.alert.style.visibility = "visible"
         return
       }
@@ -71,9 +77,7 @@ export class RegisterPatientComponent implements OnInit {
       this.message = "Povrdite lozinku."
       this.alert.style.visibility = "visible"
       return
-
     }
-
 
     let regexpPhone = new RegExp("^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$")
     if (regexpPhone.test(this.phone) == false) {
