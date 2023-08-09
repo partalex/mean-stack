@@ -39,6 +39,11 @@ roles:
             path: /doctor/views
 
 
+//Reinstall angular:
+npm uninstall -g @angular/cli
+npm cache clean --force
+npm install -g @angular/cli@14.2.3
+
 // install bootstrap
 1. npm install --save bootstrap jquery
 2.

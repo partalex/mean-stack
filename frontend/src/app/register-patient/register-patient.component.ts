@@ -31,7 +31,7 @@ export class RegisterPatientComponent implements OnInit {
 
   registerPatient() {
 
-    if (this.firstname == "" || this.lastname == "" || this.username == "" || this.passwordConfirm == "" || this.address == "" || this.phone == "" || this.mail == "") {
+    if (this.firstname == "" || this.lastname == "" || this.username == "" || this.password == "" || this.passwordConfirm == "" || this.address == "" || this.phone == "" || this.mail == "") {
       this.message = "Sva polja moraju biti uneta."
       this.alert.style.visibility = "visible"
       return

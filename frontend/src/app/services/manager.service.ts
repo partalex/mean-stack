@@ -29,6 +29,20 @@ export class ManagerService {
     return this.http.post(`${this.uri}/registerDoctor`, data)
   }
 
+  checkDoctorUsername(usernameForm) {
+    const data = {
+      username: usernameForm
+    }
+    return this.http.post(`${this.uri}/checkDoctorUsername`, data)
+  }
+
+  checkDoctorMail(mailForm) {
+    const data = {
+      mail: mailForm
+    }
+    return this.http.post(`${this.uri}/checkDoctorMail`, data)
+  }
+
   logOut() {
     localStorage.removeItem("loggedInManager")
     this.router.navigate([''])
