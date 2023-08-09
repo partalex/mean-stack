@@ -17,6 +17,7 @@ export class RegisterPatientComponent implements OnInit {
     this.alert.style.visibility = "hidden"
   }
 
+
   firstname = "";
   lastname = "";
   username = "";
@@ -25,9 +26,20 @@ export class RegisterPatientComponent implements OnInit {
   address = "";
   phone = "";
   mail = "";
+  image = "./assets/default-user/default-user.jpg"
 
   message: string;
   alert: HTMLElement;
+
+  onSelectFile(event) {
+    if (event.target.files) {
+      let reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (event: any) => {
+        this.image = event.target.result
+      }
+    }
+  }
 
   registerPatient() {
 
