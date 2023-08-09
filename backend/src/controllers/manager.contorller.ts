@@ -1,8 +1,32 @@
 import express from 'express';
-import ManagerModel from '../models/manager';
 import DoctorModel from "../models/doctor";
 
 export class ManagerController {
+
+
+    checkDoctorUsername = (req: express.Request, res: express.Response) => {
+        let username = req.body.username;
+
+        DoctorModel.findOne({'username': username}, (err, doctor) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(doctor);
+            }
+        });
+    };
+
+    checkDoctorMail = (req: express.Request, res: express.Response) => {
+        let mail = req.body.mail;
+
+        DoctorModel.findOne({'mail': mail}, (err, doctor) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(doctor);
+            }
+        });
+    };
 
     registerDoctor = (req: express.Request, res: express.Response) => {
         let doctor = new DoctorModel({

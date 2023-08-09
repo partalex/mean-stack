@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {RegisterDoctorComponent} from "./register-doctor/register-doctor.component";
 import {UnregisteredIndexComponent} from "./unregistered-index/unregistered-index.component";
 import {RegisterPatientComponent} from "./register-patient/register-patient.component";
 import {DoctorProfileComponent} from "./doctor-profile/doctor-profile.component";
@@ -28,7 +27,6 @@ const routes: Routes = [
     {path: "loginDoctor", component: UnregisteredLoginDoctorComponent},
     {path: "loginPatient", component: UnregisteredLoginPatientComponent},
     {path: "loginManager", component: UnregisteredLoginManagerComponent},
-    {path: "registerDoctor", component: RegisterDoctorComponent},
     {path: "registerPatient", component: RegisterPatientComponent},
 
     {path: "doctor", component: DoctorProfileComponent},

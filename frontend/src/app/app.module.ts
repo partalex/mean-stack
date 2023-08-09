@@ -10,7 +10,6 @@ import {DoctorViewsComponent} from './doctor-views/doctor-views.component';
 import {PatientViewsComponent} from './patient-views/patient-views.component';
 import {DoctorProfileComponent} from './doctor-profile/doctor-profile.component';
 import {PatientDoctorComponent} from './patient-doctor/patient-doctor.component';
-import {RegisterDoctorComponent} from './register-doctor/register-doctor.component';
 import {PatientProfileComponent} from './patient-profile/patient-profile.component';
 import {PatientDoctorsComponent} from './patient-doctors/patient-doctors.component';
 import {ManagerProfileComponent} from './manager-profile/manager-profile.component';
@@ -34,7 +33,6 @@ import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/
 @NgModule({
     declarations: [
         AppComponent,
-        RegisterDoctorComponent,
         RegisterPatientComponent,
         DoctorProfileComponent,
         NavigationUnregisteredComponent,

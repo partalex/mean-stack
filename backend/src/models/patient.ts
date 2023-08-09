@@ -15,6 +15,9 @@ let Patient = new Scheme({
     password: {
         type: String
     },
+    address: {
+        type: String
+    },
     phone: {
         type: String
     },

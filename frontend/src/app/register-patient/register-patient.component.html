@@ -17,14 +17,22 @@
   </div>
 
   <div class="row mb-3">
-    <label for="inputUsername" class="col-sm-2 col-form-label">Koricniko ime</label>
+    <label for="inputUsername" class="col-sm-2 col-form-label">Koričniko ime</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" name="username">
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <label for="inputPassword" class="col-sm-2 col-form-label">Potvrda lozinke</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm"
+             name="passwordConfirm">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Lozinka</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
     </div>
@@ -40,18 +48,25 @@
   <div class="row mb-3">
     <label for="inputPhone" class="col-sm-2 col-form-label">Kontakt telefon</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="inputPhone" [(ngModel)]="phone" name="phone">
+      <input type="text" class="form-control" id="inputPhone" [(ngModel)]="phone" name="phone">
     </div>
   </div>
 
   <div class="row mb-3">
     <label for="inputMail" class="col-sm-2 col-form-label">Mejl</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputMail" [(ngModel)]="mail" name="mail">
+      <input type="email" class="form-control" id="inputMail" [(ngModel)]="mail" name="email">
     </div>
   </div>
 
   <button type="submit" (click)="registerPatient()" class="btn btn-dark">Registruj se</button>
-  {{message}}
 
 </form>
+
+<div id="alert" class="alert alert-danger d-flex align-items-center" role="alert">
+  <div>
+    {{message}}
+  </div>
+</div>
+
+

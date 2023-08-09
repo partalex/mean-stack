@@ -35,6 +35,19 @@ export class UnregisteredService {
     return this.http.post(`${this.uri}/loginPatient`, data)
   }
 
+  checkPatientUsername(usernameForm) {
+    const data = {
+      username: usernameForm
+    }
+    return this.http.post(`${this.uri}/checkPatientUsername`, data)
+  }
+
+  checkPatientMail(mailForm) {
+    const data = {
+      mail: mailForm
+    }
+    return this.http.post(`${this.uri}/checkPatientMail`, data)
+  }
 
   registerPatient(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm) {
     const data = {
