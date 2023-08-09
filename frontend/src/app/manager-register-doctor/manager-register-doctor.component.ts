@@ -31,10 +31,21 @@ export class ManagerRegisterDoctorComponent implements OnInit {
   specialization = ""
   medicineBranch = ""
 
+  image = "./assets/default-user/default-user.jpg"
   message = ""
   alert: HTMLElement
   alertSuccess: HTMLElement
   exist = false
+
+  onSelectFile(event) {
+    if (event.target.files) {
+      let reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (event: any) => {
+        this.image = event.target.result
+      }
+    }
+  }
 
 
   registerDoctor() {

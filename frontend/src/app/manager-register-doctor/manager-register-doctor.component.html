@@ -1,89 +1,68 @@
 <app-navigation-manager></app-navigation-manager>
 
-<form>
-  <legend>Registracija pacijenta</legend>
-  <div class="row mb-3">
-    <label for="inputName" class="col-sm-2 col-form-label">Ime</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName" [(ngModel)]="firstname" name="firstname">
-    </div>
+<form class="row g-3">
+
+  <legend>Registracija lekara</legend>
+
+  <div class="col-md-6">
+    <img class="img-thumbnail" src="{{image}}" height="300" width="300">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputLastname" class="col-sm-2 col-form-label">Prezime</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputLastname" [(ngModel)]="lastname" name="lastname">
-    </div>
+  <div class="col-md-6">
+    <label for="inputfirstname" class="form-label">Ime</label>
+    <input type="text" class="form-control" id="inputfirstname" [(ngModel)]="firstname" name="firstname">
+
+    <label for="inputLastname" class="form-label">Prezime</label>
+    <input type="text" class="form-control" id="inputLastname" [(ngModel)]="lastname" name="lastname">
+
+    <label for="inputUsername" class="form-label">Koričniko ime</label>
+    <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" name="username">
+
+    <label for="inputPassword" class="form-label">Lozinka</label>
+    <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
+
+    <label for="inputConfirm" class="form-label">Potvrda lozinke</label>
+    <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm" name="passwordConfirm">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputUsername" class="col-sm-2 col-form-label">Koričniko ime</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" name="username">
-    </div>
+  <div class="col-md-6">
+    <label for="inputAddress" class="form-label">Adresa</label>
+    <input type="text" class="form-control" id="inputAddress" [(ngModel)]="address" name="address">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Potvrda lozinke</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm"
-             name="passwordConfirm">
-    </div>
+  <div class="col-md-6">
+    <label for="inputPhone" class="form-label">Kontakt telefon</label>
+    <input type="text" class="form-control" id="inputPhone" [(ngModel)]="phone" name="phone">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Lozinka</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
-    </div>
+  <div class="col-md-6">
+    <label for="inputMail" class="form-label">Mejl</label>
+    <input type="email" class="form-control" id="inputMail" [(ngModel)]="mail" name="email">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputAddress" class="col-sm-2 col-form-label">Adresa</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputAddress" [(ngModel)]="address" name="address">
-    </div>
+  <div class="col-md-6">
+    <label for="inputLicenceId" class="form-label">Broj licence</label>
+    <input type="text" class="form-control" id="inputLicenceId" [(ngModel)]="licenceId" name="licenceId">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputPhone" class="col-sm-2 col-form-label">Kontakt telefon</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPhone" [(ngModel)]="phone" name="phone">
-    </div>
+  <div class="col-md-6">
+    <label for="inputSpecialization" class="form-label">Specijalizacija</label>
+    <input type="text" class="form-control" id="inputSpecialization" [(ngModel)]="specialization" name="specialization">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputMail" class="col-sm-2 col-form-label">Mejl</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputMail" [(ngModel)]="mail" name="email">
-    </div>
+  <div class="col-md-6">
+    <label for="formFile" class="form-label">Otpremite fotografiju</label>
+    <input (change)="onSelectFile($event)" class="form-control" type="file" id="formFile" accept=".png, .jpg">
   </div>
 
-  <div class="row mb-3">
-    <label for="inputMail" class="col-sm-2 col-form-label">Broj licence </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputLicenceId" [(ngModel)]="licenceId" name="licenceId">
-    </div>
+  <div class="col-12">
+    <label for="inputMediciceBranch" class="form-label">Ogranak medicine</label>
+    <input type="text" class="form-control" id="inputMediciceBranch" [(ngModel)]="medicineBranch" name="mediciceBranch">
   </div>
 
-
-  <div class="row mb-3">
-    <label for="inputMail" class="col-sm-2 col-form-label">Specijalizacija</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputSpecialization" [(ngModel)]="specialization"
-             name="specialization">
-    </div>
+  <div class="col-12">
+    <button type="submit" (click)="registerDoctor()" class="btn btn-dark">Registruj lekara</button>
   </div>
-
-  <div class="row mb-3">
-    <label for="inputMail" class="col-sm-2 col-form-label">Ogranak medicine</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputMediciceBranch" [(ngModel)]="medicineBranch"
-             name="mediciceBranch">
-    </div>
-  </div>
-
-  <button type="submit" (click)="registerDoctor()" class="btn btn-dark">Registruj lekara</button>
 
 </form>
 
