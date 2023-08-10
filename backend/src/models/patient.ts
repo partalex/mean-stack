@@ -23,6 +23,9 @@ let Patient = new Scheme({
     },
     mail: {
         type: String
+    },
+    image: {
+        type: String
     }
 })
 export default mongoose.model('Patient', Patient, 'patients');

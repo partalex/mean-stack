@@ -36,6 +36,7 @@ export class ManagerController {
             password: req.body.password,
             phone: req.body.phone,
             mail: req.body.mail,
+            image: req.body.image,
             licenceId: req.body.licenceId,
             specialization: req.body.specialization,
             medicineBranch: req.body.medicineBranch

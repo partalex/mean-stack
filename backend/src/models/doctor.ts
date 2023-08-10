@@ -18,6 +18,9 @@ let Doctor = new Scheme({
     mail: {
         type: String
     },
+    image: {
+        type: String
+    },
     licenceId: {
         type: String
     },

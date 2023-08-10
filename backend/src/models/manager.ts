@@ -14,6 +14,9 @@ let Manager = new Scheme({
     },
     password: {
         type: String
+    },
+    image: {
+        type: String
     }
 });
 

@@ -89,6 +89,7 @@ export class UnregisteredController {
             address: req.body.address,
             phone: req.body.phone,
             mail: req.body.mail,
+            image: req.body.image,
         });
 
         patient.save((err, resp) => {
