@@ -4,7 +4,9 @@ import mongoose from 'mongoose';
 import doctorRouter from './routers/doctor.routes';
 import managerRouter from './routers/manager.routes';
 import patientRouter from './routers/patient.routes';
+import appointmentRouter from "./routers/appointment.routes";
 import unregisteredRouter from './routers/unregistred.routes';
+import reportRouter from "./routers/report.routes";
 
 const app = express();
 app.use(cors());
@@ -21,6 +23,8 @@ router.use('/manager', managerRouter);
 router.use('/doctor', doctorRouter);
 router.use('/patient', patientRouter);
 router.use('/unregistered', unregisteredRouter);
+router.use('/appointment', appointmentRouter);
+router.use('/report', reportRouter);
 
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
