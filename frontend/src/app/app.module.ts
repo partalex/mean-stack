@@ -11,7 +11,6 @@ import {PatientViewsComponent} from './patient-views/patient-views.component';
 import {DoctorProfileComponent} from './doctor-profile/doctor-profile.component';
 import {PatientDoctorComponent} from './patient-doctor/patient-doctor.component';
 import {PatientProfileComponent} from './patient-profile/patient-profile.component';
-import {PatientDoctorsComponent} from './patient-doctors/patient-doctors.component';
 import {ManagerProfileComponent} from './manager-profile/manager-profile.component';
 import {RegisterPatientComponent} from './register-patient/register-patient.component';
 import {NavigationDoctorComponent} from './navigation-doctor/navigation-doctor.component';
@@ -28,6 +27,11 @@ import {UnregisteredLoginPatientComponent} from './unregistered-login-patient/un
 import { UnregisteredDoctorsComponent } from './unregistered-doctors/unregistered-doctors.component';
 import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/unregistered-login-manager.component';
 import { ManagerApprovePatientComponent } from './manager-approve-patient/manager-approve-patient.component';
+import { PatientDoctorsComponent } from './patient-doctors/patient-doctors.component';
+import { DoctorsCardsComponent } from './doctors-cards/doctors-cards.component';
+import { UnregistredDoctorsComponent } from './unregistred-doctors/unregistred-doctors.component';
+import { PatientReportsComponent } from './patient-reports/patient-reports.component';
+import { PatientScheduleAppointmentComponent } from './patient-schedule-appointment/patient-schedule-appointment.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +46,6 @@ import { ManagerApprovePatientComponent } from './manager-approve-patient/manage
         DoctorAnyComponent,
         DoctorViewsComponent,
         PatientProfileComponent,
-        PatientDoctorsComponent,
         PatientViewsComponent,
         PatientNotificationsComponent,
         PatientDoctorComponent,
@@ -56,6 +59,11 @@ import { ManagerApprovePatientComponent } from './manager-approve-patient/manage
         UnregisteredDoctorsComponent,
         UnregisteredLoginManagerComponent,
         ManagerApprovePatientComponent,
+        PatientDoctorsComponent,
+        DoctorsCardsComponent,
+        UnregistredDoctorsComponent,
+        PatientReportsComponent,
+        PatientScheduleAppointmentComponent,
     ],
     imports: [
         BrowserModule,

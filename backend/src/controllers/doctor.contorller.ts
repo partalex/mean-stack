@@ -94,4 +94,12 @@ export class DoctorController {
             }
         });
     };
+
+    search = (req: express.Request, res: express.Response) => {
+        let search = req.body.search
+        DoctorModel.find({'caption': {$regex: search}}, (err, news) => {
+            if (err) console.log(err)
+            else res.json(news)
+        })
+    }
 }

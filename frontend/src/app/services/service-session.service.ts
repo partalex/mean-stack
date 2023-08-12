@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class SessionService {
+export class ServiceSession {
 
   constructor(private http: HttpClient) {
   }

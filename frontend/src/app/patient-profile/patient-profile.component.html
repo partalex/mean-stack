@@ -1,52 +1,60 @@
 <app-navigation-patient></app-navigation-patient>
-<br>
 <legend>Profil pacijenta</legend>
 
-<form class="row g-3">
+<form>
+    <fieldset id="fieldset" class="row g-2" disabled>
 
-    <div class="col-md-6">
-        <img class="img-thumbnail" src="{{patient.image}}" height="300" width="300">
-    </div>
+        <div class="col-md-6">
+            <img class="img-thumbnail" src="{{patient.image}}" height="300" width="300">
+        </div>
 
-    <div class="col-md-6">
-        <label for="inputFirstname" class="form-label">Ime</label>
-        <input disabled type="text" class="form-control" id="inputFirstname" [(ngModel)]="patient.firstname"
-               name="firstname">
+        <div class="col-md-6">
+            <label for="inputFirstname" class="form-label">Ime</label>
+            <input type="text" class="form-control" id="inputFirstname" [(ngModel)]="patient.firstname"
+                   name="firstname">
 
-        <label for="inputLastname" class="form-label">Prezime</label>
-        <input disabled type="text" class="form-control" id="inputLastname" [(ngModel)]="patient.lastname"
-               name="lastname">
+            <label for="inputLastname" class="form-label">Prezime</label>
+            <input type="text" class="form-control" id="inputLastname" [(ngModel)]="patient.lastname"
+                   name="lastname">
 
-        <label for="inputUsername" class="form-label">Koričniko ime</label>
-        <input disabled type="text" class="form-control" id="inputUsername" [(ngModel)]="patient.username"
-               name="username">
+            <label for="inputUsername" class="form-label">Koričniko ime</label>
+            <input type="text" class="form-control" id="inputUsername" [(ngModel)]="patient.username"
+                   name="username">
 
-        <label for="inputAddress" class="form-label">Adresa</label>
-        <input disabled type="text" class="form-control" id="inputAddress" [(ngModel)]="patient.address" name="address">
+            <label for="inputAddress" class="form-label">Adresa</label>
+            <input type="text" class="form-control" id="inputAddress" [(ngModel)]="patient.address"
+                   name="address">
 
-        <label for="inputPhone" class="form-label">Kontakt telefon</label>
-        <input disabled type="text" class="form-control" id="inputPhone" [(ngModel)]="patient.phone" name="phone">
-    </div>
+            <label for="inputPhone" class="form-label">Kontakt telefon</label>
+            <input type="text" class="form-control" id="inputPhone" [(ngModel)]="patient.phone"
+                   name="phone">
+        </div>
 
-    <div class="col-md-6">
-        <label for="inputMail" class="form-label">Mejl</label>
-        <input disabled type="email" class="form-control" id="inputMail" [(ngModel)]="patient.mail" name="email">
-    </div>
+        <div class="col-md-6">
+            <label for="inputMail" class="form-label">Mejl</label>
+            <input type="email" class="form-control" id="inputMail" [(ngModel)]="patient.mail"
+                   name="email">
+        </div>
 
-    <div class="col-md-6">
-        <label for="formFile" class="form-label">Promenite fotografiju</label>
-        <input disabled (change)="onSelectFile($event)" class="form-control" type="file" id="formFile"
-               accept=".png, .jpg">
-    </div>
+        <div class="col-md-6">
+            <label for="formFile" class="form-label">Promenite fotografiju</label>
+            <input (change)="onSelectFile($event)" class="form-control" type="file" id="formFile"
+                   accept=".png, .jpg">
+        </div>
 
-    <div class="col-md-6">
-        <button type="submit" (click)="flipDisabled()" class="btn btn-dark">{{buttonDisabledText()}}</button>
-    </div>
+    </fieldset>
+    <br>
+    <fieldset class="row g-2">
+        <div class="col-md-6">
+            <button type="submit" (click)="flipDisabled()" class="btn btn-dark">{{buttonDisabledText()}}</button>
+        </div>
 
-    <div class="col-md-6">
-        <button type="submit" (click)="saveChanges()" class="btn btn-dark">Sacuvaj promene</button>
-    </div>
-
+        <div class="col-md-6">
+            <button id="saveChanges" disabled type="submit" (click)="saveChanges()" class="btn btn-dark">Sacuvaj
+                promene
+            </button>
+        </div>
+    </fieldset>
 </form>
 
 <div id="alert" class="alert alert-danger" role="alert">
@@ -57,3 +65,38 @@
     {{message}}
 </div>
 
+<br>
+
+<legend>Promeni lozinku</legend>
+<form>
+    <fieldset class="row g-2" id="fieldsetPassword" disabled>
+
+        <div class="col-md-6">
+            <label for="inputMail" class="form-label">Stara lozinka</label>
+            <input type="password" class="form-control" id="inputCheckPassword" [(ngModel)]="checkPassword"
+                   name="checkPassword">
+        </div>
+        <div class="col-md-6">
+            <label for="inputMail" class="form-label">Nova lozinka</label>
+            <input type="password" class="form-control" id="inputNewPassword" [(ngModel)]="newPassword"
+                   name="newPassword">
+            <label for="inputMail" class="form-label">Potvrda lozinke</label>
+            <input type="password" class="form-control" id="inputConfirmNewPassword" [(ngModel)]="checkNewPassword"
+                   name="confirmNewPassword">
+        </div>
+
+    </fieldset>
+    <br>
+    <fieldset class="row g-2">
+        <div class="col-md-6">
+            <button type="submit" (click)="flipDisabledPassword()"
+                    class="btn btn-dark">{{buttonDisabledPasswordText()}}</button>
+        </div>
+
+        <div class="col-md-6">
+            <button id="saveNewPassword" disabled type="submit" (click)="saveNewPassword()" class="btn btn-dark">
+                Sacuvaj novu lozinku
+            </button>
+        </div>
+    </fieldset>
+</form>

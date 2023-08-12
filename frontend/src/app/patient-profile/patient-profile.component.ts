@@ -11,7 +11,7 @@ import {Patient} from "../../model/patient";
 export class PatientProfileComponent implements OnInit {
 
     constructor(private service: PatientService, private http: HttpClient) {
-        this.readByUsername(localStorage.getItem("loggedInPatient"))
+        this.readById(localStorage.getItem("loggedInPatient"))
     }
 
     ngOnInit(): void {
@@ -24,35 +24,22 @@ export class PatientProfileComponent implements OnInit {
     flipDisabled() {
         this.changing = !this.changing
         if (this.changing) {
-            let inputfirstname = document.getElementById("inputFirstname")
-            inputfirstname.removeAttribute("disabled")
-            let inputLastname = document.getElementById("inputLastname")
-            inputLastname.removeAttribute("disabled")
-            let inputUsername = document.getElementById("inputUsername")
-            inputUsername.removeAttribute("disabled")
-            let inputAddress = document.getElementById("inputAddress")
-            inputAddress.removeAttribute("disabled")
-            let inputPhone = document.getElementById("inputPhone")
-            inputPhone.removeAttribute("disabled")
-            let inputMail = document.getElementById("inputMail")
-            inputMail.removeAttribute("disabled")
-            let formFile = document.getElementById("formFile")
-            formFile.removeAttribute("disabled")
+            document.getElementById("fieldset").removeAttribute("disabled")
+            document.getElementById("saveChanges").removeAttribute("disabled")
         } else {
-            let inputfirstname = document.getElementById("inputFirstname")
-            inputfirstname.setAttribute("disabled", "true")
-            let inputLastname = document.getElementById("inputLastname")
-            inputLastname.setAttribute("disabled", "true")
-            let inputUsername = document.getElementById("inputUsername")
-            inputUsername.setAttribute("disabled", "true")
-            let inputAddress = document.getElementById("inputAddress")
-            inputAddress.setAttribute("disabled", "true")
-            let inputPhone = document.getElementById("inputPhone")
-            inputPhone.setAttribute("disabled", "true")
-            let inputMail = document.getElementById("inputMail")
-            inputMail.setAttribute("disabled", "true")
-            let formFile = document.getElementById("formFile")
-            formFile.setAttribute("disabled", "true")
+            document.getElementById("fieldset").setAttribute("disabled", "true")
+            document.getElementById("saveChanges").setAttribute("disabled", "true")
+        }
+    }
+
+    flipDisabledPassword() {
+        this.changingPassword = !this.changingPassword
+        if (this.changingPassword) {
+            document.getElementById("fieldsetPassword").removeAttribute("disabled")
+            document.getElementById("saveNewPassword").removeAttribute("disabled")
+        } else {
+            document.getElementById("fieldsetPassword").setAttribute("disabled", "true")
+            document.getElementById("saveNewPassword").setAttribute("disabled", "true")
         }
     }
 
@@ -69,6 +56,7 @@ export class PatientProfileComponent implements OnInit {
             this.message = "Username cannot be empty.";
             return
         }
+        this.message = "Uspešno ste izmenili informacije."
         this.update()
     }
 
@@ -83,23 +71,40 @@ export class PatientProfileComponent implements OnInit {
     }
 
     patient: Patient = new Patient()
+    checkPassword = ""
+    newPassword = ""
+    checkNewPassword = ""
 
     message: string;
     changing = false;
+    changingPassword = false;
     alert: HTMLElement;
     alertSuccess: HTMLElement
 
-    readByUsername(username) {
-        this.service.readByUsername(username).subscribe((patient: Patient) => {
+    readById(id) {
+        this.service.read(id).subscribe((patient: Patient) => {
             this.patient = patient
         })
     }
+
+    saveNewPassword() {
+        // TODO - check if password is valid
+        this.patient.password = this.newPassword
+        this.message = "Uspešno ste izmenili lozinku."
+        this.update()
+    }
+
+    buttonDisabledPasswordText() {
+        if (!this.changingPassword)
+            return "Promeni lozinku"
+        return "Ne menjaj lozinku"
+    }
+
 
     update() {
         this.service.update(this.patient).subscribe((patient: Patient) => {
             this.patient = patient
             this.alertSuccess.style.visibility = "visible"
-            this.message = "Password changed successfully"
         })
     }
 }

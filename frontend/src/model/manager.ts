@@ -1,6 +1,7 @@
 export class Manager {
-  firstname: string;
-  lastname: string;
-  username: string;
-  password: string;
+    _id: string;
+    firstname: string;
+    lastname: string;
+    username: string;
+    password: string;
 }

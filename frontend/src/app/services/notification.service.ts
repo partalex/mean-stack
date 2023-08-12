@@ -6,12 +6,12 @@ import {Report} from "../../model/report";
 @Injectable({
     providedIn: 'root'
 })
-export class ReportService {
+export class NotificationService {
 
     constructor(private http: HttpClient, private router: Router) {
     }
 
-    uri = 'http://127.0.0.1:4000/report'
+    uri = 'http://127.0.0.1:4000/notification'
 
     create(report: Report) {
         return this.http.post(`${this.uri}/create`, report)
@@ -31,10 +31,6 @@ export class ReportService {
 
     readAll() {
         return this.http.post(`${this.uri}/readAll`, {})
-    }
-
-    readAllByPatient(patientId) {
-        return this.http.post(`${this.uri}/readAll`, {patientId: patientId})
     }
 
 

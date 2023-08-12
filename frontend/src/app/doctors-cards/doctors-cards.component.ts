@@ -3,26 +3,24 @@ import {Doctor} from "../../model/doctor";
 import {DoctorService} from "../services/doctor.service";
 
 @Component({
-    selector: 'app-unregistered-doctors',
-    templateUrl: './unregistered-doctors.component.html',
-    styleUrls: ['./unregistered-doctors.component.css']
+    selector: 'app-doctors-cards',
+    templateUrl: './doctors-cards.component.html',
+    styleUrls: ['./doctors-cards.component.css']
 })
-export class UnregisteredDoctorsComponent implements OnInit {
+export class DoctorsCardsComponent implements OnInit {
 
     constructor(private serviceDoctor: DoctorService) {
         this.getAllDoctors()
     }
 
-    doctors: Doctor[]
-
     ngOnInit(): void {
     }
+
+    doctors: Doctor[]
 
     getAllDoctors() {
         this.serviceDoctor.readAll().subscribe((doctors: Doctor[]) => {
             this.doctors = doctors
         })
     }
-
-
 }

@@ -48,4 +48,8 @@ export class DoctorService {
         localStorage.removeItem("loggedInDoctor")
         this.router.navigate([''])
     }
+
+    search(search) {
+        return this.http.post(`${this.uri}/search`, {search: search})
+    }
 }

@@ -1,37 +1,3 @@
 <app-navigation-unregistered></app-navigation-unregistered>
 
-<div class="row row-cols-1 row-cols-md-4 g-4">
-
-    <div *ngFor="let doctor of doctors" class="col">
-        <div class="card h-100">
-            <img src="{{doctor.image}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{doctor.firstname}} {{doctor.lastname}}</h5>
-                <p class="card-text"></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <small class="text-muted">Mejl:</small>
-                    {{doctors[0].mail}}
-                </li>
-                <li class="list-group-item">
-                    <small class="text-muted">Adresa:</small>
-                    {{doctors[0].address}}
-                </li>
-                <li class="list-group-item">
-                    <small class="text-muted">Ogranak medicine:</small>
-                    {{doctors[0].medicineBranch}}
-                </li>
-                <li class="list-group-item">
-                    <small class="text-muted">Specijalizacija:</small>
-                    {{doctors[0].specialization}}
-                </li>
-            </ul>
-            <div class="card-footer">
-                <small class="text-muted">Licenca: </small>
-                <a routerLink="" class="card-link">{{doctors[0].licenceId}}</a>
-            </div>
-        </div>
-    </div>
-
-</div>
+<app-doctors-cards></app-doctors-cards>

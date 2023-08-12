@@ -25,5 +25,8 @@ doctorRouter.route('/readByUsername').post(
 doctorRouter.route('/readByMail').post(
     (req, res) => new DoctorController().readByMail(req, res)
 )
+doctorRouter.route('/search').post(
+    (req, res) => new DoctorController().search(req, res)
+)
 
 export default doctorRouter;

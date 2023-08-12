@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionService} from "../services/session.service";
+import {ServiceSession} from "../services/service-session.service";
 import {Patient} from "../../model/patient";
 import {Router} from "@angular/router";
 import {PatientService} from "../services/patient.service";
@@ -10,7 +10,7 @@ import {PatientService} from "../services/patient.service";
     styleUrls: ['./register-patient.component.css']
 })
 export class RegisterPatientComponent implements OnInit {
-    constructor(private serviceSession: SessionService, private servicePatient: PatientService, private router: Router) {
+    constructor(private serviceSession: ServiceSession, private servicePatient: PatientService, private router: Router) {
     }
 
     ngOnInit(): void {

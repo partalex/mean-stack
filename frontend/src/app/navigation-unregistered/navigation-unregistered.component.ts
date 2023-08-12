@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionService} from "../services/session.service";
+import {ServiceSession} from "../services/service-session.service";
+import {DoctorService} from "../services/doctor.service";
+import {Doctor} from "../../model/doctor";
 
 @Component({
     selector: 'app-navigation-unregistered',
@@ -8,10 +10,19 @@ import {SessionService} from "../services/session.service";
 })
 export class NavigationUnregisteredComponent implements OnInit {
 
-    constructor(private service: SessionService) {
+    constructor(private serviceSession: ServiceSession, private serviceDoctor: DoctorService) {
     }
 
     ngOnInit(): void {
     }
 
+    searchField = "";
+    searchResult: Doctor[]
+
+    search() {
+        this.serviceDoctor.search(this.searchField).subscribe((doctors: Doctor[]) => {
+            this.searchResult = doctors
+            console.log(this.searchResult)
+        });
+    }
 }

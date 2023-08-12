@@ -1,0 +1,23 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    <div *ngFor="let doctor of doctors" class="col">
+        <div class="card h-100">
+            <img src="{{doctor.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{doctor.firstname}} {{doctor.lastname}}</h5>
+                <p class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <small class="text-muted">Specijalizacija:</small>
+                    {{doctor.specialization}}
+                </li>
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted">Licenca: </small>
+                <a routerLink="" class="card-link">{{doctor.licenceId}}</a>
+            </div>
+        </div>
+    </div>
+
+</div>
