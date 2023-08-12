@@ -3,9 +3,6 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Report = new Scheme({
-    id: {
-        type: Number
-    },
     doctorFirstname: {
         type: String
     },

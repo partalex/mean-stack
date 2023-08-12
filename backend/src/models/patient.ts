@@ -15,11 +15,11 @@ let Patient = new Scheme({
     password: {
         type: String
     },
-    address: {
-        type: String
-    },
     approved: {
         type: Boolean
+    },
+    address: {
+        type: String
     },
     phone: {
         type: String
