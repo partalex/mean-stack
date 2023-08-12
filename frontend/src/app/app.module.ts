@@ -18,7 +18,6 @@ import {PatientCalendarComponent} from './patient-calendar/patient-calendar.comp
 import {NavigationDoctorComponent} from './navigation-doctor/navigation-doctor.component';
 import {NavigationManagerComponent} from './navigation-manager/navigation-manager.component';
 import {NavigationPatientComponent} from './navigation-patient/navigation-patient.component';
-import {UnregisteredIndexComponent} from './unregistered-index/unregistered-index.component';
 import {ManagerPromotionsComponent} from './manager-promotions/manager-promotions.component';
 import {UnregisteredAboutComponent} from './unregistered-about/unregistered-about.component';
 import {PatientNotificationsComponent} from './patient-notifications/patient-notifications.component';
@@ -40,7 +39,6 @@ import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/
         NavigationDoctorComponent,
         NavigationManagerComponent,
         NavigationPatientComponent,
-        UnregisteredIndexComponent,
         DoctorAnyComponent,
         DoctorViewsComponent,
         PatientProfileComponent,
@@ -57,7 +55,7 @@ import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/
         UnregisteredLoginDoctorComponent,
         UnregisteredLoginPatientComponent,
         UnregisteredDoctorsComponent,
-        UnregisteredLoginManagerComponent
+        UnregisteredLoginManagerComponent,
     ],
     imports: [
         BrowserModule,
