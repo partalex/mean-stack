@@ -42,6 +42,7 @@ export class PatientController {
                     lastname: req.body.patient.lastname,
                     username: req.body.patient.username,
                     password: req.body.patient.password,
+                    approved: req.body.patient.approved,
                     address: req.body.patient.address,
                     phone: req.body.patient.phone,
                     mail: req.body.patient.mail,

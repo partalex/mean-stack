@@ -18,6 +18,9 @@ let Patient = new Scheme({
     address: {
         type: String
     },
+    approved: {
+        type: Boolean
+    },
     phone: {
         type: String
     },
