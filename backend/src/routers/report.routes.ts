@@ -1,12 +1,22 @@
 import express from 'express'
-import {ReportContorller} from "../controllers/report.contorller";
+import {ReportController} from "../controllers/reportController";
 
 const reportRouter = express.Router();
-reportRouter.route('/getAll').post(
-    (req, res) => new ReportContorller().getAll(req, res)
+reportRouter.route('/create').post(
+    (req, res) => new ReportController().create(req, res)
 )
-reportRouter.route('/addNew').post(
-    (req, res) => new ReportContorller().addNew(req, res)
+reportRouter.route('/read').post(
+    (req, res) => new ReportController().read(req, res)
 )
+reportRouter.route('/update').post(
+    (req, res) => new ReportController().update(req, res)
+)
+reportRouter.route('/delete').post(
+    (req, res) => new ReportController().delete(req, res)
+)
+reportRouter.route('/readAll').post(
+    (req, res) => new ReportController().readAll(req, res)
+)
+
 
 export default reportRouter;
