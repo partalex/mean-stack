@@ -28,6 +28,7 @@ import {UnregisteredLoginDoctorComponent} from './unregistered-login-doctor/unre
 import {UnregisteredLoginPatientComponent} from './unregistered-login-patient/unregistered-login-patient.component';
 import { UnregisteredDoctorsComponent } from './unregistered-doctors/unregistered-doctors.component';
 import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/unregistered-login-manager.component';
+import { ManagerApprovePatientComponent } from './manager-approve-patient/manager-approve-patient.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/
         UnregisteredLoginPatientComponent,
         UnregisteredDoctorsComponent,
         UnregisteredLoginManagerComponent,
+        ManagerApprovePatientComponent,
     ],
     imports: [
         BrowserModule,

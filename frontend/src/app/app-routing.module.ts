@@ -18,6 +18,7 @@ import {UnregisteredLoginDoctorComponent} from "./unregistered-login-doctor/unre
 import {UnregisteredLoginPatientComponent} from "./unregistered-login-patient/unregistered-login-patient.component";
 import {UnregisteredDoctorsComponent} from "./unregistered-doctors/unregistered-doctors.component";
 import {UnregisteredLoginManagerComponent} from "./unregistered-login-manager/unregistered-login-manager.component";
+import {ManagerApprovePatientComponent} from "./manager-approve-patient/manager-approve-patient.component";
 
 const routes: Routes = [
     {path: "", component: UnregisteredAboutComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
     {path: "manager/profile", component: ManagerProfileComponent},
     {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
     {path: "manager/promotions", component: ManagerPromotionsComponent},
-    {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent}
+    {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
+    {path: "manager/approve", component: ManagerApprovePatientComponent},
 ];
 
 @NgModule({

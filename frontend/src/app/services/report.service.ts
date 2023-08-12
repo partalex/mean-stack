@@ -28,4 +28,10 @@ export class PatientService {
     delete(id) {
         return this.http.post(`${this.uri}/delete`, {id: id})
     }
+
+    readAll() {
+        return this.http.post(`${this.uri}/readAll`,{})
+    }
+
+
 }

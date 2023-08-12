@@ -25,14 +25,20 @@ export class UnregisteredLoginPatientComponent implements OnInit {
 
     loginPatient() {
         if (this.username == "" || this.password == "") {
-            this.message = "Niste uneli sve podatke!"
+            this.message = "Niste uneli sve podatke."
             this.alert.style.visibility = "visible"
             return
         }
         this.service.loginPatient(this.username, this.password).subscribe((patient: Patient) => {
             if (patient != null) {
-                localStorage.setItem("loggedInPatient", patient.username)
-                this.router.navigate(["patient"])
+                if (patient.approved) {
+                    localStorage.setItem("loggedInPatient", patient.username)
+                    this.router.navigate(["patient"])
+                } else {
+                    this.message = "Niste još uvek odobreni."
+                    this.alert.style.visibility = "visible"
+                    return
+                }
             } else {
                 this.message = "Losi podaci!";
                 this.alert.style.visibility = "visible"

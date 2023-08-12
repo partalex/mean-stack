@@ -1,0 +1,37 @@
+<app-navigation-manager></app-navigation-manager>
+
+<br>
+
+<div class="table-responsive-sm">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Dozvoljen prstup</th>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">Korisniko ime</th>
+            <th scope="col">Mejl</th>
+            <th scope="col">Adresa</th>
+            <th scope="col">Telefon</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>
+                <div class="d-grid">
+                    <button (click)="changeApproved(patient)" class="btn btn-secondary  btn-sm"
+                            type="button">{{buttonApprovedText(patient)}}</button>
+                </div>
+            </td>
+            <td>{{patient.firstname}}</td>
+            <td>{{patient.lastname}}</td>
+            <td>{{patient.username}}</td>
+            <td>{{patient.mail}}</td>
+            <td>{{patient.address}}</td>
+            <td>{{patient.phone}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

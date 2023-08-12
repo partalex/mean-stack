@@ -17,11 +17,5 @@ export class UnregisteredDoctorsComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    getAllDoctors() {
-        this.service.readAll().subscribe((doctors: Doctor[]) => {
-            this.doctors = doctors;
-        })
-
-    }
 
 }
