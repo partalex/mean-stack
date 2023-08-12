@@ -34,32 +34,26 @@ export class ReportController {
     }
 
     update = (req: express.Request, res: express.Response) => {
-        ReportModel.findByIdAndDelete(req.body.id, (err, report) => {
-            if (err) {
-                console.log(err);
-            } else {
-                res.json(report);
+        let _id = req.body.report._id;
+        ReportModel.findOneAndUpdate({'_id': _id}, {
+                $set: {
+                    doctorFirstname: req.body.report.doctorFirstname,
+                    doctorLastname: req.body.report.doctorLastname,
+                    licenceId: req.body.report.licenceId,
+                    patientFirstname: req.body.report.patientFirstname,
+                    patientLastname: req.body.report.patientLastname,
+                    report: req.body.report.report,
+                    date: req.body.report.date,
+                    time: req.body.report.time
+                },
+            },
+            {new: true}, (err, patient) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(patient);
             }
-        });
-        // create new
-        let report = new ReportModel({
-            doctorFirstname: req.body.doctorFirstname,
-            doctorLastname: req.body.doctorLastname,
-            licenceId: req.body.licenceId,
-            patientFirstname: req.body.patientFirstname,
-            patientLastname: req.body.patientLastname,
-            report: req.body.report,
-            date: req.body.date,
-            time: req.body.time
-        });
-        report.save((err, resp) => {
-            if (err) {
-                console.log(err);
-                res.status(400).json({'message': 'error'});
-            } else {
-                res.json({"message": "ok"})
-            }
-        })
+        );
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
@@ -73,10 +67,9 @@ export class ReportController {
     }
     readAll = (req: express.Request, res: express.Response) => {
         ReportModel.find({}, (err, reports) => {
-            if (err){
+            if (err) {
                 console.log(err);
-            }
-            else{
+            } else {
                 res.json(reports);
             }
         });

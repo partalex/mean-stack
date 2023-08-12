@@ -37,7 +37,6 @@ export class PatientController {
         let _id = req.body.patient._id;
         PatientModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    // update fields
                     firstname: req.body.patient.firstname,
                     lastname: req.body.patient.lastname,
                     username: req.body.patient.username,
@@ -54,7 +53,8 @@ export class PatientController {
                     console.log(err);
                 else
                     res.json(patient);
-            });
+            }
+        );
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
