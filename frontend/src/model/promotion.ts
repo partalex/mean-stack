@@ -1,5 +1,5 @@
 export class Promotion {
-    id: number;
+    _id: string;
     name: string;
     description: string;
     price: number;
