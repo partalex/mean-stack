@@ -16,7 +16,7 @@ export class NavigationManagerComponent implements OnInit {
     }
 
     logOut() {
-        this.service.logOut()
+        this.service.logOutManager()
     }
 
 }

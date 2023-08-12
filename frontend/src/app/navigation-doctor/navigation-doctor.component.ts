@@ -21,6 +21,6 @@ export class NavigationDoctorComponent implements OnInit {
     protected readonly decodeURIComponent = decodeURIComponent;
 
     logOut() {
-        this.service.logOut()
+        this.service.logOutDoctor()
     }
 }

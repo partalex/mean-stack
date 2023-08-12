@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UnregisteredService} from "../services/unregistered.service";
+import {SessionService} from "../services/session.service";
 
 @Component({
     selector: 'app-navigation-unregistered',
@@ -8,7 +8,7 @@ import {UnregisteredService} from "../services/unregistered.service";
 })
 export class NavigationUnregisteredComponent implements OnInit {
 
-    constructor(private service: UnregisteredService) {
+    constructor(private service: SessionService) {
     }
 
     ngOnInit(): void {

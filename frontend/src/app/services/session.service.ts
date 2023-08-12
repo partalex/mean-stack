@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class UnregisteredService {
+export class SessionService {
 
   constructor(private http: HttpClient) {
   }
@@ -35,21 +35,7 @@ export class UnregisteredService {
     return this.http.post(`${this.uri}/loginPatient`, data)
   }
 
-  checkPatientUsername(usernameForm) {
-    const data = {
-      username: usernameForm
-    }
-    return this.http.post(`${this.uri}/checkPatientUsername`, data)
-  }
-
-  checkPatientMail(mailForm) {
-    const data = {
-      mail: mailForm
-    }
-    return this.http.post(`${this.uri}/checkPatientMail`, data)
-  }
-
-  registerPatient(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm) {
+  registerPatient(firstnameForm, lastnameForm, usernameForm, passwordForm, addressForm, phoneForm, mailForm, imageForm) {
     const data = {
       firstname: firstnameForm,
       lastname: lastnameForm,
@@ -57,7 +43,8 @@ export class UnregisteredService {
       password: passwordForm,
       address: addressForm,
       phone: phoneForm,
-      mail: mailForm
+      mail: mailForm,
+      imageForm: imageForm
     }
     return this.http.post(`${this.uri}/registerPatient`, data)
   }

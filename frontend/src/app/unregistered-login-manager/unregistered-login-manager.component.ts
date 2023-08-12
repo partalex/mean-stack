@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Manager} from "../../model/manager";
-import {UnregisteredService} from "../services/unregistered.service";
+import {SessionService} from "../services/session.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class UnregisteredLoginManagerComponent implements OnInit {
 
-  constructor(private service: UnregisteredService, private router: Router) {
+  constructor(private service: SessionService, private router: Router) {
   }
 
   ngOnInit(): void {
