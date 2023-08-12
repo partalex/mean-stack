@@ -5,7 +5,6 @@ import {DoctorProfileComponent} from "./doctor-profile/doctor-profile.component"
 import {DoctorViewsComponent} from "./doctor-views/doctor-views.component";
 import {DoctorAnyComponent} from "./doctor-any/doctor-any.component";
 import {PatientProfileComponent} from "./patient-profile/patient-profile.component";
-import {PatientCalendarComponent} from "./patient-calendar/patient-calendar.component";
 import {PatientDoctorComponent} from "./patient-doctor/patient-doctor.component";
 import {PatientDoctorsComponent} from "./patient-doctors/patient-doctors.component";
 import {PatientNotificationsComponent} from "./patient-notifications/patient-notifications.component";
@@ -36,7 +35,6 @@ const routes: Routes = [
 
     {path: "patient", component: PatientProfileComponent},
     {path: "patient/profile", component: PatientProfileComponent},
-    {path: "patient/calendar", component: PatientCalendarComponent},
     {path: "patient/doctor", component: PatientDoctorComponent},
     {path: "patient/doctors", component: PatientDoctorsComponent},
     {path: "patient/notifications", component: PatientNotificationsComponent},

@@ -5,6 +5,8 @@ export class Doctor {
     username: string;
     password: string;
     phone: string;
+    image: string;
+    address: string;
     mail: string;
     licenceId: string;
     specialization: string;

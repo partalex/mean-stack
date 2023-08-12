@@ -1,5 +1,5 @@
 <app-navigation-patient></app-navigation-patient>
-
+<br>
 <legend>Profil pacijenta</legend>
 
 <form class="row g-3">
@@ -10,13 +10,16 @@
 
     <div class="col-md-6">
         <label for="inputFirstname" class="form-label">Ime</label>
-        <input disabled type="text" class="form-control" id="inputFirstname" [(ngModel)]="patient.firstname" name="firstname">
+        <input disabled type="text" class="form-control" id="inputFirstname" [(ngModel)]="patient.firstname"
+               name="firstname">
 
         <label for="inputLastname" class="form-label">Prezime</label>
-        <input disabled type="text" class="form-control" id="inputLastname" [(ngModel)]="patient.lastname" name="lastname">
+        <input disabled type="text" class="form-control" id="inputLastname" [(ngModel)]="patient.lastname"
+               name="lastname">
 
         <label for="inputUsername" class="form-label">Koričniko ime</label>
-        <input disabled type="text" class="form-control" id="inputUsername" [(ngModel)]="patient.username" name="username">
+        <input disabled type="text" class="form-control" id="inputUsername" [(ngModel)]="patient.username"
+               name="username">
 
         <label for="inputAddress" class="form-label">Adresa</label>
         <input disabled type="text" class="form-control" id="inputAddress" [(ngModel)]="patient.address" name="address">
@@ -32,11 +35,12 @@
 
     <div class="col-md-6">
         <label for="formFile" class="form-label">Promenite fotografiju</label>
-        <input disabled (change)="onSelectFile($event)" class="form-control" type="file" id="formFile" accept=".png, .jpg">
+        <input disabled (change)="onSelectFile($event)" class="form-control" type="file" id="formFile"
+               accept=".png, .jpg">
     </div>
 
     <div class="col-md-6">
-        <button type="submit" (click)="removeDisabled()" class="btn btn-dark">Izmeni ingormacije</button>
+        <button type="submit" (click)="flipDisabled()" class="btn btn-dark">{{buttonDisabledText()}}</button>
     </div>
 
     <div class="col-md-6">

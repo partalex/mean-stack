@@ -21,21 +21,46 @@ export class PatientProfileComponent implements OnInit {
         this.alertSuccess.style.visibility = "hidden"
     }
 
-    removeDisabled() {
-        let inputfirstname = document.getElementById("inputFirstname")
-        inputfirstname.removeAttribute("disabled")
-        let inputLastname = document.getElementById("inputLastname")
-        inputLastname.removeAttribute("disabled")
-        let inputUsername = document.getElementById("inputUsername")
-        inputUsername.removeAttribute("disabled")
-        let inputAddress = document.getElementById("inputAddress")
-        inputAddress.removeAttribute("disabled")
-        let inputPhone = document.getElementById("inputPhone")
-        inputPhone.removeAttribute("disabled")
-        let inputMail = document.getElementById("inputMail")
-        inputMail.removeAttribute("disabled")
-        let formFile = document.getElementById("formFile")
-        formFile.removeAttribute("disabled")
+    flipDisabled() {
+        this.changing = !this.changing
+        if (this.changing) {
+            let inputfirstname = document.getElementById("inputFirstname")
+            inputfirstname.removeAttribute("disabled")
+            let inputLastname = document.getElementById("inputLastname")
+            inputLastname.removeAttribute("disabled")
+            let inputUsername = document.getElementById("inputUsername")
+            inputUsername.removeAttribute("disabled")
+            let inputAddress = document.getElementById("inputAddress")
+            inputAddress.removeAttribute("disabled")
+            let inputPhone = document.getElementById("inputPhone")
+            inputPhone.removeAttribute("disabled")
+            let inputMail = document.getElementById("inputMail")
+            inputMail.removeAttribute("disabled")
+            let formFile = document.getElementById("formFile")
+            formFile.removeAttribute("disabled")
+        } else {
+            let inputfirstname = document.getElementById("inputFirstname")
+            inputfirstname.setAttribute("disabled", "true")
+            let inputLastname = document.getElementById("inputLastname")
+            inputLastname.setAttribute("disabled", "true")
+            let inputUsername = document.getElementById("inputUsername")
+            inputUsername.setAttribute("disabled", "true")
+            let inputAddress = document.getElementById("inputAddress")
+            inputAddress.setAttribute("disabled", "true")
+            let inputPhone = document.getElementById("inputPhone")
+            inputPhone.setAttribute("disabled", "true")
+            let inputMail = document.getElementById("inputMail")
+            inputMail.setAttribute("disabled", "true")
+            let formFile = document.getElementById("formFile")
+            formFile.setAttribute("disabled", "true")
+        }
+    }
+
+    buttonDisabledText() {
+        if (!this.changing) {
+            return "Izmeni informacije"
+        }
+        return "Ne menjaj informacije"
     }
 
     saveChanges() {
@@ -60,6 +85,7 @@ export class PatientProfileComponent implements OnInit {
     patient: Patient = new Patient()
 
     message: string;
+    changing = false;
     alert: HTMLElement;
     alertSuccess: HTMLElement
 
