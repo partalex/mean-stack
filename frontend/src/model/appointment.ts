@@ -1,10 +1,11 @@
 export class Appointment {
     _id: string;
-    doctorId: string;
-    durationMinutes: number;
-    price: number;
+    specializationId: string;
+    medicineBranch: string;
     title: string;
     descriptionStrong: string;
     description: string;
-    canceled: boolean
+    price: number;
+    durationMinutes: number;
+    approved: boolean
 }
