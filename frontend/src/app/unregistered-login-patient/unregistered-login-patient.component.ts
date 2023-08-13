@@ -42,7 +42,6 @@ export class UnregisteredLoginPatientComponent implements OnInit {
             } else {
                 this.message = "Losi podaci!";
                 this.alert.style.visibility = "visible"
-                console.log(this.message)
                 return
             }
         })

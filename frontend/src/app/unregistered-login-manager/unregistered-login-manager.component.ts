@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Manager} from "../../model/manager";
 import {ServiceSession} from "../services/service-session.service";
 import {Router} from "@angular/router";
+import {Patient} from "../../model/patient";
 
 @Component({
     selector: 'app-unregistered-login-manager',
@@ -14,24 +15,29 @@ export class UnregisteredLoginManagerComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.alert = document.getElementById("alert");
+        this.alert.style.visibility = "hidden"
     }
 
     username: string;
     password: string;
     message: string;
+    alert: HTMLElement;
 
     loginManager() {
-        this.service.loginManager(this.username, this.password).subscribe((manager: Manager) => {
-            if (this.username == "" || this.password == "") {
-                this.message = "Niste uneli sve podatke!";
-                return;
-            }
+        if (this.username == "" || this.password == "") {
+            this.message = "Niste uneli sve podatke."
+            this.alert.style.visibility = "visible"
+            return
+        }
+        this.service.loginPatient(this.username, this.password).subscribe((manager: Manager) => {
             if (manager != null) {
-                localStorage.setItem("loggedInManager", manager._id)
-                this.router.navigate([manager])
+                localStorage.setItem("loggedInPatient", manager._id)
+                this.router.navigate(["manager"])
             } else {
                 this.message = "Losi podaci!";
-                return;
+                this.alert.style.visibility = "visible"
+                return
             }
         })
     }

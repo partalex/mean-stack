@@ -7,6 +7,7 @@ export class Doctor {
     phone: string;
     image: string;
     address: string;
+    approved: boolean;
     mail: string;
     licenceId: string;
     specialization: string;

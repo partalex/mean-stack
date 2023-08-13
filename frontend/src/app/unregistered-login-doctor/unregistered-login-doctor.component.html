@@ -1,7 +1,6 @@
 <app-navigation-unregistered></app-navigation-unregistered>
-
 <form>
-    <legend>Prijavite se kao doktor</legend>
+    <legend>Prijavite se kao lekar</legend>
 
     <div class="row mb-3">
         <label for="inputUsername" class="col-sm-2 col-form-label">Koričniko ime</label>
@@ -15,9 +14,13 @@
         <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
         </div>
+        <div class="invalid-feedback"></div>
     </div>
-
     <button type="submit" (click)="loginDoctor()" class="btn btn-dark">Prijavi se</button>
-    {{message}}
-
 </form>
+
+<div id="alert" class="alert alert-danger" role="alert">
+    <div>
+        {{message}}
+    </div>
+</div>
