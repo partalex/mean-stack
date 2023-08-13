@@ -11,7 +11,7 @@ import {DoctorService} from "../services/doctor.service";
 })
 export class NavigationDoctorComponent implements OnInit {
 
-    constructor(private http: HttpClient, private service: DoctorService) {
+    constructor(private http: HttpClient, private serviceDoctor: DoctorService) {
     }
 
     ngOnInit(): void {
@@ -21,6 +21,6 @@ export class NavigationDoctorComponent implements OnInit {
     protected readonly decodeURIComponent = decodeURIComponent;
 
     logOut() {
-        this.service.logOutDoctor()
+        this.serviceDoctor.logOutDoctor()
     }
 }

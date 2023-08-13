@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Manager} from "../../model/manager";
-import {ServiceSession} from "../services/service-session.service";
+import {ServiceSession} from "../services/session.service";
 import {Router} from "@angular/router";
 import {Patient} from "../../model/patient";
 

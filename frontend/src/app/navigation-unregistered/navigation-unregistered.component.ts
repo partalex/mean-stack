@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServiceSession} from "../services/service-session.service";
+import {ServiceSession} from "../services/session.service";
 import {DoctorService} from "../services/doctor.service";
 import {Doctor} from "../../model/doctor";
 
@@ -14,15 +14,5 @@ export class NavigationUnregisteredComponent implements OnInit {
     }
 
     ngOnInit(): void {
-    }
-
-    searchField = "";
-    searchResult: Doctor[]
-
-    search() {
-        this.serviceDoctor.search(this.searchField).subscribe((doctors: Doctor[]) => {
-            this.searchResult = doctors
-            console.log(this.searchResult)
-        });
     }
 }

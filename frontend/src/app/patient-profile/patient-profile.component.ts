@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PatientService} from "../services/patient.service";
 import {HttpClient} from "@angular/common/http";
 import {Patient} from "../../model/patient";
+import {CheckService} from "../services/check.service";
+import {ServiceSession} from "../services/session.service";
 
 @Component({
     selector: 'app-patient-profile',
@@ -10,7 +12,7 @@ import {Patient} from "../../model/patient";
 })
 export class PatientProfileComponent implements OnInit {
 
-    constructor(private service: PatientService, private http: HttpClient) {
+    constructor(private servicePatient: PatientService, private serviceCheck: CheckService, private http: HttpClient, private serviceSession: ServiceSession) {
         this.readById(localStorage.getItem("loggedInPatient"))
     }
 
@@ -74,7 +76,6 @@ export class PatientProfileComponent implements OnInit {
     checkPassword = ""
     newPassword = ""
     checkNewPassword = ""
-
     message: string;
     changing = false;
     changingPassword = false;
@@ -82,16 +83,45 @@ export class PatientProfileComponent implements OnInit {
     alertSuccess: HTMLElement
 
     readById(id) {
-        this.service.read(id).subscribe((patient: Patient) => {
+        this.servicePatient.read(id).subscribe((patient: Patient) => {
             this.patient = patient
         })
     }
 
     saveNewPassword() {
+
+        // check if new password is empty
+        if (this.newPassword == "" || this.checkNewPassword == "" || this.patient.password == "") {
+            this.message = "Polja ne smeju biti prazna."
+            this.alert.style.visibility = "visible"
+            return
+        }
+
+        // check if old password is correct
+        if (this.checkPassword != this.patient.password) {
+            this.message = "Pogrešna stara lozinka."
+            this.alert.style.visibility = "visible"
+            return
+        }
+
+        // check if password confirmed
+        this.message = this.serviceCheck.checkPasswordConfirmed(this.newPassword, this.checkNewPassword);
+        if (this.message != "") {
+            this.alert.style.visibility = "visible"
+            return
+        }
+
         // TODO - check if password is valid
+        this.message = this.serviceCheck.checkPasswordFormat(this.newPassword);
+        if (this.message != "") {
+            this.alert.style.visibility = "visible"
+            return
+        }
+
+        // set new password
         this.patient.password = this.newPassword
-        this.message = "Uspešno ste izmenili lozinku."
         this.update()
+        this.servicePatient.logOutPatient()
     }
 
     buttonDisabledPasswordText() {
@@ -100,11 +130,9 @@ export class PatientProfileComponent implements OnInit {
         return "Ne menjaj lozinku"
     }
 
-
     update() {
-        this.service.update(this.patient).subscribe((patient: Patient) => {
+        this.servicePatient.update(this.patient).subscribe((patient: Patient) => {
             this.patient = patient
-            this.alertSuccess.style.visibility = "visible"
         })
     }
 }

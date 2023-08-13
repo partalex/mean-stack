@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServiceSession} from "../services/service-session.service";
+import {ServiceSession} from "../services/session.service";
 import {Router} from "@angular/router";
 import {Doctor} from "../../model/doctor";
 import {Patient} from "../../model/patient";
@@ -11,7 +11,7 @@ import {Patient} from "../../model/patient";
 })
 export class UnregisteredLoginDoctorComponent implements OnInit {
 
-    constructor(private service: ServiceSession, private router: Router) {
+    constructor(private serviceSession: ServiceSession, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -30,7 +30,7 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
             this.alert.style.visibility = "visible"
             return
         }
-        this.service.loginPatient(this.username, this.password).subscribe((doctor: Doctor) => {
+        this.serviceSession.loginPatient(this.username, this.password).subscribe((doctor: Doctor) => {
             if (doctor != null) {
                 if (doctor.approved) {
                     localStorage.setItem("loggedInPatient", doctor._id)

@@ -1,3 +1,33 @@
 <app-navigation-manager></app-navigation-manager>
 
-<p>manager-medicine-changes works!</p>
+<!--center text-->
+
+<legend *ngFor="let specialization of specializations">{{specialization.name}} </legend>
+
+<legend class="text-center">Pregledi</legend>
+<div class="table-responsive-sm">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Trajenje</th>
+            <th scope="col">Ogranak medicine</th>
+            <th scope="col">Cena</th>
+            <th scope="col">Naziv pregleda</th>
+            <th scope="col">Opis</th>
+            <th scope="col">Odobren</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let appointment of appointments;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{appointment.durationMinutes}}</td>
+            <td>{{appointment.medicineBranch}}</td>
+            <td>{{appointment.price}}</td>
+            <td>{{appointment.title}}</td>
+            <td><strong>{{appointment.descriptionStrong}}</strong> {{appointment.description}}</td>
+            <td>{{appointment.approved}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

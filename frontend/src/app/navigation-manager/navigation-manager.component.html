@@ -16,21 +16,16 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" routerLink="/manager/approve">Korisnici</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/manager/registerDoctor">Dodaj lekara</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/manager/promotions">Promocije</a>
+                    <a class="nav-link" routerLink="/manager/medicineChanges">Pregledi</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/manager/medicineChanges">Izmene pregleda</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/manager/approve">Odobravanje</a>
-                </li>
-
 
                 <li class="nav-item">
                     <a class="nav-link" role="button" (click)="logOut()">
@@ -39,11 +34,6 @@
                 </li>
 
             </ul>
-
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Pretraga" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Pretaraži</button>
-            </form>
 
         </div>
     </div>

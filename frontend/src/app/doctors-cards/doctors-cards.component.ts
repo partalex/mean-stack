@@ -17,10 +17,26 @@ export class DoctorsCardsComponent implements OnInit {
     }
 
     doctors: Doctor[]
+    searchedFirstname = "";
+    searchedLastname = "";
+    searchedSpecialization = "";
+    searchResult: Doctor[];
 
     getAllDoctors() {
         this.serviceDoctor.readAll().subscribe((doctors: Doctor[]) => {
             this.doctors = doctors
         })
+    }
+
+    search() {
+        let data = {
+            firstname: this.searchedFirstname,
+            lastname: this.searchedLastname,
+            specialization: this.searchedSpecialization
+        }
+        this.serviceDoctor.search({data}).subscribe((doctors: Doctor[]) => {
+            this.searchResult = doctors
+            console.log(this.searchResult)
+        });
     }
 }

@@ -16,7 +16,6 @@ import {RegisterPatientComponent} from './register-patient/register-patient.comp
 import {NavigationDoctorComponent} from './navigation-doctor/navigation-doctor.component';
 import {NavigationManagerComponent} from './navigation-manager/navigation-manager.component';
 import {NavigationPatientComponent} from './navigation-patient/navigation-patient.component';
-import {ManagerPromotionsComponent} from './manager-promotions/manager-promotions.component';
 import {UnregisteredAboutComponent} from './unregistered-about/unregistered-about.component';
 import {PatientNotificationsComponent} from './patient-notifications/patient-notifications.component';
 import {NavigationUnregisteredComponent} from './navigation-unregistered/navigation-unregistered.component';
@@ -51,7 +50,6 @@ import { PatientScheduleAppointmentComponent } from './patient-schedule-appointm
         PatientDoctorComponent,
         ManagerRegisterDoctorComponent,
         ManagerProfileComponent,
-        ManagerPromotionsComponent,
         ManagerMedicineChangesComponent,
         UnregisteredAboutComponent,
         UnregisteredLoginDoctorComponent,

@@ -4,53 +4,55 @@
 
 <form class="row g-0">
 
-  <div class="col-md-6">
-    <img class="img-thumbnail" src="{{image}}" height="300" width="300">
-  </div>
+    <div class="col-md-6">
+        <img class="img-thumbnail" src="{{image}}" height="300" width="300">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputfirstname" class="form-label">Ime</label>
-    <input type="text" class="form-control" id="inputfirstname" [(ngModel)]="firstname" name="firstname">
+    <div class="col-md-6">
+        <label for="inputfirstname" class="form-label">Ime</label>
+        <input type="text" class="form-control" id="inputfirstname" [(ngModel)]="patient.firstname" name="firstname">
 
-    <label for="inputLastname" class="form-label">Prezime</label>
-    <input type="text" class="form-control" id="inputLastname" [(ngModel)]="lastname" name="lastname">
+        <label for="inputLastname" class="form-label">Prezime</label>
+        <input type="text" class="form-control" id="inputLastname" [(ngModel)]="patient.lastname" name="lastname">
 
-    <label for="inputUsername" class="form-label">Koričniko ime</label>
-    <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" name="username">
+        <label for="inputUsername" class="form-label">Koričniko ime</label>
+        <input type="text" class="form-control" id="inputUsername" [(ngModel)]="patient.username" name="username">
 
-    <label for="inputPassword" class="form-label">Lozinka</label>
-    <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
+        <label for="inputPassword" class="form-label">Lozinka</label>
+        <input type="password" class="form-control" id="inputPassword" [(ngModel)]="patient.password" name="password">
 
-    <label for="inputConfirm" class="form-label">Potvrda lozinke</label>
-    <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm" name="passwordConfirm">
-  </div>
+        <label for="inputConfirm" class="form-label">Potvrda lozinke</label>
+        <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm"
+               name="passwordConfirm">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Adresa</label>
-    <input type="text" class="form-control" id="inputAddress" [(ngModel)]="address" name="address">
-  </div>
+    <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Adresa</label>
+        <input type="text" class="form-control" id="inputAddress" [(ngModel)]="patient.address" name="address">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputPhone" class="form-label">Kontakt telefon</label>
-    <input type="text" class="form-control" id="inputPhone" [(ngModel)]="phone" name="phone">
-  </div>
+    <div class="col-md-6">
+        <label for="inputPhone" class="form-label">Kontakt telefon</label>
+        <input type="text" class="form-control" id="inputPhone" [(ngModel)]="patient.phone" name="phone">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputMail" class="form-label">Mejl</label>
-    <input type="email" class="form-control" id="inputMail" [(ngModel)]="mail" name="email">
-  </div>
+    <div class="col-md-6">
+        <label for="inputMail" class="form-label">Mejl</label>
+        <input type="email" class="form-control" id="inputMail" [(ngModel)]="patient.mail" name="email">
+    </div>
 
-  <div class="col-md-6">
-    <label for="formFile" class="form-label">Otpremite fotografiju</label>
-    <input (change)="onSelectFile($event)" class="form-control" type="file" id="formFile" accept=".png, .jpg">
-  </div>
-
-  <div class="col-12">
-    <button type="submit" (click)="registerPatient()" class="btn btn-dark">Registruj se</button>
-  </div>
-
+    <div class="col-md-6">
+        <label for="formFile" class="form-label">Otpremite fotografiju</label>
+        <input (change)="onSelectFile($event)" class="form-control" type="file" id="formFile" accept=".png, .jpg">
+    </div>
+    <div>
+        <br>
+    </div>
+    <div class="col-12">
+        <button type="submit" (click)="registerPatient()" class="btn btn-dark">Registruj se</button>
+    </div>
 </form>
 
 <div id="alert" class="alert alert-danger" role="alert">
-  {{message}}
+    {{message}}
 </div>

@@ -13,16 +13,16 @@ export class NotificationService {
 
     uri = 'http://127.0.0.1:4000/notification'
 
-    create(report: Report) {
-        return this.http.post(`${this.uri}/create`, report)
+    create(notification: Notification) {
+        return this.http.post(`${this.uri}/create`, notification)
     }
 
     read(id) {
         return this.http.post(`${this.uri}/read`, {id: id})
     }
 
-    update(report: Report) {
-        return this.http.post(`${this.uri}/update`, {report: report})
+    update(notification: Notification) {
+        return this.http.post(`${this.uri}/update`, {notification: notification})
     }
 
     delete(id) {
@@ -33,5 +33,7 @@ export class NotificationService {
         return this.http.post(`${this.uri}/readAll`, {})
     }
 
-
+    readAllByPatientId(patientId) {
+        return this.http.post(`${this.uri}/readAllByPatientId`, {patientId: patientId})
+    }
 }

@@ -9,14 +9,14 @@ import {PatientService} from "../services/patient.service";
 })
 export class NavigationPatientComponent implements OnInit {
 
-    constructor(public router: Router, private service: PatientService) {
+    constructor(public router: Router, private servicePatient: PatientService) {
     }
 
     ngOnInit(): void {
     }
 
     logOut() {
-        this.service.logOut()
+        this.servicePatient.logOutPatient()
     }
 
 }

@@ -1,3 +1,16 @@
+<form class="d-flex" role="search">
+    <input class="form-control me-2" name="nameSearchField" [(ngModel)]="searchedFirstname" type="search"
+           placeholder="Ime"
+           aria-label="Search">
+    <input class="form-control me-2" name="nameSearchField" [(ngModel)]="searchedLastname" type="search"
+           placeholder="Prezime"
+           aria-label="Search">
+    <input class="form-control me-2" name="nameSearchField" [(ngModel)]="searchedSpecialization" type="search"
+           placeholder="Specijalizacija"
+           aria-label="Search">
+    <button class="btn btn-outline-secondary" (click)="search()">Pretaraži</button>
+</form>
+<br>
 <div class="row row-cols-1 row-cols-md-4 g-4">
 
     <div *ngFor="let doctor of doctors" class="col">
@@ -15,7 +28,7 @@
             </ul>
             <div class="card-footer">
                 <small class="text-muted">Licenca: </small>
-                <a routerLink="" class="card-link">{{doctor.licenceId}}</a>
+                <a routerLink="/loginPatient" class="card-link">{{doctor.licenceId}}</a>
             </div>
         </div>
     </div>

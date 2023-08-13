@@ -1,5 +1,7 @@
 <app-navigation-manager></app-navigation-manager>
 
+<legend>Pacijenti</legend>
+
 <div class="table-responsive-sm">
     <table class="table table-light table-bordered border-2">
         <thead>
@@ -33,3 +35,41 @@
         </tbody>
     </table>
 </div>
+
+<legend>Lekari</legend>
+
+<div class="table-responsive-sm">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Dozvoljen prstup</th>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">Korisniko ime</th>
+            <th scope="col">Mejl</th>
+            <th scope="col">Adresa</th>
+            <th scope="col">Telefon</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let doctor of doctors;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>
+                <div class="d-grid">
+                    <button (click)="changeApproved(doctor)" class="btn btn-secondary  btn-sm"
+                            type="button">{{buttonApprovedText(doctor)}}</button>
+                </div>
+            </td>
+            <td>{{doctor.firstname}}</td>
+            <td>{{doctor.lastname}}</td>
+            <td>{{doctor.username}}</td>
+            <td>{{doctor.mail}}</td>
+            <td>{{doctor.address}}</td>
+            <td>{{doctor.phone}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
