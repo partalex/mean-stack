@@ -2,5 +2,31 @@
 
 <legend class="text-center">Obaveštenja</legend>
 
-
-
+<div class="table-responsive-sm">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pacijent Id</th>
+            <th scope="col">Vidjeno</th>
+            <th scope="col">Cena</th>
+            <th scope="col">Vreme</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Naziv</th>
+            <th scope="col">Opis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let notification of notifications;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{notification._id}}</td>
+            <td>{{notification.patientId}}</td>
+            <td>{{notification.seen}}</td>
+            <td>{{notification.date}}</td>
+            <td>{{notification.time}}</td>
+            <td>{{notification.tittle}}</td>
+            <td>{{notification.description}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

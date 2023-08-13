@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PatientService} from "../services/patient.service";
 import {NotificationService} from "../services/notification.service";
+import {Notification} from "../../model/notification";
 
 @Component({
     selector: 'app-patient-notifications',
@@ -22,6 +22,7 @@ export class PatientNotificationsComponent implements OnInit {
 
     getAllNotifications() {
         this.serviceNotification.readAllByPatientId(this.patientId).subscribe((notifications: Notification[]) => {
+        // this.serviceNotification.readAll().subscribe((notifications: Notification[]) => {
             this.notifications = notifications
         })
     }
