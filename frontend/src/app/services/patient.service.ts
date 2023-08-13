@@ -41,9 +41,9 @@ export class PatientService {
         return this.http.post(`${this.uri}/readAll`, {})
     }
 
-    logOut() {
+    logOutPatient() {
         localStorage.removeItem("loggedInPatient")
-        this.router.navigate([''])
+        this.router.navigate(['/loginPatient'])
     }
 
 }

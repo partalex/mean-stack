@@ -46,7 +46,7 @@ export class DoctorService {
 
     logOutDoctor() {
         localStorage.removeItem("loggedInDoctor")
-        this.router.navigate([''])
+        this.router.navigate(['/loginDoctor'])
     }
 
     search(search) {
