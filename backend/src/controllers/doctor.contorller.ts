@@ -96,10 +96,15 @@ export class DoctorController {
     };
 
     search = (req: express.Request, res: express.Response) => {
-        let search = req.body.search
-        DoctorModel.find({'caption': {$regex: search}}, (err, news) => {
+        let firstname = req.body.firstname
+        let lastname = req.body.lastname
+        let specialization = req.body.specialization
+
+        let query;
+        DoctorModel.find({'firstname': {$regex: firstname}}, (err, q1) => {
             if (err) console.log(err)
-            else res.json(news)
+            else
+                res.json(q1)
         })
-    }
+    };
 }

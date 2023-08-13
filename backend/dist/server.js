@@ -12,6 +12,8 @@ const patient_routes_1 = __importDefault(require("./routers/patient.routes"));
 const appointment_routes_1 = __importDefault(require("./routers/appointment.routes"));
 const unregistred_routes_1 = __importDefault(require("./routers/unregistred.routes"));
 const report_routes_1 = __importDefault(require("./routers/report.routes"));
+const specialization_routes_1 = __importDefault(require("./routers/specialization.routes"));
+const notification_routes_1 = __importDefault(require("./routers/notification.routes"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
@@ -27,6 +29,8 @@ router.use('/patient', patient_routes_1.default);
 router.use('/unregistered', unregistred_routes_1.default);
 router.use('/appointment', appointment_routes_1.default);
 router.use('/report', report_routes_1.default);
+router.use('/specialization', specialization_routes_1.default);
+router.use('/notification', notification_routes_1.default);
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

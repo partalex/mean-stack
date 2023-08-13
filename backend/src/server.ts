@@ -7,6 +7,8 @@ import patientRouter from './routers/patient.routes';
 import appointmentRouter from "./routers/appointment.routes";
 import unregisteredRouter from './routers/unregistred.routes';
 import reportRouter from "./routers/report.routes";
+import specializationRouter from "./routers/specialization.routes";
+import notificationRouter from "./routers/notification.routes";
 
 const app = express();
 app.use(cors());
@@ -25,6 +27,8 @@ router.use('/patient', patientRouter);
 router.use('/unregistered', unregisteredRouter);
 router.use('/appointment', appointmentRouter);
 router.use('/report', reportRouter);
+router.use('/specialization', specializationRouter);
+router.use('/notification', notificationRouter);
 
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
