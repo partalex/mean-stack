@@ -30,7 +30,7 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
             this.alert.style.visibility = "visible"
             return
         }
-        this.serviceSession.loginPatient(this.username, this.password).subscribe((doctor: Doctor) => {
+        this.serviceSession.loginDoctor(this.username, this.password).subscribe((doctor: Doctor) => {
             if (doctor != null) {
                 if (doctor.approved) {
                     localStorage.setItem("loggedInPatient", doctor._id)

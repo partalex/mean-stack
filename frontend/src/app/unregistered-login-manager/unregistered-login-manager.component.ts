@@ -30,7 +30,7 @@ export class UnregisteredLoginManagerComponent implements OnInit {
             this.alert.style.visibility = "visible"
             return
         }
-        this.service.loginPatient(this.username, this.password).subscribe((manager: Manager) => {
+        this.service.loginManager(this.username, this.password).subscribe((manager: Manager) => {
             if (manager != null) {
                 localStorage.setItem("loggedInPatient", manager._id)
                 this.router.navigate(["manager"])
