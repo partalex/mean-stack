@@ -23,14 +23,16 @@ import {ManagerRegisterDoctorComponent} from './manager-register-doctor/manager-
 import {ManagerMedicineChangesComponent} from './manager-medicine-changes/manager-medicine-changes.component';
 import {UnregisteredLoginDoctorComponent} from './unregistered-login-doctor/unregistered-login-doctor.component';
 import {UnregisteredLoginPatientComponent} from './unregistered-login-patient/unregistered-login-patient.component';
-import { UnregisteredDoctorsComponent } from './unregistered-doctors/unregistered-doctors.component';
-import { UnregisteredLoginManagerComponent } from './unregistered-login-manager/unregistered-login-manager.component';
-import { ManagerApprovePatientComponent } from './manager-approve-patient/manager-approve-patient.component';
-import { PatientDoctorsComponent } from './patient-doctors/patient-doctors.component';
-import { DoctorsCardsComponent } from './doctors-cards/doctors-cards.component';
-import { UnregistredDoctorsComponent } from './unregistred-doctors/unregistred-doctors.component';
-import { PatientReportsComponent } from './patient-reports/patient-reports.component';
-import { PatientScheduleAppointmentComponent } from './patient-schedule-appointment/patient-schedule-appointment.component';
+import {UnregisteredDoctorsComponent} from './unregistered-doctors/unregistered-doctors.component';
+import {UnregisteredLoginManagerComponent} from './unregistered-login-manager/unregistered-login-manager.component';
+import {ManagerApprovePatientComponent} from './manager-approve-patient/manager-approve-patient.component';
+import {PatientDoctorsComponent} from './patient-doctors/patient-doctors.component';
+import {DoctorsCardsComponent} from './doctors-cards/doctors-cards.component';
+import {UnregistredDoctorsComponent} from './unregistred-doctors/unregistred-doctors.component';
+import {PatientReportsComponent} from './patient-reports/patient-reports.component';
+import {
+    PatientScheduleAppointmentComponent
+} from './patient-schedule-appointment/patient-schedule-appointment.component';
 
 @NgModule({
     declarations: [
