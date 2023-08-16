@@ -47,6 +47,10 @@ export class DoctorsCardsComponent implements OnInit {
   }
 
   buttonSort(dictName: string) {
+    for (let key in this.sortPressed) {
+      if (key != dictName)
+        this.sortPressed[key] = false
+    }
     this.sortPressed[dictName] = !this.sortPressed[dictName]
 
     switch (dictName) {
