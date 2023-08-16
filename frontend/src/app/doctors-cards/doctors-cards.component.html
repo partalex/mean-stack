@@ -12,10 +12,17 @@
 </form>
 <br>
 <form class="d-flex" role="search">
-  <button id="sortByName" class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('sortByName')">Ime</button>
-  <button id="sortByLastname" class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('sortByLastname')">Prezime</button>
-  <button id="sortBySpecialization" class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('sortBySpecialization')">Specijalizacija</button>
-  <button id="buttonSort" disabled class="btn btn-outline-secondary" >Sotriraj</button>
+  <button [ngClass]="{'active' : sortPressed.name}" class="form-control me-2 btn btn-outline-secondary"
+          (click)="buttonSort('name')">Ime
+  </button>
+  <button [ngClass]="{'active' : sortPressed.lastname}"
+          class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('lastname')">Prezime
+  </button>
+  <button [ngClass]="{'active' : sortPressed.specialization}"
+          class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('specialization')">
+    Specijalizacija
+  </button>
+  <button disabled class="btn btn-outline-secondary">Sotriraj</button>
 </form>
 
 <br>

@@ -28,34 +28,10 @@ export class DoctorsCardsComponent implements OnInit {
     })
   }
 
-  buttonSortPressed = {
-    name: false,
-    lastname: false,
-    specialization: false
-  }
-
-  buttonSort(buttonId: string) {
-    let button = document.getElementById(buttonId)
-    this.buttonSortPressed.name = !this.buttonSortPressed.name
-    if (this.buttonSortPressed.name)
-      button.classList.add("active")
-    else
-      button.classList.remove("active")
-
-    switch (buttonId) {
-      case "buttonSortName":
-        if (this.buttonSortPressed.name)
-          this.sortByName()
-        break
-      case "buttonSortLastname":
-        if (this.buttonSortPressed.lastname)
-          this.sortByLastname()
-        break
-      case "buttonSortSpecialization":
-        if (this.buttonSortPressed.specialization)
-          this.sortBySpecialization()
-        break
-    }
+  sortPressed = {
+    "name": false,
+    "lastname": false,
+    "specialization": false
   }
 
   search() {
@@ -70,34 +46,77 @@ export class DoctorsCardsComponent implements OnInit {
     });
   }
 
-  sortByName() {
-    this.doctors.sort((a, b) => {
-      if (a.firstname > b.firstname)
-        return 1;
-      if (a.firstname < b.firstname)
-        return -1;
-      return 0;
-    })
+  buttonSort(dictName: string) {
+    this.sortPressed[dictName] = !this.sortPressed[dictName]
+
+    switch (dictName) {
+      case "name":
+        this.sortByFirstname(this.sortPressed.name)
+        break
+      case "lastname":
+        this.sortByLastname(this.sortPressed.lastname)
+        break
+      case "specialization":
+        this.sortBySpecialization(this.sortPressed.lastname)
+        break
+    }
   }
 
-  sortByLastname() {
-    this.doctors.sort((a, b) => {
-      if (a.lastname > b.lastname)
-        return 1;
-      if (a.lastname < b.lastname)
-        return -1;
-      return 0;
-    })
+  sortBySpecialization(notDescendingSort: boolean) {
+    if (notDescendingSort)
+      this.doctors.sort((a, b) => {
+        if (a.specialization > b.specialization)
+          return 1;
+        if (a.specialization < b.specialization)
+          return -1;
+        return 0;
+      })
+    else
+      this.doctors.sort((a, b) => {
+        if (a.specialization > b.specialization)
+          return -1;
+        if (a.specialization < b.specialization)
+          return 1;
+        return 0;
+      })
   }
 
-  sortBySpecialization() {
-    this.doctors.sort((a, b) => {
-      if (a.specialization > b.specialization)
-        return 1;
-      if (a.specialization < b.specialization)
-        return -1;
-      return 0;
-    })
+  sortByFirstname(notDescendingSort: boolean) {
+    if (notDescendingSort)
+      this.doctors.sort((a, b) => {
+        if (a.firstname > b.firstname)
+          return 1;
+        if (a.firstname < b.firstname)
+          return -1;
+        return 0;
+      })
+    else
+      this.doctors.sort((a, b) => {
+        if (a.firstname > b.firstname)
+          return -1;
+        if (a.firstname < b.firstname)
+          return 1;
+        return 0;
+      })
+  }
+
+  sortByLastname(notDescendingSort: boolean) {
+    if (notDescendingSort)
+      this.doctors.sort((a, b) => {
+        if (a.lastname > b.lastname)
+          return 1;
+        if (a.lastname < b.lastname)
+          return -1;
+        return 0;
+      })
+    else
+      this.doctors.sort((a, b) => {
+        if (a.lastname > b.lastname)
+          return -1;
+        if (a.lastname < b.lastname)
+          return 1;
+        return 0;
+      })
   }
 
 }
