@@ -10,7 +10,9 @@
          aria-label="Search">
   <button class="btn btn-outline-secondary" (click)="search()">Pretraži</button>
 </form>
+
 <br>
+
 <form class="d-flex" role="search">
   <button [ngClass]="{'active' : sortPressed.name}" class="form-control me-2 btn btn-outline-secondary"
           (click)="buttonSort('name')">Ime
