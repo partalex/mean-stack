@@ -1,21 +1,12 @@
 import express from 'express';
-import AppointmentModel from '../models/appointments';
+import AppointmentModel from '../models/appointment';
+import AppointmentTypeModel from "../models/appointmentType";
 
 
 export class AppointmentController {
 
     create = (req: express.Request, res: express.Response) => {
-        let appointment = new AppointmentModel({
-            doctorFirstname: req.body.doctorFirstname,
-            doctorLastname: req.body.doctorLastname,
-            licenceId: req.body.licenceId,
-            branchMedicine: req.body.branchMedicine,
-            durationMinutes: req.body.durationMinutes,
-            price: req.body.price,
-            title: req.body.title,
-            descriptionStrong: req.body.descriptionStrong,
-            description: req.body.description
-        })
+        let appointment = new AppointmentTypeModel(req.body);
         appointment.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -27,18 +18,19 @@ export class AppointmentController {
     }
 
     update = (req: express.Request, res: express.Response) => {
-        let _id = req.body.patient._id;
+        let _id = req.body.appointment.id;
+        // update appointment
         AppointmentModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    doctorFirstname: req.body.doctorFirstname,
-                    doctorLastname: req.body.doctorLastname,
-                    licenceId: req.body.licenceId,
-                    branchMedicine: req.body.branchMedicine,
-                    durationMinutes: req.body.durationMinutes,
-                    price: req.body.price,
-                    title: req.body.title,
-                    descriptionStrong: req.body.descriptionStrong,
-                    description: req.body.description
+                    doctorFirstname: req.body.appointment.doctorFirstname,
+                    doctorLastname: req.body.appointment.doctorLastname,
+                    licenceId: req.body.appointment.licenceId,
+                    branchMedicine: req.body.appointment.branchMedicine,
+                    durationMinutes: req.body.appointment.durationMinutes,
+                    price: req.body.appointment.price,
+                    title: req.body.appointment.title,
+                    descriptionStrong: req.body.appointment.descriptionStrong,
+                    description: req.body.appointment.description
                 },
             },
             {new: true}, (err, patient) => {
@@ -46,13 +38,12 @@ export class AppointmentController {
                     console.log(err);
                 else
                     res.json(patient);
-            }
-        );
+            });
     }
 
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        AppointmentModel.deleteOne({'id': id}, (err, appointment) => {
+        AppointmentModel.deleteOne({'_id': id}, (err, appointment) => {
             if (err)
                 console.log(err)
         })
@@ -60,7 +51,7 @@ export class AppointmentController {
 
     read = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        AppointmentModel.findOne({'id': id}, (err, appointment) => {
+        AppointmentModel.findOne({'_id': id}, (err, appointment) => {
             if (err)
                 console.log(err)
             else
@@ -77,5 +68,15 @@ export class AppointmentController {
                 }
             }
         )
+    }
+
+    readByDoctorId = (req: express.Request, res: express.Response) => {
+        let id = req.body.id;
+        AppointmentModel.find({'doctorId': id}, (err, appointments) => {
+            if (err)
+                console.log(err)
+            else
+                res.json(appointments)
+        })
     }
 }

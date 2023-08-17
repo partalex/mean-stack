@@ -3,28 +3,19 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Report = new Scheme({
-    doctorFirstname: {
+    appointmentId: {
         type: String
     },
-    doctorLastname: {
+    tittle: {
         type: String
     },
-    licenceId: {
-        type: String
-    },
-    patientFirstname: {
-        type: String
-    },
-    patientLastname: {
-        type: String
-    },
-    report: {
-        type: String
-    },
-    date: {
+    description: {
         type: String
     },
     time: {
+        type: String
+    },
+    date: {
         type: String
     }
 });

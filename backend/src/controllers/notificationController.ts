@@ -3,16 +3,7 @@ import NotificationModel from "../models/notifications";
 
 export class NotificationController {
     create = (req: express.Request, res: express.Response) => {
-        let notification = new NotificationModel({
-            doctorFirstname: req.body.doctorFirstname,
-            doctorLastname: req.body.doctorLastname,
-            licenceId: req.body.licenceId,
-            patientFirstname: req.body.patientFirstname,
-            patientLastname: req.body.patientLastname,
-            report: req.body.report,
-            date: req.body.date,
-            time: req.body.time
-        });
+        let notification = new NotificationModel(req.body);
         notification.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -24,11 +15,11 @@ export class NotificationController {
     }
 
     read = (req: express.Request, res: express.Response) => {
-        NotificationModel.findById(req.body.id, (err, report) => {
+        NotificationModel.findById(req.body.id, (err, notification) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(report);
+                res.json(notification);
             }
         });
     }
@@ -57,30 +48,30 @@ export class NotificationController {
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        NotificationModel.deleteOne({"id": id}, (err, report) => {
+        NotificationModel.deleteOne({"_id": id}, (err, notification) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(report);
+                res.json(notification);
             }
         });
     }
     readAll = (req: express.Request, res: express.Response) => {
-        NotificationModel.find({}, (err, reports) => {
+        NotificationModel.find({}, (err, notification) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(reports);
+                res.json(notification);
             }
         });
     };
     readAllByPatientId = (req: express.Request, res: express.Response) => {
         let patientId = req.body.patientId;
-        NotificationModel.find({"patientId": patientId}, (err, reports) => {
+        NotificationModel.find({"patientId": patientId}, (err, notification) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(reports);
+                res.json(notification);
             }
         });
     };

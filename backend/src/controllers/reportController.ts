@@ -1,18 +1,9 @@
 import express from 'express';
-import ReportModel from "../models/reports";
+import ReportModel from "../models/report";
 
 export class ReportController {
     create = (req: express.Request, res: express.Response) => {
-        let report = new ReportModel({
-            doctorFirstname: req.body.doctorFirstname,
-            doctorLastname: req.body.doctorLastname,
-            licenceId: req.body.licenceId,
-            patientFirstname: req.body.patientFirstname,
-            patientLastname: req.body.patientLastname,
-            report: req.body.report,
-            date: req.body.date,
-            time: req.body.time
-        });
+        let report = new ReportModel(req.body);
         report.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -57,7 +48,7 @@ export class ReportController {
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        ReportModel.deleteOne({"id": id}, (err, report) => {
+        ReportModel.deleteOne({"_id": id}, (err, report) => {
             if (err) {
                 console.log(err);
             } else {

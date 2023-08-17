@@ -1,12 +1,10 @@
 import express from 'express';
-import SpecializationModel from "../models/spacializations";
+import SpecializationModel from "../models/spacialization";
 
 export class SpecializationController {
     create = (req: express.Request, res: express.Response) => {
-        let report = new SpecializationModel({
-            name: req.body.name,
-        });
-        report.save((err, resp) => {
+        let specialization = new SpecializationModel(req.body);
+        specialization.save((err, resp) => {
             if (err) {
                 console.log(err);
                 res.status(400).json({'message': 'error'});
@@ -17,11 +15,11 @@ export class SpecializationController {
     }
 
     read = (req: express.Request, res: express.Response) => {
-        SpecializationModel.findById(req.body.id, (err, report) => {
+        SpecializationModel.findById(req.body.id, (err, specialization) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(report);
+                res.json(specialization);
             }
         });
     }
@@ -43,20 +41,20 @@ export class SpecializationController {
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        SpecializationModel.deleteOne({"id": id}, (err, report) => {
+        SpecializationModel.deleteOne({"_id": id}, (err, specialization) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(report);
+                res.json(specialization);
             }
         });
     }
     readAll = (req: express.Request, res: express.Response) => {
-        SpecializationModel.find({}, (err, reports) => {
+        SpecializationModel.find({}, (err, specializations) => {
             if (err) {
                 console.log(err);
             } else {
-                res.json(reports);
+                res.json(specializations);
             }
         });
     };

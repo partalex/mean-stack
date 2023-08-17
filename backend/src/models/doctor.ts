@@ -12,10 +12,19 @@ let Doctor = new Scheme({
     username: {
         type: String
     },
-    phone: {
+    password: {
+        type: String
+    },
+    approved: {
         type: String
     },
     mail: {
+        type: String
+    },
+    image: {
+        type: String
+    },
+    phone: {
         type: String
     },
     licenceId: {
@@ -25,9 +34,6 @@ let Doctor = new Scheme({
         type: String
     },
     medicineBranch: {
-        type: String
-    },
-    image: {
         type: String
     }
 })

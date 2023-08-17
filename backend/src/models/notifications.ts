@@ -9,10 +9,10 @@ let Notification = new Scheme({
     seen: {
         type: Boolean
     },
-    date: {
+    time: {
         type: String
     },
-    time: {
+    date: {
         type: String
     },
     tittle: {

@@ -3,17 +3,7 @@ import PatientModel from "../models/patient";
 
 export class PatientController {
     create = (req: express.Request, res: express.Response) => {
-        let patient = new PatientModel({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            username: req.body.username,
-            password: req.body.password,
-            address: req.body.address,
-            phone: req.body.phone,
-            mail: req.body.mail,
-            image: req.body.image,
-        });
-
+        let patient = new PatientModel(req.body);
         patient.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -25,7 +15,7 @@ export class PatientController {
     }
     read = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        PatientModel.findOne({"id": id}, (err, patients) => {
+        PatientModel.findOne({"_id": id}, (err, patients) => {
             if (err) {
                 res.status(400).json(err);
             } else {
@@ -58,7 +48,7 @@ export class PatientController {
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        PatientModel.deleteOne({'id': id}, (err, patient) => {
+        PatientModel.deleteOne({'_id': id}, (err, patient) => {
             res.json(patient);
         })
     }
