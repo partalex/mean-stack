@@ -3,9 +3,9 @@ roles:
         homePage:
             path: /
                 : /index
-        login-patient-doctor:                           // TODO created
+        login-patient-doctor:
             path: /login
-        register-patient                                // TODO created
+        register-patient
             path: /registerPatient
 
     manager:
