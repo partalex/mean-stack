@@ -3,7 +3,7 @@ import NotificationModel from "../models/notifications";
 
 export class NotificationController {
     create = (req: express.Request, res: express.Response) => {
-        let notification = new NotificationModel(req.body);
+        let notification = new NotificationModel(req.body.notification);
         notification.save((err, resp) => {
             if (err) {
                 console.log(err);

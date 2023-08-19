@@ -29,4 +29,9 @@ doctorRouter.route('/search').post(
     (req, res) => new DoctorController().search(req, res)
 )
 
+doctorRouter.route('/readAllJoinSpecialization').post(
+    (req, res) => new DoctorController().readAllJoinSpecialization(req, res)
+)
+
+
 export default doctorRouter;

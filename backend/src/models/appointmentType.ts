@@ -3,28 +3,34 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let AppointmentType = new Scheme({
-    tittle: {
-        type: String
+    _id: {
+        type: String,
+        required: true,
+        alias: "type"
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     descriptionStrong: {
-        type: String
+        type: String,
+        required: true
     },
-    specializationId: {
-        type: String
+    specialization: {
+        type: String,
+        required: true
     },
-    doctors:{
-        type: Array
+    doctors: {
+        type: Array,
+        required: true
     },
     price: {
-        type: Number
+        type: Number,
+        required: true
     },
     approved: {
-        type: Boolean
+        type: Boolean,
+        required: true
     }
 })
 export default mongoose.model('AppointmentTypes', AppointmentType, 'appointmentTypes');
-
-

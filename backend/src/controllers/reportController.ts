@@ -1,9 +1,10 @@
 import express from 'express';
 import ReportModel from "../models/report";
+import AppointmentModel from "../models/appointment";
 
 export class ReportController {
     create = (req: express.Request, res: express.Response) => {
-        let report = new ReportModel(req.body);
+        let report = new ReportModel(req.body.report);
         report.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -65,4 +66,68 @@ export class ReportController {
             }
         });
     };
+
+    readByDoctorId = (req: express.Request, res: express.Response) => {
+        let doctorId = req.body.doctorId;
+        // find appointments by doctorId and join with reports by appointmentId
+        AppointmentModel.find({'doctorId': doctorId}, (err, appointments) => {
+            if (err) {
+                console.log(err);
+            } else {
+                ReportModel.aggregate([
+                    {
+                        $lookup: {
+                            from: "appointments",
+                            localField: "appointmentId",
+                            foreignField: "_id",
+                            as: "appointment"
+                        }
+                    },
+                    {
+                        $match: {
+                            "appointment.doctorId": doctorId
+                        }
+                    }
+                ], (err, reports) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.json(reports);
+                    }
+                });
+            }
+        })
+    }
+
+    readByPatientId = (req: express.Request, res: express.Response) => {
+        let patientId = req.body.patientId;
+        // find appointments by patientId and join with reports by appointmentId
+        AppointmentModel.find({'patientId': patientId}, (err, appointments) => {
+            if (err) {
+                console.log(err);
+            } else {
+                ReportModel.aggregate([
+                    {
+                        $lookup: {
+                            from: "appointments",
+                            localField: "appointmentId",
+                            foreignField: "_id",
+                            as: "appointment"
+                        }
+                    },
+                    {
+                        $match: {
+                            "appointment.patientId": patientId
+                        }
+                    }
+                ], (err, reports) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.json(reports);
+                    }
+                });
+            }
+        })
+    }
 }

@@ -3,7 +3,7 @@ import DoctorModel from '../models/doctor';
 
 export class DoctorController {
     create = (req: express.Request, res: express.Response) => {
-        let doctor = new DoctorModel(req.body);
+        let doctor = new DoctorModel(req.body.doctor);
         doctor.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -95,4 +95,23 @@ export class DoctorController {
                 res.json(q1)
         })
     };
+
+    readAllJoinSpecialization = (req: express.Request, res: express.Response) => {
+        DoctorModel.aggregate([
+            {
+                $lookup: {
+                    from: 'specializations',
+                    localField: 'specialization',
+                    foreignField: 'name',
+                    as: 'specialization'
+                },
+            }
+        ], (err, doctor) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(doctor);
+            }
+        });
+    }
 }

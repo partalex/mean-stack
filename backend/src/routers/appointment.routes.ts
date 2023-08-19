@@ -17,5 +17,12 @@ appointmentRouter.route('/update').post(
 appointmentRouter.route('/readAll').post(
     (req, res) => new AppointmentController().readAll(req, res)
 )
+appointmentRouter.route('/readByDoctorId').post(
+    (req, res) => new AppointmentController().readByDoctorId(req, res)
+)
+appointmentRouter.route('/readByPatientId').post(
+    (req, res) => new AppointmentController().readByPatientId(req, res)
+)
+
 
 export default appointmentRouter;

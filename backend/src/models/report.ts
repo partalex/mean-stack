@@ -4,20 +4,25 @@ const Scheme = mongoose.Schema;
 
 let Report = new Scheme({
     appointmentId: {
-        type: String
+        type: String,
+        required: true
     },
-    tittle: {
-        type: String
+    name: {
+        type: String,
+        required: true
     },
     description: {
-        type: String
-    },
-    time: {
-        type: String
+        type: String,
+        required: true
     },
     date: {
-        type: String
+        type: Date,
+        default: Date.now
     }
 });
 
+Report.virtual('id').get(function () {
+    return this._id.toHexString();
+})
 export default mongoose.model('Report', Report, 'reports');
+

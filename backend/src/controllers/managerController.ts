@@ -11,4 +11,16 @@ export class ManagerController {
             }
         })
     }
+
+    create = (req: express.Request, res: express.Response) => {
+        let manager = new ManagerModel(req.body.manager);
+        manager.save((err, resp) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json({'message': 'error'})
+            } else {
+                res.json({"message": "ok"})
+            }
+        })
+    }
 }

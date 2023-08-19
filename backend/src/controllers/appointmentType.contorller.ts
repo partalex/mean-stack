@@ -5,7 +5,7 @@ import AppointmentTypeModel from '../models/appointmentType';
 export class AppointmentTypeController {
 
     create = (req: express.Request, res: express.Response) => {
-        let appointmentType = new AppointmentTypeModel(req.body);
+        let appointmentType = new AppointmentTypeModel(req.body.appointmentType);
         appointmentType.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -75,6 +75,34 @@ export class AppointmentTypeController {
                 console.log(err)
             else
                 res.json(appointmentTypes)
+        })
+    }
+
+    readAllByPatientId = (req: express.Request, res: express.Response) => {
+        let patientId = req.body.patientId;
+        AppointmentTypeModel.find({'patientId': patientId}, (err, appointmentTypes) => {
+            if (err)
+                console.log(err)
+            else
+                res.json(appointmentTypes)
+        })
+    }
+
+    readRegisteredDoctor = (req: express.Request, res: express.Response) => {
+        let doctorId = req.body.doctorId;
+        AppointmentTypeModel.find({}, (err, appointmentTypes) => {
+            if (err)
+                console.log(err)
+            else {
+                let registeredAppointmentTypes = [];
+                appointmentTypes.forEach((appointmentType) => {
+                    appointmentType.doctors.forEach((doctor) => {
+                        if (doctor === doctorId)
+                            registeredAppointmentTypes.push(appointmentType)
+                    })
+                })
+                res.json(registeredAppointmentTypes)
+            }
         })
     }
 }

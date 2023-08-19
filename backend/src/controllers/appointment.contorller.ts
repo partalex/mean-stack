@@ -1,12 +1,10 @@
 import express from 'express';
 import AppointmentModel from '../models/appointment';
-import AppointmentTypeModel from "../models/appointmentType";
-
 
 export class AppointmentController {
 
     create = (req: express.Request, res: express.Response) => {
-        let appointment = new AppointmentTypeModel(req.body);
+        let appointment = new AppointmentModel(req.body.appointment);
         appointment.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -71,12 +69,23 @@ export class AppointmentController {
     }
 
     readByDoctorId = (req: express.Request, res: express.Response) => {
-        let id = req.body.id;
-        AppointmentModel.find({'doctorId': id}, (err, appointments) => {
+        let doctorId = req.body.doctorId
+        AppointmentModel.find({'doctorId': doctorId}, (err, appointments) => {
             if (err)
                 console.log(err)
             else
                 res.json(appointments)
         })
     }
+
+    readByPatientId = (req: express.Request, res: express.Response) => {
+        let patientId = req.body.patientId;
+        AppointmentModel.find({'patientId': patientId}, (err, appointments) => {
+            if (err)
+                console.log(err)
+            else
+                res.json(appointments)
+        })
+    }
+
 }

@@ -3,25 +3,34 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Appointment = new Scheme({
-    appointmentTypeId: {
-        type: String
+    _id: {
+        type: String,
+        required: true,
+    },
+    appointmentType: {
+        type: String,
+        required: true
     },
     doctorId: {
-        type: String
+        type: String,
+        required: true
     },
     patientId: {
-        type: String
+        type: String,
+        required: true
     },
     reason: {
-        type: String
+        type: String,
+        required: true
     },
-    time:{
-        type: String
-    },
-    date:{
-        type: String
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
-export default mongoose.model('Appointments', Appointment, 'appointments');
 
+Appointment.virtual('id').get(function () {
+    return this._id.toHexString();
+})
+export default mongoose.model('Appointments', Appointment, 'appointments');
 

@@ -17,6 +17,11 @@ reportRouter.route('/delete').post(
 reportRouter.route('/readAll').post(
     (req, res) => new ReportController().readAll(req, res)
 )
-
+reportRouter.route('/readByPatientId').post(
+    (req, res) => new ReportController().readByPatientId(req, res)
+)
+reportRouter.route('/readByDoctorId').post(
+    (req, res) => new ReportController().readByDoctorId(req, res)
+)
 
 export default reportRouter;

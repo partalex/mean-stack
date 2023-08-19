@@ -1,9 +1,10 @@
 import express from 'express';
 import PatientModel from "../models/patient";
+import Patient from "../models/patient";
 
 export class PatientController {
     create = (req: express.Request, res: express.Response) => {
-        let patient = new PatientModel(req.body);
+        let patient = new PatientModel(req.body.patient);
         patient.save((err, resp) => {
             if (err) {
                 console.log(err);
@@ -15,27 +16,28 @@ export class PatientController {
     }
     read = (req: express.Request, res: express.Response) => {
         let id = req.body.id;
-        PatientModel.findOne({"_id": id}, (err, patients) => {
+        PatientModel.findOne({"_id": id}, (err, patient) => {
             if (err) {
                 res.status(400).json(err);
             } else {
-                res.json(patients);
+                res.json(patient);
             }
         });
     }
     update = (req: express.Request, res: express.Response) => {
         let _id = req.body.patient._id;
+        let patient = req.body.patient;
         PatientModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    firstname: req.body.patient.firstname,
-                    lastname: req.body.patient.lastname,
-                    username: req.body.patient.username,
-                    password: req.body.patient.password,
-                    approved: req.body.patient.approved,
-                    address: req.body.patient.address,
-                    phone: req.body.patient.phone,
-                    mail: req.body.patient.mail,
-                    image: req.body.patient.image
+                    firstname: patient.firstname,
+                    lastname: patient.lastname,
+                    username: patient.username,
+                    password: patient.password,
+                    approved: patient.approved,
+                    address: patient.address,
+                    phone: patient.phone,
+                    mail: patient.mail,
+                    image: patient.image
                 },
             },
             {new: true}, (err, patient) => {
@@ -79,4 +81,7 @@ export class PatientController {
             }
         });
     }
+
 }
+
+

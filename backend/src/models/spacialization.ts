@@ -3,8 +3,10 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Specialization = new Scheme({
-    name: {
-        type: String
+    _id: {
+        type: String,
+        alias: "name",
+        required: true,
     }
 });
 

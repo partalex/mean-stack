@@ -3,20 +3,29 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Manager = new Scheme({
+    _id: {
+        type: String,
+        required: true
+    },
     firstname: {
-        type: String
+        type: String,
+        required: true
     },
     lastname: {
-        type: String
+        type: String,
+        required: true
     },
     username: {
-        type: String
+        type: String,
+        required: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     },
     image: {
-        type: String
+        type: String,
+        required: true
     }
 });
 

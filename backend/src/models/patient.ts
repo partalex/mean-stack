@@ -3,32 +3,50 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Patient = new Scheme({
+    _id: {
+        type: String,
+        required: true,
+        alias: "id"
+    },
     firstname: {
-        type: String
+        type: String,
+        required: true
     },
     lastname: {
-        type: String
+        type: String,
+        required: true
     },
     username: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     },
     approved: {
-        type: Boolean
+        type: Boolean,
+        required: true
     },
     address: {
-        type: String
+        type: String,
+        required: true
     },
     phone: {
-        type: String
+        type: String,
+        required: true,
+
     },
     mail: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     image: {
-        type: String
+        type: String,
+        required: true
     }
 })
 export default mongoose.model('Patient', Patient, 'patients');
+

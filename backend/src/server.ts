@@ -32,5 +32,6 @@ router.use('/report', reportRouter);
 router.use('/specialization', specializationRouter);
 router.use('/notification', notificationRouter);
 
+
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

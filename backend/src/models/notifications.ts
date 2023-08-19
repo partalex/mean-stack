@@ -4,22 +4,24 @@ const Scheme = mongoose.Schema;
 
 let Notification = new Scheme({
     patientId: {
-        type: String
+        type: String,
+        required: true
     },
     seen: {
-        type: Boolean
-    },
-    time: {
-        type: String
+        type: Boolean,
+        required: true
     },
     date: {
-        type: String
+        type: Date,
+        default: Date.now
     },
-    tittle: {
-        type: String
+    name: {
+        type: String,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     }
 });
 

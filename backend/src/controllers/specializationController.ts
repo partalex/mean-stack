@@ -3,7 +3,7 @@ import SpecializationModel from "../models/spacialization";
 
 export class SpecializationController {
     create = (req: express.Request, res: express.Response) => {
-        let specialization = new SpecializationModel(req.body);
+        let specialization = new SpecializationModel(req.body.specialization);
         specialization.save((err, resp) => {
             if (err) {
                 console.log(err);

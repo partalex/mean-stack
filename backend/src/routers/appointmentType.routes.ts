@@ -18,4 +18,13 @@ appointmentTypeRouter.route('/readAll').post(
     (req, res) => new AppointmentTypeController().readAll(req, res)
 )
 
+appointmentTypeRouter.route('/readAllByPatientId').post(
+    (req, res) => new AppointmentTypeController().readAllByPatientId(req, res)
+)
+
+appointmentTypeRouter.route('/readRegisteredDoctor').post(
+    (req, res) => new AppointmentTypeController().readRegisteredDoctor(req, res)
+)
+
+
 export default appointmentTypeRouter;
