@@ -1,31 +1,31 @@
 <app-navigation-manager></app-navigation-manager>
 
-<legend *ngFor="let specialization of specializations">{{specialization.name}} </legend>
+<legend *ngFor="let specialization of specializations">{{specialization._id}} </legend>
 
-<legend class="text-center">Pregledi</legend>
+<legend class="text-center">Menedžer vidi sve preglede</legend>
 <div class="table-responsive-sm">
-    <table class="table table-light table-bordered border-2">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Trajenje</th>
-            <th scope="col">Ogranak medicine</th>
-            <th scope="col">Cena</th>
-            <th scope="col">Naziv pregleda</th>
-            <th scope="col">Opis</th>
-            <th scope="col">Odobren</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let appointment of appointments;  let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{appointment.durationMinutes}}</td>
-            <td>{{appointment.medicineBranch}}</td>
-            <td>{{appointment.price}}</td>
-            <td>{{appointment.title}}</td>
-            <td><strong>{{appointment.descriptionStrong}}</strong> {{appointment.description}}</td>
-            <td>{{appointment.approved}}</td>
-        </tr>
-        </tbody>
-    </table>
+  <table class="table table-light table-bordered border-2">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Specijalizacija</th>
+      <th scope="col">Naziv</th>
+      <th scope="col">Opis</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Lekari koji vrse pregled</th>
+      <th scope="col">Dozvoljen pregled</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let appointment of appointmentTypes;  let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{appointment.specialization}}</td>
+      <td>{{appointment._id}}</td>
+      <td><strong>{{appointment.descriptionStrong}}</strong> {{appointment.description}}</td>
+      <td>{{appointment.price}}</td>
+      <td>{{appointment.doctors}}</td>
+      <td>{{appointment.approved}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>

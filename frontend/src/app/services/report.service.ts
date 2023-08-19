@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {Report} from "../../model/report";
 
 @Injectable({
@@ -8,13 +7,13 @@ import {Report} from "../../model/report";
 })
 export class ReportService {
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient) {
     }
 
     uri = 'http://127.0.0.1:4000/report'
 
     create(report: Report) {
-        return this.http.post(`${this.uri}/create`, report)
+        return this.http.post(`${this.uri}/create`, {report: report})
     }
 
     read(id) {
@@ -33,9 +32,7 @@ export class ReportService {
         return this.http.post(`${this.uri}/readAll`, {})
     }
 
-    readAllByPatient(patientId) {
-        return this.http.post(`${this.uri}/readAll`, {patientId: patientId})
+    readByPatientId(patientId) {
+        return this.http.post(`${this.uri}/readByPatientId`, {patientId: patientId})
     }
-
-
 }

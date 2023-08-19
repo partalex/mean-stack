@@ -33,7 +33,7 @@ export class UnregisteredLoginPatientComponent implements OnInit {
             if (patient != null) {
                 if (patient.approved) {
                     localStorage.setItem("loggedInPatient", patient._id)
-                    this.router.navigate(["patient"])
+                    this.router.navigate(["patient"]).then(r => console.log(r))
                 } else {
                     this.message = "Niste još uvek odobreni."
                     this.alert.style.visibility = "visible"

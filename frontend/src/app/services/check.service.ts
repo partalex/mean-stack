@@ -13,6 +13,7 @@ export class CheckService {
 
     // TODO - check if password is valid
     checkPasswordFormat(password: string) {
+        console.log(password)
         // let regexp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\"},d)(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&]{8,14}$")
         // if (regexp.test(password) == false) {
         //     return "Lozinka nije u odgovarajucem formatu."

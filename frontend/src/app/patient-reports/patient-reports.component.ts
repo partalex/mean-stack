@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Report} from "../../model/report";
 import {ReportService} from "../services/report.service";
+import {Appointment} from "../../model/appointment";
+import {AppointmentService} from "../services/appointment.service";
+import {ReportsAppointment} from "../../model/help-stuctures/reportAppointment";
 
 @Component({
     selector: 'app-patient-reports',
@@ -9,20 +11,30 @@ import {ReportService} from "../services/report.service";
 })
 export class PatientReportsComponent implements OnInit {
 
-    constructor(private serviceReport: ReportService) {
-        this.getAllReports()
+    constructor(private serviceReport: ReportService, private serviceAppointment: AppointmentService) {
+        let patientId = localStorage.getItem("loggedInPatient")
+        this.getReports(patientId)
+        this.getAppointments(patientId)
     }
 
     ngOnInit(): void {
     }
 
-    reports: Report[]
+    reports: ReportsAppointment[]
+    appointments: Appointment[]
 
-    getAllReports() {
-        let patientId = localStorage.getItem("loggedInPatient")
-        this.serviceReport.readAllByPatient(patientId).subscribe((reports: Report[]) => {
-            this.reports = reports;
+    getReports(patientId) {
+        this.serviceReport.readByPatientId(patientId).subscribe((reports: ReportsAppointment[]) => {
+            console.log(reports)
+            this.reports = reports // TODO
         })
     }
+
+    getAppointments(patientId) {
+        this.serviceAppointment.readByPatientId(patientId).subscribe((appointments: Appointment[]) => {
+            this.appointments = appointments // TODO
+        })
+    }
+
 
 }

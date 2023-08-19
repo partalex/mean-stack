@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Manager} from "../../model/manager";
 import {ServiceSession} from "../services/session.service";
 import {Router} from "@angular/router";
-import {Patient} from "../../model/patient";
 
 @Component({
     selector: 'app-unregistered-login-manager',
@@ -33,7 +32,7 @@ export class UnregisteredLoginManagerComponent implements OnInit {
         this.service.loginManager(this.username, this.password).subscribe((manager: Manager) => {
             if (manager != null) {
                 localStorage.setItem("loggedInPatient", manager._id)
-                this.router.navigate(["manager"])
+                this.router.navigate(["manager"]).then(r => console.log(r))
             } else {
                 this.message = "Losi podaci!";
                 this.alert.style.visibility = "visible"

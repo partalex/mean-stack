@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PatientService} from "../services/patient.service";
-import {HttpClient} from "@angular/common/http";
 import {Patient} from "../../model/patient";
 import {CheckService} from "../services/check.service";
-import {ServiceSession} from "../services/session.service";
 
 @Component({
     selector: 'app-patient-profile',
@@ -12,7 +10,7 @@ import {ServiceSession} from "../services/session.service";
 })
 export class PatientProfileComponent implements OnInit {
 
-    constructor(private servicePatient: PatientService, private serviceCheck: CheckService, private http: HttpClient, private serviceSession: ServiceSession) {
+    constructor(private servicePatient: PatientService, private serviceCheck: CheckService) {
         this.readById(localStorage.getItem("loggedInPatient"))
     }
 
@@ -59,6 +57,7 @@ export class PatientProfileComponent implements OnInit {
             return
         }
         this.message = "Uspešno ste izmenili informacije."
+        this.message = "Uspešno ste izmenili informacije."
         this.update()
     }
 
@@ -72,7 +71,8 @@ export class PatientProfileComponent implements OnInit {
         }
     }
 
-    patient: Patient = new Patient()
+    // fill with empty values
+    patient: Patient = new Patient("", "", "", "", false, "", "", "", ""    )
     checkPassword = ""
     newPassword = ""
     checkNewPassword = ""
@@ -111,7 +111,6 @@ export class PatientProfileComponent implements OnInit {
             return
         }
 
-        // TODO - check if password is valid
         this.message = this.serviceCheck.checkPasswordFormat(this.newPassword);
         if (this.message != "") {
             this.alert.style.visibility = "visible"

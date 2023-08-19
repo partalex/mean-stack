@@ -1,3 +1,49 @@
-<app-navigation-patient></app-navigation-patient>
+<legend>Zakaži pregled</legend>
 
-<legend>Zakazi pregled</legend>
+<form>
+    <fieldset id="fieldset" class="row g-2" disabled>
+
+        <div class="col-md-6">
+            <label for="inputFirstname" class="form-label">Ime</label>
+            <input type="text" class="form-control" id="inputFirstname"
+                   name="firstname">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputLastname" class="form-label">Prezime</label>
+            <input type="text" class="form-control" id="inputLastname"
+                   name="lastname">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputUsername" class="form-label">Koričniko ime</label>
+            <input type="text" class="form-control" id="inputUsername"
+                   name="username">
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Adresa</label>
+            <input type="text" class="form-control" id="inputAddress"
+                   name="address">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPhone" class="form-label">Kontakt telefon</label>
+            <input type="text" class="form-control" id="inputPhone"
+                   name="phone">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputMail" class="form-label">Mejl</label>
+            <input type="email" class="form-control" id="inputMail"
+                   name="email">
+        </div>
+
+        <div class="col-12"></div>
+
+        <div class="col-12">
+            <button type="submit" (click)="scheduleAppointment()" class="btn btn-dark">Zakaži pregled</button>
+        </div>
+
+    </fieldset>
+</form>
+<br>
+

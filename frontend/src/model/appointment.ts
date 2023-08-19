@@ -1,11 +1,17 @@
 export class Appointment {
-    _id: string;
-    specializationId: string;
-    medicineBranch: string;
-    title: string;
-    descriptionStrong: string;
-    description: string;
-    price: number;
-    durationMinutes: number;
-    approved: boolean
+  _id: string;
+  appointmentType: string;
+  doctorId: string;
+  patientId: string;
+  reason: string;
+  date: Date;
+
+  constructor(_id: string, appointmentType: string, doctorId: string, patientId: string, reason: string, date: Date) {
+    this._id = _id;
+    this.appointmentType = appointmentType;
+    this.doctorId = doctorId;
+    this.patientId = patientId;
+    this.reason = reason;
+    this.date = date;
+  }
 }

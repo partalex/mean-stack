@@ -1,5 +1,7 @@
 <app-navigation-unregistered></app-navigation-unregistered>
 
+<button (click)="initialize()" type="button" class="btn btn-success">Success</button>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
     <div class="carousel-indicators">
@@ -49,15 +51,15 @@
 
 </div>
 
-<div *ngFor="let appoint of appointments">
+<div *ngFor="let appointmentType of appointmentTypes">
     <br>
     <div class="card">
         <div class="card-header">
-            {{appoint.title}}
+            {{appointmentType._id}}
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{appoint.descriptionStrong}}</h5>
-            <p class="card-text">{{appoint.description}}</p>
+            <h5 class="card-title">{{appointmentType.descriptionStrong}}</h5>
+            <p class="card-text">{{appointmentType.description}}</p>
         </div>
     </div>
 </div>

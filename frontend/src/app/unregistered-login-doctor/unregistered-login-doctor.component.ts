@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ServiceSession} from "../services/session.service";
 import {Router} from "@angular/router";
 import {Doctor} from "../../model/doctor";
-import {Patient} from "../../model/patient";
 
 @Component({
     selector: 'app-unregistered-login-doctor',
@@ -33,8 +32,8 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
         this.serviceSession.loginDoctor(this.username, this.password).subscribe((doctor: Doctor) => {
             if (doctor != null) {
                 if (doctor.approved) {
-                    localStorage.setItem("loggedInPatient", doctor._id)
-                    this.router.navigate(["doctor"])
+                    localStorage.setItem("loggedInDoctor", doctor._id)
+                    this.router.navigate(["doctor"]).then(r => console.log(r))
                 } else {
                     this.message = "Niste još uvek odobreni."
                     this.alert.style.visibility = "visible"

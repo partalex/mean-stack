@@ -1,10 +1,17 @@
 export class Report {
-    _id: string;
-    doctorId: string;
-    patientId: string;
-    report: string;
-    date: string;
-    time: string;
+  _id: string;
+  appointmentId: string;
+  name: string;
+  description: string;
+  date: Date;
+
+  // generate constructor
+  constructor(appointmentId: string, name: string, description: string) {
+    this.appointmentId = appointmentId;
+    this.name = name;
+    this.description = description;
+  }
+
 }
 
 

@@ -14,7 +14,7 @@ export class PatientService {
     uri = 'http://127.0.0.1:4000/patient'
 
     create(patient: Patient) {
-        return this.http.post(`${this.uri}/create`, patient)
+        return this.http.post(`${this.uri}/create`, {patient: patient})
     }
 
     read(id) {
@@ -43,7 +43,7 @@ export class PatientService {
 
     logOutPatient() {
         localStorage.removeItem("loggedInPatient")
-        this.router.navigate(['/loginPatient'])
+        this.router.navigate(['/loginPatient']).then(r => console.log(r))
     }
 
 }

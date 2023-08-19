@@ -33,6 +33,7 @@ import {PatientReportsComponent} from './patient-reports/patient-reports.compone
 import {
     PatientScheduleAppointmentComponent
 } from './patient-schedule-appointment/patient-schedule-appointment.component';
+import { PatientDoctorProfileComponent } from './patient-doctor-profile/patient-doctor-profile.component';
 
 @NgModule({
     declarations: [
@@ -64,12 +65,13 @@ import {
         UnregistredDoctorsComponent,
         PatientReportsComponent,
         PatientScheduleAppointmentComponent,
+        PatientDoctorProfileComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

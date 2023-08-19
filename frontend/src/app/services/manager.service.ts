@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {Manager} from "../../model/manager";
 
 @Injectable({
     providedIn: 'root'
@@ -46,6 +47,10 @@ export class ManagerService {
 
     logOutManager() {
         localStorage.removeItem("loggedInManager")
-        this.router.navigate(['/loginManager'])
+        this.router.navigate(['/loginManager']).then(r => console.log(r))
+    }
+
+    create(manager: Manager) {
+        return this.http.post(`${this.uri}/create`, {manager: manager})
     }
 }

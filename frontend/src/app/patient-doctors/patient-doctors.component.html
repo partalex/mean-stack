@@ -1,3 +1,56 @@
 <app-navigation-patient></app-navigation-patient>
 
-<app-doctors-cards></app-doctors-cards>
+<form class="d-flex" role="search">
+    <input class="form-control me-2" name="nameSearchField" [(ngModel)]="searchedFirstname" type="search"
+           placeholder="Ime"
+           aria-label="Search">
+    <input class="form-control me-2" name="nameSearchField" [(ngModel)]="searchedLastname" type="search"
+           placeholder="Prezime"
+           aria-label="Search">
+    <input class="form-control me-2" name="nameSearchField" [(ngModel)]="searchedSpecialization" type="search"
+           placeholder="Specijalizacija"
+           aria-label="Search">
+    <button class="btn btn-outline-secondary" (click)="search()">Pretraži</button>
+</form>
+
+<br>
+
+<form class="d-flex" role="search">
+    <button [ngClass]="{'active' : sortPressed.name}" class="form-control me-2 btn btn-outline-secondary"
+            (click)="buttonSort('name')">Ime
+    </button>
+    <button [ngClass]="{'active' : sortPressed.lastname}"
+            class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('lastname')">Prezime
+    </button>
+    <button [ngClass]="{'active' : sortPressed.specialization}"
+            class="form-control me-2 btn btn-outline-secondary" (click)="buttonSort('specialization')">
+        Specijalizacija
+    </button>
+    <button disabled class="btn btn-outline-secondary">Sotriraj</button>
+</form>
+
+<br>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    <div *ngFor="let doctor of doctors" class="col">
+        <div class="card h-100">
+            <img src="{{doctor.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{doctor.firstname}} {{doctor.lastname}}</h5>
+                <p class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <small class="text-muted">Specijalizacija:</small>
+                    {{doctor.specialization}}
+                </li>
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted">Licenca: </small>
+                <a routerLink="/patient/doctorProfile/{{doctor._id}}" class="card-link">{{doctor.licenceId}}</a>
+            </div>
+        </div>
+    </div>
+
+</div>

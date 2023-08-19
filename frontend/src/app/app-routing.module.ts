@@ -18,9 +18,7 @@ import {UnregisteredLoginManagerComponent} from "./unregistered-login-manager/un
 import {ManagerApprovePatientComponent} from "./manager-approve-patient/manager-approve-patient.component";
 import {PatientDoctorsComponent} from "./patient-doctors/patient-doctors.component";
 import {PatientReportsComponent} from "./patient-reports/patient-reports.component";
-import {
-    PatientScheduleAppointmentComponent
-} from "./patient-schedule-appointment/patient-schedule-appointment.component";
+import {PatientDoctorProfileComponent} from "./patient-doctor-profile/patient-doctor-profile.component";
 
 const routes: Routes = [
     {path: "", component: UnregisteredAboutComponent},
@@ -41,7 +39,7 @@ const routes: Routes = [
     {path: "patient/doctor", component: PatientDoctorComponent},
     {path: "patient/doctors", component: PatientDoctorsComponent},
     {path: "patient/reports", component: PatientReportsComponent},
-    {path: "patient/schedule", component: PatientScheduleAppointmentComponent},
+    {path: "patient/doctorProfile/:id", component: PatientDoctorProfileComponent},
     {path: "patient/notifications", component: PatientNotificationsComponent},
 
     {path: "manager", component: ManagerProfileComponent},

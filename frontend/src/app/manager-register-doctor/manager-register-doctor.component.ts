@@ -112,14 +112,6 @@ export class ManagerRegisterDoctorComponent implements OnInit {
       return
     }
 
-    // fixme - check for password
-    // let regexp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\"},d)(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&]{8,14}$")
-    // if (regexp.test(this.username) == false) {
-    //   this.message = "Lozinka nije u odgovarajucem formatu."
-    //   this.alert.style.visibility = "visible"
-    //   return
-    // }
-
     this.service.registerDoctor(this.firstname, this.lastname, this.username, this.password, this.address, this.phone, this.mail, this.licenceId, this.specialization, this.medicineBranch, this.image).subscribe(respObj => {
       if (respObj['message'] == 'ok') {
         this.message = "Doctor added."

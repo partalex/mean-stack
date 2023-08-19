@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {Report} from "../../model/report";
 import {Specialization} from "../../model/specialization";
 
 @Injectable({
@@ -9,13 +7,13 @@ import {Specialization} from "../../model/specialization";
 })
 export class SpecializationService {
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient) {
     }
 
     uri = 'http://127.0.0.1:4000/specialization'
 
     create(specialization: Specialization) {
-        return this.http.post(`${this.uri}/create`, specialization)
+        return this.http.post(`${this.uri}/create`, {specialization: specialization})
     }
 
     read(id) {

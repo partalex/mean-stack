@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {PatientService} from "../services/patient.service";
-import {AppointmentService} from "../services/appointment.service";
-import {Appointment} from "../../model/appointment";
 import {Specialization} from "../../model/specialization";
 import {SpecializationService} from "../services/specialization.service";
+import {AppointmentType} from "../../model/appointmentType";
+import {AppointmentTypeService} from "../services/appointmentType.service";
 
 @Component({
     selector: 'app-manager-medicine-changes',
@@ -12,20 +11,20 @@ import {SpecializationService} from "../services/specialization.service";
 })
 export class ManagerMedicineChangesComponent implements OnInit {
 
-    constructor(private serviceAppointment: AppointmentService, private serviceSpecialization: SpecializationService) {
-        this.getAllAppointments()
+    constructor(private serviceAppointmentType: AppointmentTypeService, private serviceSpecialization: SpecializationService) {
+        this.getAllAppointmentTypes()
         this.getAllSpecializations()
     }
 
     ngOnInit(): void {
     }
 
-    appointments: Appointment[]
+    appointmentTypes: AppointmentType[]
     specializations: Specialization[]
 
-    getAllAppointments() {
-        this.serviceAppointment.readAll().subscribe((appointments: Appointment[]) => {
-            this.appointments = appointments
+    getAllAppointmentTypes() {
+        this.serviceAppointmentType.readAll().subscribe((appointmentTypes: AppointmentType[]) => {
+            this.appointmentTypes = appointmentTypes
         })
     }
 
