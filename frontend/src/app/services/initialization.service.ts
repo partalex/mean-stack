@@ -65,11 +65,13 @@ export class InitializationService {
         })
 
         //  ============= AppointmentType ==================
-        let appointmentType1 = new AppointmentType("Ultrazvuk srca (Ehokardiografija)", "Ehokardiografija ", "(ultrazvuk srca) – pregled kojim se procenjuje izgled srca, njegova veličina, stanje srčanog mišića, promene na srčanim zaliscima, širina aorte, prisustvo tečnosti u srčanoj maramici. Daje mnoštvo informacija kako o izgledu srca, tako i o njegovom radu. Izuzetno je važan pregled i treba ga primeniti makar jedanput godišnje.", "Oftamologija", ["doctor1", "doctor2"], 4000, true)
-        let appointmentType2 = new AppointmentType("Ultrazvuk vrata", "Ultrazvuk vrata ", "(štitasta žlezda, pljuvačne žlezde, limfne žlezde, krvni sudovi vrata) služi za procenu stanja ovih organa i krvnih sudova. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", "Pedijatrija", ["doctor2", "doctor3"], 4000, true)
-        let appointmentType3 = new AppointmentType("Ultrazvuk abdomena", "Ultrazvuk abdomena ", "(jetra, žučna kesa, pankreas, slezina, bubrezi, nadbubrežne žlezde, mokraćna bešika, prostata, materica, jajnici, limfne žlezde, aorta, krvni sudovi abdomena) služi za procenu stanja ovih organa i krvnih sudova. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", "Hirurgija", ["doctor3"], 4000, true)
-        let appointmentType4 = new AppointmentType("Ultrazvuk karotida", "Ultrazvuk karotida ", "(vrata, glave, ruku, nogu, bubrežnih arterija, krvnih sudova jetre, aorte) služi da se proceni stanje krvnih sudova, tj. njihova širina, prisustvo suženja, prisustvo plaka, stanje zida krvnog suda. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", "Neurolgija", ["doctor4", "doctor5"], 4000, true)
-        let appointmentType5 = new AppointmentType("Ultrazvuk štitaste žlezde", "Ultrazvuk štitaste žlezde ", "(vrata, glave, ruku, nogu, bubrežnih arterija, krvnih sudova jetre, aorte) služi da se proceni stanje krvnih sudova, tj. njihova širina, prisustvo suženja, prisustvo plaka, stanje zida krvnog suda. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", "Anesteziologija", ["doctor1", "doctor5"], 4000, true)
+        let appointmentType1 = new AppointmentType("Ultrazvuk srca (Ehokardiografija)", "Ehokardiografija ", "(ultrazvuk srca) – pregled kojim se procenjuje izgled srca, njegova veličina, stanje srčanog mišića, promene na srčanim zaliscima, širina aorte, prisustvo tečnosti u srčanoj maramici. Daje mnoštvo informacija kako o izgledu srca, tako i o njegovom radu. Izuzetno je važan pregled i treba ga primeniti makar jedanput godišnje.", specialization1._id, ["doctor1", "doctor2"], 4000, true)
+        let appointmentType2 = new AppointmentType("Ultrazvuk vrata", "Ultrazvuk vrata ", "(štitasta žlezda, pljuvačne žlezde, limfne žlezde, krvni sudovi vrata) služi za procenu stanja ovih organa i krvnih sudova. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", specialization2._id, ["doctor2", "doctor3"], 7000, true)
+        let appointmentType3 = new AppointmentType("Ultrazvuk abdomena", "Ultrazvuk abdomena ", "(jetra, žučna kesa, pankreas, slezina, bubrezi, nadbubrežne žlezde, mokraćna bešika, prostata, materica, jajnici, limfne žlezde, aorta, krvni sudovi abdomena) služi za procenu stanja ovih organa i krvnih sudova. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", specialization3._id, ["doctor3"], 9000, true)
+        let appointmentType4 = new AppointmentType("Ultrazvuk karotida", "Ultrazvuk karotida ", "(vrata, glave, ruku, nogu, bubrežnih arterija, krvnih sudova jetre, aorte) služi da se proceni stanje krvnih sudova, tj. njihova širina, prisustvo suženja, prisustvo plaka, stanje zida krvnog suda. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", specialization4._id, ["doctor4", "doctor5"], 7000, true)
+        let appointmentType5 = new AppointmentType("Ultrazvuk štitaste žlezde", "Ultrazvuk štitaste žlezde ", "(vrata, glave, ruku, nogu, bubrežnih arterija, krvnih sudova jetre, aorte) služi da se proceni stanje krvnih sudova, tj. njihova širina, prisustvo suženja, prisustvo plaka, stanje zida krvnog suda. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", specialization5._id, ["doctor1", "doctor5"], 3000, true)
+        let appointmentType6 = new AppointmentType("Ultrazvuk mozga", "Ultrazvuk mozga", "(vrata, glave, ruku, nogu, bubrežnih arterija, krvnih sudova jetre, aorte) služi da se proceni stanje krvnih sudova, tj. njihova širina, prisustvo suženja, prisustvo plaka, stanje zida krvnog suda. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", specialization6._id, ["doctor4"], 15000, false)
+        let appointmentType7 = new AppointmentType("Ultrazvuk šake", "Ultrazvuk šake", "(vrata, glave, ruku, nogu, bubrežnih arterija, krvnih sudova jetre, aorte) služi da se proceni stanje krvnih sudova, tj. njihova širina, prisustvo suženja, prisustvo plaka, stanje zida krvnog suda. Preporučuje se pacijentima koji imaju zdravstvene tegobe, kao i zdravim ljudima radi kontrole.", specialization7._id, ["doctor5"], 12000, false)
 
         this.appointmentTypeService.create(appointmentType1).subscribe(() => {
         })
@@ -81,18 +83,28 @@ export class InitializationService {
         })
         this.appointmentTypeService.create(appointmentType5).subscribe(() => {
         })
+        this.appointmentTypeService.create(appointmentType6).subscribe(() => {
+        })
+        this.appointmentTypeService.create(appointmentType7).subscribe(() => {
+        })
 
 
         //  ============= Patients ==================
         let patient1 = new Patient("patient1", "Pera", "patient1", "patient1", true, "Rankeova 16, Novi Sad", "123456", "patient1@gmail.com", defaultImage)
         let patient2 = new Patient("patient2", "Pera", "patient2", "patient2", true, "Rankeova 16, Novi Sad", "123456", "patient2@gmail.com", defaultImage)
         let patient3 = new Patient("patient3", "Pera", "patient3", "patient3", true, "Rankeova 16, Novi Sad", "123456", "patient3@gmail.com", defaultImage)
+        let patient4 = new Patient("patient4", "Pera", "patient4", "patient4", false, "Rankeova 16, Novi Sad", "123456", "patient4@gmail.com", defaultImage)
+        let patient5 = new Patient("patient5", "Pera", "patient5", "patient5", false, "Rankeova 16, Novi Sad", "123456", "patient5@gmail.com", defaultImage)
 
         this.patientService.create(patient1).subscribe(() => {
         })
         this.patientService.create(patient2).subscribe(() => {
         })
         this.patientService.create(patient3).subscribe(() => {
+        })
+        this.patientService.create(patient4).subscribe(() => {
+        })
+        this.patientService.create(patient5).subscribe(() => {
         })
 
 
@@ -102,6 +114,8 @@ export class InitializationService {
         let doctor3 = new Doctor("doctor3", "lastname3", "doctor3", "doctor3", "0123456789", true, "Rankeova 16, Novi Sad", "doctor3@gmail.com", defaultImage, "8901234567", specialization3._id, specialization3._id);
         let doctor4 = new Doctor("doctor4", "lastname4", "doctor4", "doctor4", "0123456789", true, "Rankeova 16, Novi Sad", "doctor4@gmail.com", defaultImage, "9901234567", specialization4._id, specialization4._id);
         let doctor5 = new Doctor("doctor5", "lastname5", "doctor5", "doctor5", "0123456789", true, "Rankeova 16, Novi Sad", "doctor5@gmail.com", defaultImage, "1101234567", specialization5._id, specialization5._id);
+        let doctor6 = new Doctor("doctor6", "lastname6", "doctor6", "doctor6", "0123456789", false, "Rankeova 16, Novi Sad", "doctor6@gmail.com", defaultImage, "11d01234567", specialization6._id, specialization5._id);
+        let doctor7 = new Doctor("doctor7", "lastname7", "doctor7", "doctor7", "0123456789", false, "Rankeova 16, Novi Sad", "doctor7@gmail.com", defaultImage, "11a01234567", specialization7._id, specialization5._id);
 
         this.doctorService.create(doctor1).subscribe(() => {
         })
@@ -112,6 +126,10 @@ export class InitializationService {
         this.doctorService.create(doctor4).subscribe(() => {
         })
         this.doctorService.create(doctor5).subscribe(() => {
+        })
+        this.doctorService.create(doctor6).subscribe(() => {
+        })
+        this.doctorService.create(doctor7).subscribe(() => {
         })
 
         //  ============= Managers ==================

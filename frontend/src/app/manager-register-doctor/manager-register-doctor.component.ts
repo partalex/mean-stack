@@ -49,7 +49,6 @@ export class ManagerRegisterDoctorComponent implements OnInit {
   }
 
   registerDoctor() {
-    // fixme - uncomment this
     if (this.firstname == "" || this.lastname == "" || this.username == "" || this.password == "" || this.passwordConfirm == "" || this.address == "" || this.phone == "" || this.mail == "" || this.licenceId == "" || this.specialization == "" || this.medicineBranch == "") {
       this.message = "Sva polja moraju biti uneta."
       this.alert.style.visibility = "visible"

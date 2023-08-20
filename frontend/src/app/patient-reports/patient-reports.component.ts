@@ -26,13 +26,13 @@ export class PatientReportsComponent implements OnInit {
     getReports(patientId) {
         this.serviceReport.readByPatientId(patientId).subscribe((reports: ReportsAppointment[]) => {
             console.log(reports)
-            this.reports = reports // TODO
+            this.reports = reports
         })
     }
 
     getAppointments(patientId) {
         this.serviceAppointment.readByPatientId(patientId).subscribe((appointments: Appointment[]) => {
-            this.appointments = appointments // TODO
+            this.appointments = appointments
         })
     }
 

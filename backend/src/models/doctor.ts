@@ -25,7 +25,7 @@ let Doctor = new Scheme({
         required: true
     },
     approved: {
-        type: String,
+        type: Boolean,
         required: true
     },
     address: {

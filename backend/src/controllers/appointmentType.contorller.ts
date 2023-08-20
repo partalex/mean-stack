@@ -8,7 +8,6 @@ export class AppointmentTypeController {
         let appointmentType = new AppointmentTypeModel(req.body.appointmentType);
         appointmentType.save((err, resp) => {
             if (err) {
-                console.log(err);
                 res.status(400).json({'message': 'error'})
             } else {
                 res.json({"message": "ok"})
