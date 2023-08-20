@@ -1,7 +1,7 @@
-<legend>Zakaži pregled</legend>
+<legend class="text-center">Zakaži pregled</legend>
 
 <form>
-    <fieldset id="fieldset" class="row g-2" disabled>
+    <fieldset id="fieldset" class="row m-2" disabled>
 
         <div class="col-md-6">
             <label for="inputFirstname" class="form-label">Ime</label>
@@ -36,10 +36,8 @@
             <input type="email" class="form-control" id="inputMail"
                    name="email">
         </div>
-
-        <div class="col-12"></div>
-
         <div class="col-12">
+            <br>
             <button type="submit" (click)="scheduleAppointment()" class="btn btn-dark">Zakaži pregled</button>
         </div>
 

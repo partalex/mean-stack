@@ -1,9 +1,9 @@
 <app-navigation-doctor></app-navigation-doctor>
 
-<legend>Profil lekara</legend>
+<legend class="text-center">Profil lekara</legend>
 
 <form>
-    <fieldset id="fieldset" class="row g-2" disabled>
+    <fieldset id="fieldset" class="row m-2" disabled>
 
         <div class="col-md-6">
             <img class="img-thumbnail" src="{{doctor.image}}" height="300" width="300">
@@ -51,7 +51,8 @@
 
         <div class="col-md-6">
             <label for="inputMedicineBranch" class="form-label">Ogranak medicine</label>
-            <input disabled type="text" class="form-control" id="inputMedicineBranch" [(ngModel)]="doctor.medicineBranch"
+            <input disabled type="text" class="form-control" id="inputMedicineBranch"
+                   [(ngModel)]="doctor.medicineBranch"
                    name="medicineBranch">
         </div>
 
@@ -74,7 +75,7 @@
 
     </fieldset>
     <br>
-    <fieldset class="row g-2">
+    <fieldset class="row m-2">
         <div class="col-md-6">
             <button type="submit" (click)="flipDisabled()" class="btn btn-dark">{{buttonDisabledText()}}</button>
         </div>
@@ -97,9 +98,9 @@
 
 <br>
 
-<legend>Promeni lozinku</legend>
+<legend class="text-center">Promeni lozinku</legend>
 <form>
-    <fieldset class="row g-2" id="fieldsetPassword" disabled>
+    <fieldset class="row m-2" id="fieldsetPassword" disabled>
 
         <div class="col-md-6">
             <label for="inputMail" class="form-label">Stara lozinka</label>
@@ -117,7 +118,7 @@
 
     </fieldset>
     <br>
-    <fieldset class="row g-2">
+    <fieldset class="row m-2">
         <div class="col-md-6">
             <button type="submit" (click)="flipDisabledPassword()"
                     class="btn btn-dark">{{buttonDisabledPasswordText()}}</button>
