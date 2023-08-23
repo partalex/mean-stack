@@ -16,28 +16,20 @@ export class AppointmentTypeController {
     }
 
     update = (req: express.Request, res: express.Response) => {
-        // update all fields of appointmentType
-        let _id = req.body.appointmentType.id;
+        let _id = req.body.appointmentType._id;
         let appointmentType = new AppointmentTypeModel(req.body.appointmentType);
-        console.log(appointmentType)
         AppointmentTypeModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    'title': appointmentType.title,
-                    'description': appointmentType.description,
-                    'descriptionStrong': appointmentType.descriptionStrong,
-                    'specializationId': appointmentType.specializationId,
-                    'doctors': appointmentType.doctors,
                     'price': appointmentType.price,
-                    'approved': appointmentType.approved,
+                    'approved': appointmentType.approved
                 },
             },
-            {new: true}, (err, appointment) => {
+            {new: true}, (err, appType) => {
                 if (err)
                     console.log(err);
                 else
-                    res.json(appointment);
-            }
-        );
+                    res.json(appType);
+            });
     }
 
     delete = (req: express.Request, res: express.Response) => {
@@ -45,6 +37,8 @@ export class AppointmentTypeController {
         AppointmentTypeModel.deleteOne({'_id': id}, (err, appointmentType) => {
             if (err)
                 console.log(err)
+            else
+                res.json({message: 'ok'})
         })
     }
 

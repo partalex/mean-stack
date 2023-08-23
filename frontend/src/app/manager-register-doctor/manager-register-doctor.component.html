@@ -1,8 +1,10 @@
 <app-navigation-manager></app-navigation-manager>
 
-<form class="row g-0">
+<legend class="text-center">Registracija lekara</legend>
+<br>
+<br>
 
-  <legend>Registracija lekara</legend>
+<form class="row m-2">
 
   <div class="col-md-6">
     <img class="img-thumbnail" src="{{image}}" height="300" width="300">
@@ -47,7 +49,12 @@
 
   <div class="col-md-6">
     <label for="inputSpecialization" class="form-label">Specijalizacija</label>
-    <input type="text" class="form-control" id="inputSpecialization" [(ngModel)]="specialization" name="specialization">
+    <select class="form-select" aria-label="Default select example" id="inputSpecialization"
+            [(ngModel)]="specialization" name="specialization">
+      <option selected>Odaberite specijalizaciju</option>
+      <option *ngFor="let spec of specializations">{{spec._id}}</option>
+    </select>
+
   </div>
 
   <div class="col-md-6">
@@ -60,7 +67,9 @@
     <input type="text" class="form-control" id="inputMediciceBranch" [(ngModel)]="medicineBranch" name="mediciceBranch">
   </div>
 
+
   <div class="col-12">
+    <br>
     <button type="submit" (click)="registerDoctor()" class="btn btn-dark">Registruj lekara</button>
   </div>
 

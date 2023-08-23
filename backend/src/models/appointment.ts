@@ -27,6 +27,10 @@ let Appointment = new Scheme({
         type: Boolean,
         default: false
     },
+    reasonForCanceling: {
+        type: String,
+        default: ""
+    },
     date: {
         type: Date,
         default: Date.now

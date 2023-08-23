@@ -139,10 +139,11 @@ export class InitializationService {
     })
 
     //  ============= Appointments ==================
-    let appointment1 = new Appointment("1", appointmentType1._id, doctor1._id, patient1._id, "Bol u stomaku.", new Date())
-    let appointment2 = new Appointment("2", appointmentType2._id, doctor2._id, patient2._id, "Bol u ramenu.", new Date())
-    let appointment3 = new Appointment("3", appointmentType3._id, doctor3._id, patient3._id, "Bol u glavi.", new Date())
-    let appointment4 = new Appointment("4", appointmentType4._id, doctor4._id, patient1._id, "Bol u ledjima.", new Date())
+    let appointment1 = new Appointment("1", appointmentType1._id, doctor1._id, patient1._id, "Bol u stomaku.", new Date(), false, " ")
+    let appointment2 = new Appointment("2", appointmentType2._id, doctor2._id, patient2._id, "Bol u ramenu.", new Date(), false, "")
+    let appointment3 = new Appointment("3", appointmentType3._id, doctor3._id, patient3._id, "Bol u glavi.", new Date(), false, "")
+    let appointment4 = new Appointment("4", appointmentType4._id, doctor4._id, patient1._id, "Bol u ledjima.", new Date(), false, "")
+    let appointment5 = new Appointment("5", appointmentType5._id, doctor1._id, patient2._id, "Bol u nozi.", new Date(), true, "Lekar je odsutan.")
 
     this.appointmentService.create(appointment1).subscribe(() => {
     })
@@ -151,6 +152,8 @@ export class InitializationService {
     this.appointmentService.create(appointment3).subscribe(() => {
     })
     this.appointmentService.create(appointment4).subscribe(() => {
+    })
+    this.appointmentService.create(appointment5).subscribe(() => {
     })
 
     //  ============= Report ==================

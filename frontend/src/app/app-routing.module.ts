@@ -8,7 +8,6 @@ import {PatientProfileComponent} from "./patient-profile/patient-profile.compone
 import {PatientDoctorComponent} from "./patient-doctor/patient-doctor.component";
 import {PatientNotificationsComponent} from "./patient-notifications/patient-notifications.component";
 import {ManagerRegisterDoctorComponent} from "./manager-register-doctor/manager-register-doctor.component";
-import {ManagerProfileComponent} from "./manager-profile/manager-profile.component";
 import {ManagerMedicineChangesComponent} from "./manager-medicine-changes/manager-medicine-changes.component";
 import {UnregisteredAboutComponent} from "./unregistered-about/unregistered-about.component";
 import {UnregisteredLoginDoctorComponent} from "./unregistered-login-doctor/unregistered-login-doctor.component";
@@ -45,11 +44,10 @@ const routes: Routes = [
   {path: "patient/doctorProfile/:id", component: PatientDoctorProfileComponent},
   {path: "patient/notifications", component: PatientNotificationsComponent},
 
-  {path: "manager", component: ManagerProfileComponent},
-  {path: "manager/profile", component: ManagerProfileComponent},
+  {path: "manager", component: ManagerApprovePatientComponent},
+  {path: "manager/approve", component: ManagerApprovePatientComponent},
   {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
   {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
-  {path: "manager/approve", component: ManagerApprovePatientComponent},
 ];
 
 @NgModule({

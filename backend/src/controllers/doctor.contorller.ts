@@ -24,24 +24,25 @@ export class DoctorController {
     }
     update = (req: express.Request, res: express.Response) => {
         let _id = req.body.doctor._id;
+        let doctor = new DoctorModel(req.body.doctor);
         DoctorModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    firstname: req.body.patient.firstname,
-                    lastname: req.body.patient.lastname,
-                    username: req.body.patient.username,
-                    password: req.body.patient.password,
-                    approved: req.body.patient.approved,
-                    address: req.body.patient.address,
-                    phone: req.body.patient.phone,
-                    mail: req.body.patient.mail,
-                    image: req.body.patient.image
+                    'firstname': doctor.firstname,
+                    'lastname': doctor.lastname,
+                    'username': doctor.username,
+                    'password': doctor.password,
+                    'approved': doctor.approved,
+                    'address': doctor.address,
+                    'phone': doctor.phone,
+                    'mail': doctor.mail,
+                    'image': doctor.image
                 },
             },
-            {new: true}, (err, patient) => {
+            {new: true}, (err, newDoctor) => {
                 if (err)
                     console.log(err);
                 else
-                    res.json(patient);
+                    res.json(newDoctor);
             }
         );
     }

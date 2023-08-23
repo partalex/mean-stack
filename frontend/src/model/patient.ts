@@ -5,6 +5,7 @@ export class Patient {
   username: string = ""
   password: string = ""
   approved: boolean = false
+  deleted: boolean = false
   address: string = ""
   phone: string = ""
   mail: string = ""

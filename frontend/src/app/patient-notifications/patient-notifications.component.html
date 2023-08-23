@@ -2,7 +2,7 @@
 
 <legend class="text-center">Obaveštenja</legend>
 
-<div class="table-responsive-sm">
+<div class="table-responsive-sm m-2">
   <table class="table table-light table-bordered border-2">
     <thead>
     <tr>
@@ -19,7 +19,10 @@
       <td>{{notification.name}}</td>
       <td>{{notification.description}}</td>
       <td>{{notification.date}}</td>
-      <td>{{notification.seen}}</td>
+      <td>
+        <!--        on change checkbox update notification.seen-->
+        <input type="checkbox" (change)="updateSeen(notification)" [checked]="notification.seen">
+      </td>
     </tr>
     </tbody>
   </table>

@@ -16,16 +16,12 @@ export class AppointmentController {
     }
 
     update = (req: express.Request, res: express.Response) => {
-        let _id = req.body.appointment.id;
-        let appointment = req.body.appointment;
-        // update
+        let _id = req.body.appointment._id;
+        let appointment = new AppointmentModel(req.body.appointment);
         AppointmentModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    patientId: appointment.patientId,
-                    doctorId: appointment.doctorId,
-                    date: appointment.date,
-                    time: appointment.time,
-                    approved: appointment.approved
+                    'canceled': appointment.canceled,
+                    'reasonForCanceling': appointment.reasonForCanceling,
                 },
             },
             {new: true}, (err, appointment) => {
@@ -41,6 +37,8 @@ export class AppointmentController {
         AppointmentModel.deleteOne({'_id': id}, (err, appointment) => {
             if (err)
                 console.log(err)
+            else
+                res.json({'message': 'ok'})
         })
     }
 

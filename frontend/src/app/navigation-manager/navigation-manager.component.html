@@ -1,41 +1,33 @@
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        <a class="navbar-brand" routerLink="/manager/profile">Početna</a>
+    <a class="navbar-brand" routerLink="/manager/approve">Početna</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/manager/profile">Profil</a>
-                </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/manager/medicineChanges">Pregledi</a>
+        </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/manager/approve">Korisnici</a>
-                </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/manager/registerDoctor">Dodaj lekara</a>
+        </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/manager/registerDoctor">Dodaj lekara</a>
-                </li>
+        <li class="nav-item">
+          <a class="nav-link" role="button" (click)="logOut()">
+            Odjavi se
+          </a>
+        </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/manager/medicineChanges">Pregledi</a>
-                </li>
+      </ul>
 
-                <li class="nav-item">
-                    <a class="nav-link" role="button" (click)="logOut()">
-                        Odjavi se
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
     </div>
+  </div>
 </nav>
 <br>

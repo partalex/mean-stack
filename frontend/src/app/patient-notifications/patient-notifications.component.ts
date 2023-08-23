@@ -3,28 +3,33 @@ import {NotificationService} from "../services/notification.service";
 import {Notification} from "../../model/notification";
 
 @Component({
-    selector: 'app-patient-notifications',
-    templateUrl: './patient-notifications.component.html',
-    styleUrls: ['./patient-notifications.component.css']
+  selector: 'app-patient-notifications',
+  templateUrl: './patient-notifications.component.html',
+  styleUrls: ['./patient-notifications.component.css']
 })
 export class PatientNotificationsComponent implements OnInit {
 
-    constructor(private serviceNotification: NotificationService) {
-        this.getAllNotifications()
-    }
+  constructor(private serviceNotification: NotificationService) {
+  }
 
-    patientId = localStorage.getItem("loggedInPatient")
+  patientId = localStorage.getItem("loggedInPatient")
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+    this.getAllNotifications()
+  }
 
-    notifications: Notification[]
+  updateSeen(notification) {
+    notification.seen = !notification.seen
+    this.serviceNotification.update(notification).subscribe((newNotification: Notification) => {
+      this.ngOnInit()
+    })
+  }
 
-    getAllNotifications() {
-        this.serviceNotification.readAllByPatientId(this.patientId).subscribe((notifications: Notification[]) => {
-        // this.serviceNotification.readAll().subscribe((notifications: Notification[]) => {
-            this.notifications = notifications
-        })
-    }
+  notifications: Notification[]
 
+  getAllNotifications() {
+    this.serviceNotification.readAllByPatientId(this.patientId).subscribe((notifications: Notification[]) => {
+      this.notifications = notifications
+    })
+  }
 }

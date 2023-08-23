@@ -12,34 +12,33 @@ import {ReportsAppointment} from "../../model/help-stuctures/reportAppointment";
 export class PatientReportsComponent implements OnInit {
 
   constructor(private serviceReport: ReportService, private serviceAppointment: AppointmentService) {
-    let patientId = localStorage.getItem("loggedInPatient")
-    this.getReports(patientId)
-    this.getAppointments(patientId)
   }
 
   ngOnInit(): void {
+    let patientId = localStorage.getItem("loggedInPatient")
+    this.getMyReports(patientId)
+    this.getMyAppointments(patientId)
   }
 
   reports: ReportsAppointment[]
   appointments: Appointment[]
 
-  getReports(patientId) {
+  getMyReports(patientId) {
     this.serviceReport.readByPatientId(patientId).subscribe((reports: ReportsAppointment[]) => {
       this.reports = reports
     })
   }
 
-  getAppointments(patientId) {
+  getMyAppointments(patientId) {
     this.serviceAppointment.readByPatientId(patientId).subscribe((appointments: Appointment[]) => {
       this.appointments = appointments
     })
   }
 
   cancelAppointment(appointment: Appointment) {
-    appointment.canceled = true
+    appointment.canceled = !appointment.canceled
     this.serviceAppointment.update(appointment).subscribe((newAppointment: Appointment) => {
-      console.log(newAppointment)
-      // appointment = newAppointment
+      this.ngOnInit()
     })
   }
 

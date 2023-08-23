@@ -1,6 +1,6 @@
 <app-navigation-unregistered></app-navigation-unregistered>
 
-<button (click)="initialize()" type="button" class="btn btn-success">Success</button>
+<!--<button (click)="initialize()" type="button" class="btn btn-success">Success</button>-->
 
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
@@ -51,7 +51,7 @@
 
 </div>
 
-<div *ngFor="let appointmentType of appointmentTypes">
+<div *ngFor="let appointmentType of appointmentTypes" class="m-2">
   <br>
   <div class="card">
     <div class="card-header">
@@ -60,6 +60,7 @@
     <div class="card-body">
       <h5 class="card-title">{{appointmentType.descriptionStrong}}</h5>
       <p class="card-text">{{appointmentType.description}}</p>
+      <p class="card-text">{{"Trajanje: " + appointmentType.duration + " minuta."}}</p>
     </div>
   </div>
 </div>

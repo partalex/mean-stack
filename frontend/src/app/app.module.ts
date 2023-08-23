@@ -11,7 +11,6 @@ import {PatientViewsComponent} from './patient-views/patient-views.component';
 import {DoctorProfileComponent} from './doctor-profile/doctor-profile.component';
 import {PatientDoctorComponent} from './patient-doctor/patient-doctor.component';
 import {PatientProfileComponent} from './patient-profile/patient-profile.component';
-import {ManagerProfileComponent} from './manager-profile/manager-profile.component';
 import {RegisterPatientComponent} from './register-patient/register-patient.component';
 import {NavigationDoctorComponent} from './navigation-doctor/navigation-doctor.component';
 import {NavigationManagerComponent} from './navigation-manager/navigation-manager.component';
@@ -53,7 +52,6 @@ import { DoctorPatientRecordComponent } from './doctor-patient-record/doctor-pat
         PatientNotificationsComponent,
         PatientDoctorComponent,
         ManagerRegisterDoctorComponent,
-        ManagerProfileComponent,
         ManagerMedicineChangesComponent,
         UnregisteredAboutComponent,
         UnregisteredLoginDoctorComponent,

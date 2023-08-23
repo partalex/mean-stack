@@ -5,36 +5,58 @@ import {AppointmentTypeService} from "../services/appointmentType.service";
 import {AppointmentType} from "../../model/appointmentType";
 
 @Component({
-    selector: 'app-doctor-views',
-    templateUrl: './doctor-views.component.html',
-    styleUrls: ['./doctor-views.component.css']
+  selector: 'app-doctor-views',
+  templateUrl: './doctor-views.component.html',
+  styleUrls: ['./doctor-views.component.css']
 })
 export class DoctorViewsComponent implements OnInit {
 
-    constructor(private serviceAppointment: AppointmentService, private serviceAppointmentType: AppointmentTypeService) {
+  constructor(private serviceAppointment: AppointmentService, private serviceAppointmentType: AppointmentTypeService) {
+  }
+
+  doctorId: string
+
+  ngOnInit(): void {
+    this.alert = document.getElementById("alert");
+    this.alert.style.visibility = "hidden"
+    this.message = ""
+    this.doctorId = localStorage.getItem("loggedInDoctor")
+    this.readAllByDoctorId(this.doctorId)
+    this.readRegisteredAppointments(this.doctorId)
+  }
+
+  cancelAppointment(appointment) {
+
+    if (appointment.reasonForCanceling == "") {
+      this.message = "Niste uneli razlog otkazivanja."
+      this.alert.style.visibility = "visible"
+      return
     }
 
-    doctorId: string
+    appointment.canceled = true
 
-    ngOnInit(): void {
-        this.doctorId = localStorage.getItem("loggedInDoctor")
-        this.readAllByDoctorId(this.doctorId)
-        this.readRegisteredAppointments(this.doctorId)
-    }
+    this.serviceAppointment.update(appointment).subscribe((newAppointment: Appointment) => {
+      console.log(newAppointment)
+      this.ngOnInit()
+    })
+  }
 
 
-    appointments: Appointment[]
-    registeredAppointments: AppointmentType[]
+  appointments: Appointment[]
+  registeredAppointments: AppointmentType[]
+  alert: HTMLElement;
+  message: string;
 
-    readRegisteredAppointments(doctorId) {
-        this.serviceAppointmentType.readRegisteredDoctor(doctorId).subscribe((registeredAppointments: AppointmentType[]) => {
-            this.registeredAppointments = registeredAppointments
-        })
-    }
 
-    readAllByDoctorId(doctorId) {
-        this.serviceAppointment.readByDoctorId(doctorId).subscribe((appointments: Appointment[]) => {
-            this.appointments = appointments
-        })
-    }
+  readRegisteredAppointments(doctorId) {
+    this.serviceAppointmentType.readRegisteredDoctor(doctorId).subscribe((registeredAppointments: AppointmentType[]) => {
+      this.registeredAppointments = registeredAppointments
+    })
+  }
+
+  readAllByDoctorId(doctorId) {
+    this.serviceAppointment.readByDoctorId(doctorId).subscribe((appointments: Appointment[]) => {
+      this.appointments = appointments
+    })
+  }
 }

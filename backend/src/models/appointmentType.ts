@@ -31,6 +31,10 @@ let AppointmentType = new Scheme({
     approved: {
         type: Boolean,
         required: true
+    },
+    duration: {
+        type: Number,
+        required: true
     }
 })
 export default mongoose.model('AppointmentTypes', AppointmentType, 'appointmentTypes');

@@ -10,10 +10,7 @@ import {InitializationService} from "../services/initialization.service";
 })
 export class UnregisteredAboutComponent implements OnInit {
 
-  constructor(
-    private serviceAppointmentType: AppointmentTypeService,
-    private initializationService: InitializationService,
-  ) {
+  constructor(private serviceAppointmentType: AppointmentTypeService, private initializationService: InitializationService,) {
   }
 
 

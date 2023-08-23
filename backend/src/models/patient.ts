@@ -29,6 +29,10 @@ let Patient = new Scheme({
         type: Boolean,
         required: true
     },
+    deleted: {
+        type: Boolean,
+        required: true
+    },
     address: {
         type: String,
         required: true
