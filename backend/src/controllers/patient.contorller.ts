@@ -1,6 +1,5 @@
 import express from 'express';
 import PatientModel from "../models/patient";
-import Patient from "../models/patient";
 
 export class PatientController {
     create = (req: express.Request, res: express.Response) => {
@@ -15,8 +14,8 @@ export class PatientController {
         })
     }
     read = (req: express.Request, res: express.Response) => {
-        let id = req.body.id;
-        PatientModel.findOne({"_id": id}, (err, patient) => {
+        let _id = req.body.id;
+        PatientModel.findOne({"_id": _id}, (err, patient) => {
             if (err) {
                 res.status(400).json(err);
             } else {
@@ -45,8 +44,7 @@ export class PatientController {
                     console.log(err);
                 else
                     res.json(patient);
-            }
-        );
+            });
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;

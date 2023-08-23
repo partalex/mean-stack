@@ -16,6 +16,10 @@ export class ManagerMedicineChangesComponent implements OnInit {
         this.getAllSpecializations()
     }
 
+  saveChanges() {
+
+  }
+
     ngOnInit(): void {
     }
 

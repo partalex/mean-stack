@@ -19,6 +19,7 @@ export class AppointmentTypeController {
         // update all fields of appointmentType
         let _id = req.body.appointmentType.id;
         let appointmentType = new AppointmentTypeModel(req.body.appointmentType);
+        console.log(appointmentType)
         AppointmentTypeModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
                     'title': appointmentType.title,
@@ -27,7 +28,7 @@ export class AppointmentTypeController {
                     'specializationId': appointmentType.specializationId,
                     'doctors': appointmentType.doctors,
                     'price': appointmentType.price,
-                    'approved': appointmentType.approved
+                    'approved': appointmentType.approved,
                 },
             },
             {new: true}, (err, appointment) => {

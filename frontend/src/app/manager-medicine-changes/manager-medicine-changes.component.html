@@ -3,48 +3,56 @@
 <legend class="text-center">Menedžer vidi sve specijalizacije</legend>
 
 <div class="table-responsive-sm">
-    <table class="table table-light table-bordered border-2">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Specijalizacija</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let specialization of specializations; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{specialization._id}}</td>
-        </tr>`
-        </tbody>
-    </table>
+  <table class="table table-light table-bordered border-2">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Specijalizacija</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let specialization of specializations; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{specialization._id}}</td>
+    </tr>
+    `
+    </tbody>
+  </table>
 </div>
 
 
 <legend class="text-center">Menedžer vidi sve preglede</legend>
 <div class="table-responsive-sm">
-    <table class="table table-light table-bordered border-2">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Specijalizacija</th>
-            <th scope="col">Naziv</th>
-            <th scope="col">Opis</th>
-            <th scope="col">Cena</th>
-            <th scope="col">Regitrovani lekari</th>
-            <th scope="col">Dozvoljen pregled</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let appointment of appointmentTypes;  let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{appointment.specialization}}</td>
-            <td>{{appointment._id}}</td>
-            <td><strong>{{appointment.descriptionStrong}}</strong> {{appointment.description}}</td>
-            <td>{{appointment.price}}</td>
-            <td>{{appointment.doctors}}</td>
-            <td *ngIf="appointment.approved" class="table-success">Da</td>
-            <td *ngIf="!appointment.approved" class="table-danger">Ne</td>
-        </tr>
-        </tbody>
-    </table>
+  <table class="table table-light table-bordered border-2">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Specijalizacija</th>
+      <th scope="col">Naziv</th>
+      <th scope="col">Opis</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Regitrovani lekari</th>
+      <th scope="col">Dozvoljen pregled</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let appointment of appointmentTypes;  let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{appointment.specialization}}</td>
+      <td>{{appointment._id}}</td>
+      <td><strong>{{appointment.descriptionStrong}}</strong> {{appointment.description}}</td>
+      <td>{{appointment.price}}</td>
+      <td>{{appointment.doctors}}</td>
+      <td *ngIf="appointment.approved" class="table-success">Da</td>
+      <td *ngIf="!appointment.approved" class="table-danger">Ne</td>
+    </tr>
+    </tbody>
+  </table>
+
 </div>
+<button id="saveNewPassword" disabled type="submit" (click)="saveChanges()" class="btn btn-dark">
+  Sačuvaj izmene
+</button>
+<br>
+<br>
+

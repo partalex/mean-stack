@@ -1,6 +1,7 @@
-<app-navigation-patient></app-navigation-patient>
+<app-navigation-doctor></app-navigation-doctor>
 
-<legend class="text-center">Moji izveštaji</legend>
+<legend>{{ "Karton: " + patient.firstname + " " + patient.lastname}}</legend>
+<legend class="text-center">Izveštaji</legend>
 
 <div class="table-responsive-sm">
   <table class="table table-light table-bordered border-2">
@@ -30,7 +31,7 @@
 </div>
 
 
-<legend class="text-center">Moji pregledi</legend>
+<legend class="text-center">Pregledi</legend>
 
 <div class="table-responsive-sm">
   <table class="table table-light table-bordered border-2">
@@ -42,7 +43,6 @@
       <th scope="col">Razlog pregleda</th>
       <th scope="col">Datum pregleda</th>
       <th scope="col">Otkazan</th>
-      <th scope="col">Akcija</th>
     </tr>
     </thead>
     <tbody>
@@ -54,13 +54,6 @@
       <td>{{appointment.date}}</td>
       <td *ngIf="appointment.canceled" class="table-danger">Da</td>
       <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
-      <td>
-        <div class="d-grid">
-          <button (click)="cancelAppointment(appointment)" class="btn btn-secondary  btn-sm"
-                  type="button">Otkaži
-          </button>
-        </div>
-      </td>
     </tr>
     </tbody>
   </table>

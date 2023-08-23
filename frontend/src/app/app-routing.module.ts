@@ -19,39 +19,42 @@ import {ManagerApprovePatientComponent} from "./manager-approve-patient/manager-
 import {PatientDoctorsComponent} from "./patient-doctors/patient-doctors.component";
 import {PatientReportsComponent} from "./patient-reports/patient-reports.component";
 import {PatientDoctorProfileComponent} from "./patient-doctor-profile/patient-doctor-profile.component";
+import {DoctorPatientRecordComponent} from "./doctor-patient-record/doctor-patient-record.component";
 
 const routes: Routes = [
-    {path: "", component: UnregisteredAboutComponent},
-    {path: "about", component: UnregisteredAboutComponent},
-    {path: "doctors", component: UnregisteredDoctorsComponent},
-    {path: "loginDoctor", component: UnregisteredLoginDoctorComponent},
-    {path: "loginPatient", component: UnregisteredLoginPatientComponent},
-    {path: "loginManager", component: UnregisteredLoginManagerComponent},
-    {path: "registerPatient", component: RegisterPatientComponent},
+  {path: "", component: UnregisteredAboutComponent},
+  {path: "about", component: UnregisteredAboutComponent},
+  {path: "doctors", component: UnregisteredDoctorsComponent},
+  {path: "loginDoctor", component: UnregisteredLoginDoctorComponent},
+  {path: "loginPatient", component: UnregisteredLoginPatientComponent},
+  {path: "loginManager", component: UnregisteredLoginManagerComponent},
+  {path: "registerPatient", component: RegisterPatientComponent},
 
-    {path: "doctor", component: DoctorProfileComponent},
-    {path: "doctor/profile", component: DoctorProfileComponent},
-    {path: "doctor/views", component: DoctorViewsComponent},
-    {path: "doctor/any", component: DoctorAnyComponent},
+  {path: "doctor", component: DoctorProfileComponent},
+  {path: "doctor/profile", component: DoctorProfileComponent},
+  {path: "doctor/views", component: DoctorViewsComponent},
+  {path: "doctor/any", component: DoctorAnyComponent},
+  {path: "doctor/patientRecord/:id", component: DoctorPatientRecordComponent},
 
-    {path: "patient", component: PatientProfileComponent},
-    {path: "patient/profile", component: PatientProfileComponent},
-    {path: "patient/doctor", component: PatientDoctorComponent},
-    {path: "patient/doctors", component: PatientDoctorsComponent},
-    {path: "patient/reports", component: PatientReportsComponent},
-    {path: "patient/doctorProfile/:id", component: PatientDoctorProfileComponent},
-    {path: "patient/notifications", component: PatientNotificationsComponent},
 
-    {path: "manager", component: ManagerProfileComponent},
-    {path: "manager/profile", component: ManagerProfileComponent},
-    {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
-    {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
-    {path: "manager/approve", component: ManagerApprovePatientComponent},
+  {path: "patient", component: PatientProfileComponent},
+  {path: "patient/profile", component: PatientProfileComponent},
+  {path: "patient/doctor", component: PatientDoctorComponent},
+  {path: "patient/doctors", component: PatientDoctorsComponent},
+  {path: "patient/reports", component: PatientReportsComponent},
+  {path: "patient/doctorProfile/:id", component: PatientDoctorProfileComponent},
+  {path: "patient/notifications", component: PatientNotificationsComponent},
+
+  {path: "manager", component: ManagerProfileComponent},
+  {path: "manager/profile", component: ManagerProfileComponent},
+  {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
+  {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
+  {path: "manager/approve", component: ManagerApprovePatientComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

@@ -34,6 +34,7 @@ import {
     PatientScheduleAppointmentComponent
 } from './patient-schedule-appointment/patient-schedule-appointment.component';
 import { PatientDoctorProfileComponent } from './patient-doctor-profile/patient-doctor-profile.component';
+import { DoctorPatientRecordComponent } from './doctor-patient-record/doctor-patient-record.component';
 
 @NgModule({
     declarations: [
@@ -66,6 +67,7 @@ import { PatientDoctorProfileComponent } from './patient-doctor-profile/patient-
         PatientReportsComponent,
         PatientScheduleAppointmentComponent,
         PatientDoctorProfileComponent,
+        DoctorPatientRecordComponent,
     ],
     imports: [
         BrowserModule,

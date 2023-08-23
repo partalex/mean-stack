@@ -1,56 +1,60 @@
 <app-navigation-doctor></app-navigation-doctor>
+
 <legend class="text-center">Registrovani pregledi</legend>
 <br>
-<br>
+
 <div class="table-responsive-sm">
-    <table class="table table-light table-bordered border-2">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Tip pregleda</th>
-            <th scope="col">Ukratno</th>
-            <th scope="col">Više</th>
-            <th scope="col">Specijalizacija</th>
-            <th scope="col">Cena</th>
-            <th scope="col">Dozvoljen</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let appointmentType of registeredAppointments;  let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{appointmentType._id}}</td>
-            <td>{{appointmentType.descriptionStrong}}</td>
-            <td>{{appointmentType.description}}</td>
-            <td>{{appointmentType.specialization}}</td>
-            <td>{{appointmentType.price}}</td>
-            <td>{{appointmentType.approved}}</td>
-        </tr>
-        </tbody>
-    </table>
+  <table class="table table-light table-bordered border-2">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tip pregleda</th>
+      <th scope="col">Ukratno</th>
+      <th scope="col">Više</th>
+      <th scope="col">Specijalizacija</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Dozvoljen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let appointmentType of registeredAppointments;  let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{appointmentType._id}}</td>
+      <td>{{appointmentType.descriptionStrong}}</td>
+      <td>{{appointmentType.description}}</td>
+      <td>{{appointmentType.specialization}}</td>
+      <td>{{appointmentType.price}}</td>
+      <td *ngIf="appointmentType.approved" class="table-success">Da</td>
+      <td *ngIf="!appointmentType.approved" class="table-danger">Ne</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-<legend class="text-center">Pregledi lekeara</legend>
+<legend class="text-center">Zakazani pregledi</legend>
 <br>
-<br>
+
 <div class="table-responsive-sm">
-    <table class="table table-light table-bordered border-2">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Pregleld</th>
-            <th scope="col">Pacijent</th>
-            <th scope="col">Razlog pregelda</th>
-            <th scope="col">Datum</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let appointment of appointments;  let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{appointment.appointmentType}}</td>
-            <td>{{appointment.patientId}}</td>
-            <td>{{appointment.reason}}</td>
-            <td>{{appointment.date}}</td>
-        </tr>
-        </tbody>
-    </table>
+  <table class="table table-light table-bordered border-2">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pregleld</th>
+      <th scope="col">Pacijent</th>
+      <th scope="col">Razlog pregelda</th>
+      <th scope="col">Datum</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let appointment of appointments;  let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{appointment.appointmentType}}</td>
+      <td>
+        <a routerLink="/doctor/patientRecord/{{appointment.patientId}}">{{appointment.patientId}}</a>
+      </td>
+      <td>{{appointment.reason}}</td>
+      <td>{{appointment.date}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>

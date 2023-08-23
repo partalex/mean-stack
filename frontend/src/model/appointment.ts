@@ -4,6 +4,7 @@ export class Appointment {
   doctorId: string;
   patientId: string;
   reason: string;
+  canceled: boolean;
   date: Date;
 
   constructor(_id: string, appointmentType: string, doctorId: string, patientId: string, reason: string, date: Date) {
@@ -13,5 +14,6 @@ export class Appointment {
     this.patientId = patientId;
     this.reason = reason;
     this.date = date;
+    this.canceled = false;
   }
 }

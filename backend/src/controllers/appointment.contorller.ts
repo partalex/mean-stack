@@ -17,26 +17,23 @@ export class AppointmentController {
 
     update = (req: express.Request, res: express.Response) => {
         let _id = req.body.appointment.id;
-        // update appointment
+        let appointment = req.body.appointment;
+        // update
         AppointmentModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    doctorFirstname: req.body.appointment.doctorFirstname,
-                    doctorLastname: req.body.appointment.doctorLastname,
-                    licenceId: req.body.appointment.licenceId,
-                    branchMedicine: req.body.appointment.branchMedicine,
-                    durationMinutes: req.body.appointment.durationMinutes,
-                    price: req.body.appointment.price,
-                    title: req.body.appointment.title,
-                    descriptionStrong: req.body.appointment.descriptionStrong,
-                    description: req.body.appointment.description
+                    patientId: appointment.patientId,
+                    doctorId: appointment.doctorId,
+                    date: appointment.date,
+                    time: appointment.time,
+                    approved: appointment.approved
                 },
             },
-            {new: true}, (err, patient) => {
+            {new: true}, (err, appointment) => {
                 if (err)
-                    console.log(err);
+                    console.log(err)
                 else
-                    res.json(patient);
-            });
+                    res.json(appointment)
+            })
     }
 
     delete = (req: express.Request, res: express.Response) => {

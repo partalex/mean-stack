@@ -23,6 +23,10 @@ let Appointment = new Scheme({
         type: String,
         required: true
     },
+    canceled: {
+        type: Boolean,
+        default: false
+    },
     date: {
         type: Date,
         default: Date.now
