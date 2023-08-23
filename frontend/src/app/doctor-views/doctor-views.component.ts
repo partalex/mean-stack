@@ -43,14 +43,14 @@ export class DoctorViewsComponent implements OnInit {
 
 
   appointments: Appointment[]
-  registeredAppointments: AppointmentType[]
+  registeredAppointmentTypes: AppointmentType[]
   alert: HTMLElement;
   message: string;
 
 
   readRegisteredAppointments(doctorId) {
     this.serviceAppointmentType.readRegisteredDoctor(doctorId).subscribe((registeredAppointments: AppointmentType[]) => {
-      this.registeredAppointments = registeredAppointments
+      this.registeredAppointmentTypes = registeredAppointments
     })
   }
 

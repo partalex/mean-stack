@@ -2,112 +2,112 @@
 <legend class="text-center">Menadžer vidi sve pacijente</legend>
 
 <div class="table-responsive-sm">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Ime</th>
-      <th scope="col">Prezime</th>
-      <th scope="col">Korisniko ime</th>
-      <th scope="col">Mejl</th>
-      <th scope="col">Adresa</th>
-      <th scope="col">Telefon</th>
-      <th scope="col">Akcije</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let patient of patients;  let i = index">
-      <td>{{i + 1}}</td>
-<!--      <td>-->
-<!--        <div class="d-grid">-->
-<!--          <button (click)="changeApprovedPatient(patient)" class="btn btn-secondary  btn-sm"-->
-<!--                  type="button">{{buttonApprovedText(patient)}}</button>-->
-<!--        </div>-->
-<!--      </td>-->
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="patient.firstname">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="patient.lastname">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="patient.username">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="patient.mail">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="patient.address">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="patient.phone">
-      </td>
-      <td>Akcija</td> <!-- TODO -->
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Korisniko ime</th>
+            <th>Mejl</th>
+            <th>Adresa</th>
+            <th>Telefon</th>
+            <th>Akcije</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients;  let i = index">
+            <td>{{i + 1}}</td>
+            <!--      <td>-->
+            <!--        <div class="d-grid">-->
+            <!--          <button (click)="changeApprovedPatient(patient)" class="btn btn-secondary  btn-sm"-->
+            <!--                  type="button">{{buttonApprovedText(patient)}}</button>-->
+            <!--        </div>-->
+            <!--      </td>-->
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="patient.firstname">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="patient.lastname">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="patient.username">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="patient.mail">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="patient.address">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="patient.phone">
+            </td>
+            <td>Akcija</td> <!-- TODO -->
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <legend class="text-center">Menadžer vidi sve lekare</legend>
 
 <div class="table-responsive-sm">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Ime</th>
-      <th scope="col">Prezime</th>
-      <th scope="col">Korisniko ime</th>
-      <th scope="col">Mejl</th>
-      <th scope="col">Adresa</th>
-      <th scope="col">Telefon</th>
-      <th scope="col">Licenca</th>
-      <th scope="col">Specijalizacija</th>
-      <th scope="col">Ogranak medicine</th>
-      <th scope="col">Akcije</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let doctor of doctors;  let i = index">
-      <td>{{i + 1}}</td>
-<!--      <td>-->
-<!--        <div class="d-grid">-->
-<!--          <button (click)="changeApprovedDoctor(doctor)" class="btn btn-secondary  btn-sm"-->
-<!--                  type="button">{{buttonApprovedText(doctor)}}-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </td>-->
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.firstname">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.lastname">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.username">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.mail">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.address">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.phone">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.licenceId">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.specialization">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="doctor.medicineBranch">
-      </td>
-      <td>Akcija</td> <!-- TODO -->
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Korisniko ime</th>
+            <th>Mejl</th>
+            <th>Adresa</th>
+            <th>Telefon</th>
+            <th>Licenca</th>
+            <th>Specijalizacija</th>
+            <th>Ogranak medicine</th>
+            <th>Akcije</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let doctor of doctors;  let i = index">
+            <td>{{i + 1}}</td>
+            <!--      <td>-->
+            <!--        <div class="d-grid">-->
+            <!--          <button (click)="changeApprovedDoctor(doctor)" class="btn btn-secondary  btn-sm"-->
+            <!--                  type="button">{{buttonApprovedText(doctor)}}-->
+            <!--          </button>-->
+            <!--        </div>-->
+            <!--      </td>-->
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.firstname">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.lastname">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.username">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.mail">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.address">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.phone">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.licenceId">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.specialization">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="doctor.medicineBranch">
+            </td>
+            <td>Akcija</td> <!-- TODO -->
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 

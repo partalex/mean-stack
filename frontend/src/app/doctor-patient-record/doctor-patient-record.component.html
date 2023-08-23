@@ -4,57 +4,57 @@
 <legend class="text-center">Izveštaji</legend>
 
 <div class="table-responsive-sm">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Lekar</th>
-      <th scope="col">Vrsta pregleda</th>
-      <th scope="col">Datum pregleda</th>
-      <th scope="col">Datum izveštaja</th>
-      <th scope="col">Izveštaj</th>
-      <th scope="col">Razlog pregleda</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let report of reports;  let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{report.appointment[0].doctorId}}</td>
-      <td>{{report.appointment[0].appointmentType}}</td>
-      <td>{{report.appointment[0].date}}</td>
-      <td>{{report.date}}</td>
-      <td>{{report.description}}</td>
-      <td>{{report.appointment[0].reason}}</td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Lekar</th>
+            <th>Vrsta pregleda</th>
+            <th>Datum pregleda</th>
+            <th>Datum izveštaja</th>
+            <th>Izveštaj</th>
+            <th>Razlog pregleda</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let report of reports;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{report.appointment[0].doctorId}}</td>
+            <td>{{report.appointment[0].appointmentType}}</td>
+            <td>{{report.appointment[0].date}}</td>
+            <td>{{report.date}}</td>
+            <td>{{report.description}}</td>
+            <td>{{report.appointment[0].reason}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 
 <legend class="text-center">Pregledi</legend>
 
 <div class="table-responsive-sm">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Vrsta pregleda</th>
-      <th scope="col">Lekar</th>
-      <th scope="col">Razlog pregleda</th>
-      <th scope="col">Datum pregleda</th>
-      <th scope="col">Otkazan</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let appointment of appointments;  let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{appointment.appointmentType}}</td>
-      <td>{{appointment.doctorId}}</td>
-      <td>{{appointment.reason}}</td>
-      <td>{{appointment.date}}</td>
-      <td *ngIf="appointment.canceled" class="table-danger">Da</td>
-      <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Vrsta pregleda</th>
+            <th>Lekar</th>
+            <th>Razlog pregleda</th>
+            <th>Datum pregleda</th>
+            <th>Otkazan</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let appointment of appointments;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{appointment.appointmentType}}</td>
+            <td>{{appointment.doctorId}}</td>
+            <td>{{appointment.reason}}</td>
+            <td>{{appointment.date}}</td>
+            <td *ngIf="appointment.canceled" class="table-danger">Da</td>
+            <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
+        </tr>
+        </tbody>
+    </table>
 </div>

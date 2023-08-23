@@ -2,121 +2,121 @@
 <legend class="text-center">Menedžer vidi sve specijalizacije</legend>
 
 <div class="table-responsive-sm m-2">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Specijalizacija</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let specialization of specializations; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{specialization._id}}</td>
-    </tr>
-    <br>
-    <tr>
-      <td>Nova specijalizacija</td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="newSpecialization">
-      </td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Specijalizacija</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let specialization of specializations; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{specialization._id}}</td>
+        </tr>
+        <br>
+        <tr>
+            <td>Nova specijalizacija</td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="newSpecialization">
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <button (click)="addSpecialization()" type="submit" class="btn btn-dark m-2">
-  Dodaj novu specijalizaciju
+    Dodaj novu specijalizaciju
 </button>
 
 <legend class="text-center">Menedžer vidi sve preglede</legend>
 
 <div class="table-responsive-sm m-2">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Specijalizacija</th>
-      <th scope="col">Naziv</th>
-      <th scope="col">Opis</th>
-      <th scope="col">Cena</th>
-      <th scope="col">Trajanje</th>
-      <th scope="col">Regitrovani lekari</th>
-      <th scope="col">Dozvoljen pregled</th>
-      <th scope="col">Akcija</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let appointmentType of appointmentTypes;  let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{appointmentType.specialization}}</td>
-      <td>{{appointmentType._id}}</td>
-      <td>{{appointmentType.description}}</td>
-      <td>
-        <input type="number" class="form-control" [(ngModel)]="appointmentType.price">
-      </td>
-      <td>
-        <input type="number" class="form-control" [(ngModel)]="appointmentType.duration">
-      </td>
-      <td>{{appointmentType.doctors}}</td>
-      <td *ngIf="appointmentType.approved" class="table-success">
-        <button (click)="approveChange(appointmentType)" type="submit" class="btn btn-dark">
-          Zabrani
-        </button>
-      </td>
-      <td *ngIf="!appointmentType.approved" class="table-danger">
-        <button (click)="approveChange(appointmentType)" type="submit" class="btn btn-dark">
-          Dozvoli
-        </button>
-      </td>
-      <td>
-        <button (click)="updateAppointmentType(appointmentType)" type="submit" class="btn btn-dark">
-          Sačuvaj
-        </button>
-        <br>
-        <br>
-        <button (click)="deleteAppointmentType(appointmentType)" type="submit" class="btn btn-dark">
-          Obriši
-        </button>
-      </td>
-    </tr>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Specijalizacija</th>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Cena</th>
+            <th>Trajanje</th>
+            <th>Regitrovani lekari</th>
+            <th>Dozvoljen pregled</th>
+            <th>Akcija</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let appointmentType of appointmentTypes;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{appointmentType.specialization}}</td>
+            <td>{{appointmentType._id}}</td>
+            <td>{{appointmentType.description}}</td>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]="appointmentType.price">
+            </td>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]="appointmentType.duration">
+            </td>
+            <td>{{appointmentType.doctors}}</td>
+            <td *ngIf="appointmentType.approved" class="table-success">
+                <button (click)="approveChange(appointmentType)" type="submit" class="btn btn-dark">
+                    Zabrani
+                </button>
+            </td>
+            <td *ngIf="!appointmentType.approved" class="table-danger">
+                <button (click)="approveChange(appointmentType)" type="submit" class="btn btn-dark">
+                    Dozvoli
+                </button>
+            </td>
+            <td>
+                <button (click)="updateAppointmentType(appointmentType)" type="submit" class="btn btn-dark">
+                    Sačuvaj
+                </button>
+                <br>
+                <br>
+                <button (click)="deleteAppointmentType(appointmentType)" type="submit" class="btn btn-dark">
+                    Obriši
+                </button>
+            </td>
+        </tr>
 
-    <br>
+        <br>
 
-    <tr>
-      <td>Novi</td>
-      <td>
-        <select class="form-control" [(ngModel)]="newAppointmentType.specialization">
-          <option *ngFor="let specialization of specializations"
-                  [value]="specialization._id">{{specialization._id}}</option>
-        </select>
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="newAppointmentType._id">
-      </td>
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="newAppointmentType.description">
-      </td>
-      <td>
-        <input type="number" class="form-control" [(ngModel)]="newAppointmentType.price">
-      </td>
-      <td>
-        <input type="number" class="form-control" [(ngModel)]="newAppointmentType.duration">
-      </td>
-      <td>
-        <select class="form-control" [(ngModel)]="newAppointmentType.doctors" multiple>
-          <option *ngFor="let doctor of doctors"
-                  [value]="doctor._id">{{doctor._id}}</option>
-        </select>
-      </td>
-      <td>
-        Ne
-      </td>
-      <td>
-        <button (click)="addAppointmentType()" type="submit" class="btn btn-dark">
-          Dodaj
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+        <tr>
+            <td>Novi</td>
+            <td>
+                <select class="form-control" [(ngModel)]="newAppointmentType.specialization">
+                    <option *ngFor="let specialization of specializations"
+                            [value]="specialization._id">{{specialization._id}}</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="newAppointmentType._id">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="newAppointmentType.description">
+            </td>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]="newAppointmentType.price">
+            </td>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]="newAppointmentType.duration">
+            </td>
+            <td>
+                <select class="form-control" [(ngModel)]="newAppointmentType.doctors" multiple>
+                    <option *ngFor="let doctor of doctors"
+                            [value]="doctor._id">{{doctor._id}}</option>
+                </select>
+            </td>
+            <td>
+                Ne
+            </td>
+            <td>
+                <button (click)="addAppointmentType()" type="submit" class="btn btn-dark">
+                    Dodaj
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

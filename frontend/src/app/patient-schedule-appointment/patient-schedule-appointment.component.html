@@ -1,47 +1,92 @@
-<legend class="text-center">Zakaži pregled</legend>
+<legend class="text-center">Registrovani pregledi lekara</legend>
 
-<form>
-    <fieldset id="fieldset" class="row m-2" disabled>
-
-        <div class="col-md-6">
-            <label for="inputFirstname" class="form-label">Ime</label>
-            <input type="text" class="form-control" id="inputFirstname"
-                   name="firstname">
-        </div>
-
-        <div class="col-md-6">
-            <label for="inputLastname" class="form-label">Prezime</label>
-            <input type="text" class="form-control" id="inputLastname"
-                   name="lastname">
-        </div>
-
-        <div class="col-md-6">
-            <label for="inputUsername" class="form-label">Koričniko ime</label>
-            <input type="text" class="form-control" id="inputUsername"
-                   name="username">
-        </div>
-        <div class="col-md-6">
-            <label for="inputAddress" class="form-label">Adresa</label>
-            <input type="text" class="form-control" id="inputAddress"
-                   name="address">
-        </div>
-        <div class="col-md-6">
-            <label for="inputPhone" class="form-label">Kontakt telefon</label>
-            <input type="text" class="form-control" id="inputPhone"
-                   name="phone">
-        </div>
-
-        <div class="col-md-6">
-            <label for="inputMail" class="form-label">Mejl</label>
-            <input type="email" class="form-control" id="inputMail"
-                   name="email">
-        </div>
-        <div class="col-12">
-            <br>
-            <button type="submit" (click)="scheduleAppointment()" class="btn btn-dark">Zakaži pregled</button>
-        </div>
-
-    </fieldset>
-</form>
 <br>
+
+<div class="table-responsive-sm m-2">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Tip pregleda</th>
+            <th>Ukratno</th>
+            <th>Više</th>
+            <th>Specijalizacija</th>
+            <th>Cena</th>
+            <th>Dozvoljen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let appointmentType of registeredAppointmentTypes;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{appointmentType._id}}</td>
+            <td>{{appointmentType.descriptionStrong}}</td>
+            <td>{{appointmentType.description}}</td>
+            <td>{{appointmentType.specialization}}</td>
+            <td>{{appointmentType.price}}</td>
+            <td *ngIf="appointmentType.approved" class="table-success">Da</td>
+            <td *ngIf="!appointmentType.approved" class="table-danger">Ne</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<legend class="text-center">Zakazani pregledi lekara</legend>
+
+<div class="table-responsive-sm m-2">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Pregled</th>
+            <th>Razlog pregelda</th>
+            <th>Datum</th>
+            <th>Otkazan</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let appointment of appointments;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{appointment.appointmentType}}</td>
+            <td>{{appointment.reason}}</td>
+            <td>{{appointment.date}}</td>
+            <td *ngIf="appointment.canceled" class="table-danger">Da</td>
+            <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
+        </tr>
+        <br>
+        <tr>
+            <td>Novo</td>
+            <td>
+                <select [(ngModel)]="newAppointment.appointmentType" class="form-select">
+                    <option *ngFor="let appointmentType of registeredAppointmentTypes" [value]="appointmentType._id">
+                        {{appointmentType._id}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input [(ngModel)]="newAppointment.reason" type="text" class="form-control">
+            </td>
+            <td>
+                <input [(ngModel)]="newAppointment.date" type="datetime-local"
+                       class="form-control">
+            </td>
+            <td>
+                <button (click)="scheduleAppointment()" class="btn btn-dark">
+                    Zakaži
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="alert" class="alert alert-danger m-2" role="alert">
+    {{message}}
+</div>
+
+<div id="alertSuccess" class="alert alert-success m-2" role="alert">
+    {{message}}
+</div>
+
+
+
 

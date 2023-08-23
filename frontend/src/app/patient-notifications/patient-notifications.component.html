@@ -3,27 +3,27 @@
 <legend class="text-center">Obaveštenja</legend>
 
 <div class="table-responsive-sm m-2">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Naziv</th>
-      <th scope="col">Opis</th>
-      <th scope="col">Datum</th>
-      <th scope="col">Vidjeno</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let notification of notifications;  let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{notification.name}}</td>
-      <td>{{notification.description}}</td>
-      <td>{{notification.date}}</td>
-      <td>
-        <!--        on change checkbox update notification.seen-->
-        <input type="checkbox" (change)="updateSeen(notification)" [checked]="notification.seen">
-      </td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Datum</th>
+            <th>Vidjeno</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let notification of notifications;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{notification.name}}</td>
+            <td>{{notification.description}}</td>
+            <td>{{notification.date}}</td>
+            <td>
+                <!--        on change checkbox update notification.seen-->
+                <input type="checkbox" (change)="updateSeen(notification)" [checked]="notification.seen">
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

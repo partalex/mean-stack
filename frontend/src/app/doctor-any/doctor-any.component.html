@@ -3,90 +3,91 @@
 <legend class="text-center">Dodaj novu vrstu pregleda</legend>
 
 <form class="m-2">
-  <div class="d-flex">
-    <input class="form-control me-2" [(ngModel)]="appointmentType._id" name="nameAppId" type="text"
-           placeholder="Tip pregleda">
-    <input class="form-control me-2 " [(ngModel)]="appointmentType.descriptionStrong" name="nameAppDesc"
-           type="text"
-           placeholder="Kratak opis">
-  </div>
-  <br>
-
-  <div class="d-flex">
-    <input class="form-control me-2" [(ngModel)]="appointmentType.description" name="nameAppDescStrong"
-           type="text"
-           placeholder="Opis">
-  </div>
-
-  <br>
-
-  <div class="d-flex">
-    <input class="form-control me-2 " [(ngModel)]="appointmentType.price" name="nameAppPrice" type="number"
-           placeholder="Cena">
-    <input class="form-control me-2 " [(ngModel)]="appointmentType.duration" name="nameAppDuration" type="number"
-           placeholder="Trajanje pregleda">
-  </div>
-
-  <br>
-
-  <fieldset id="exitedSpecializations">
     <div class="d-flex">
-      <button *ngFor="let spec of specializations" [ngClass]="{'active' : appointmentType.specialization==spec._id}"
-              class="form-control me-2 btn btn-outline-secondary"
-              (click)="chooseSelection(spec._id)">{{spec._id}}
-      </button>
+        <input class="form-control me-2" [(ngModel)]="appointmentType._id" name="nameAppId" type="text"
+               placeholder="Tip pregleda">
+        <input class="form-control me-2 " [(ngModel)]="appointmentType.descriptionStrong" name="nameAppDesc"
+               type="text"
+               placeholder="Kratak opis">
     </div>
-  </fieldset>
+    <br>
 
-  <br>
+    <div class="d-flex">
+        <input class="form-control me-2" [(ngModel)]="appointmentType.description" name="nameAppDescStrong"
+               type="text"
+               placeholder="Opis">
+    </div>
 
-  <div class="d-flex">
-    <button type="submit" (click)="createNewAppointment()" class="btn btn-dark">Registruj pregled</button>
-  </div>
+    <br>
+
+    <div class="d-flex">
+        <input class="form-control me-2 " [(ngModel)]="appointmentType.price" name="nameAppPrice" type="number"
+               placeholder="Cena">
+        <input class="form-control me-2 " [(ngModel)]="appointmentType.duration" name="nameAppDuration" type="number"
+               placeholder="Trajanje pregleda">
+    </div>
+
+    <br>
+
+    <fieldset id="exitedSpecializations">
+        <div class="d-flex">
+            <button *ngFor="let spec of specializations"
+                    [ngClass]="{'active' : appointmentType.specialization==spec._id}"
+                    class="form-control me-2 btn btn-outline-secondary"
+                    (click)="chooseSelection(spec._id)">{{spec._id}}
+            </button>
+        </div>
+    </fieldset>
+
+    <br>
+
+    <div class="d-flex">
+        <button type="submit" (click)="createNewAppointment()" class="btn btn-dark">Registruj pregled</button>
+    </div>
 
 </form>
 
 <br>
 
 <div id="alert" class="alert alert-danger" role="alert">
-  {{message}}
+    {{message}}
 </div>
 
 <div id="alertSuccess" class="alert alert-success" role="alert">
-  {{message}}
+    {{message}}
 </div>
 
 <legend class="text-center">Svi pregledi</legend>
 <br>
 
 <div class="table-responsive-sm m-2">
-  <table class="table table-light table-bordered border-2">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Tip pregleda</th>
-      <th scope="col">Ukratno</th>
-      <th scope="col">Više</th>
-      <th scope="col">Doktori</th>
-      <th scope="col">Specijalizacija</th>
-      <th scope="col">Cena</th>
-      <th scope="col">Dozvoljen</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let appointmentType of appointmentTypes;  let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{appointmentType._id}}</td>
-      <td>{{appointmentType.descriptionStrong}}</td>
-      <td>{{appointmentType.description}}</td>
-      <td>{{appointmentType.doctors}}</td>
-      <td>{{appointmentType.specialization}}</td>
-      <td>{{appointmentType.price}}</td>
-      <td *ngIf="appointmentType.approved" class="table-success">Da</td>
-      <td *ngIf="!appointmentType.approved" class="table-danger">Ne</td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Tip pregleda</th>
+            <th>Ukratno</th>
+            <th>Više</th>
+            <th>Doktori</th>
+            <th>Specijalizacija</th>
+            <th>Cena</th>
+            <th>Dozvoljen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let appointmentType of appointmentTypes;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{appointmentType._id}}</td>
+            <td>{{appointmentType.descriptionStrong}}</td>
+            <td>{{appointmentType.description}}</td>
+            <td>{{appointmentType.doctors}}</td>
+            <td>{{appointmentType.specialization}}</td>
+            <td>{{appointmentType.price}}</td>
+            <td *ngIf="appointmentType.approved" class="table-success">Da</td>
+            <td *ngIf="!appointmentType.approved" class="table-danger">Ne</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 

@@ -139,7 +139,7 @@ export class InitializationService {
     })
 
     //  ============= Appointments ==================
-    let appointment1 = new Appointment("1", appointmentType1._id, doctor1._id, patient1._id, "Bol u stomaku.", new Date(), false, " ")
+    let appointment1 = new Appointment("1", appointmentType1._id, doctor1._id, patient1._id, "Bol u stomaku.", new Date(), false, "")
     let appointment2 = new Appointment("2", appointmentType2._id, doctor2._id, patient2._id, "Bol u ramenu.", new Date(), false, "")
     let appointment3 = new Appointment("3", appointmentType3._id, doctor3._id, patient3._id, "Bol u glavi.", new Date(), false, "")
     let appointment4 = new Appointment("4", appointmentType4._id, doctor4._id, patient1._id, "Bol u ledjima.", new Date(), false, "")
