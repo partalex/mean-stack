@@ -39,19 +39,16 @@
       <td>{{i + 1}}</td>
       <td>{{appointment.specialization}}</td>
       <td>{{appointment._id}}</td>
-      <td><strong>{{appointment.descriptionStrong}}</strong> {{appointment.description}}</td>
-      <td>{{appointment.price}}</td>
+      <td>{{appointment.description}}</td>
+      <td>
+        {{appointment.price}}
+        <input type="number" class="form-control" [(ngModel)]="appointment.price"
+               (ngModelChange)="saveChanges(appointment)">
+      </td>
       <td>{{appointment.doctors}}</td>
       <td *ngIf="appointment.approved" class="table-success">Da</td>
       <td *ngIf="!appointment.approved" class="table-danger">Ne</td>
     </tr>
     </tbody>
   </table>
-
 </div>
-<button id="saveNewPassword" disabled type="submit" (click)="saveChanges()" class="btn btn-dark">
-  Sačuvaj izmene
-</button>
-<br>
-<br>
-
