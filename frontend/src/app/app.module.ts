@@ -36,6 +36,7 @@ import {
 import { PatientDoctorProfileComponent } from './patient-doctor-profile/patient-doctor-profile.component';
 import { DoctorPatientRecordComponent } from './doctor-patient-record/doctor-patient-record.component';
 import { ManagerNotificationComponent } from './manager-notification/manager-notification.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -75,6 +76,7 @@ import { ManagerNotificationComponent } from './manager-notification/manager-not
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        NgOptimizedImage,
     ],
     providers: [],
     bootstrap: [AppComponent]

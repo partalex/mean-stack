@@ -36,7 +36,7 @@ export class PatientNotificationsComponent implements OnInit {
     setSeen(notification) {
         if (!this.didISaw(notification))
             notification.seenByPatients.push(this.patientId)
-        this.serviceNotification.update(notification).subscribe((newNotification: Notification) => {
+        this.serviceNotification.update(notification).subscribe(() => {
             this.ngOnInit()
         })
     }

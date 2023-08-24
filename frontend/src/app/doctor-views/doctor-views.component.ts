@@ -73,7 +73,7 @@ export class DoctorViewsComponent implements OnInit {
             return
         }
 
-        this.reportService.create(this.newReport).subscribe((newReport: Report) => {
+        this.reportService.create(this.newReport).subscribe(() => {
             this.ngOnInit()
         })
 

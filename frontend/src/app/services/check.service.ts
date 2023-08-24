@@ -39,16 +39,16 @@ export class CheckService {
         let exist = false
 
         // check is username unique
-        this.servicePatient.readByUsername(patient.username).subscribe((patient: Patient) => {
-            if (patient != null)
+        this.servicePatient.readByUsername(patient.username).subscribe((retPatient: Patient) => {
+            if (retPatient != null)
                 exist = true
         })
         if (exist)
             return "Pacijent sa ovim korisnickim imenom vec postoji."
 
         // check is mail unique
-        this.servicePatient.readByMail(patient.mail).subscribe((patient: Patient) => {
-            if (patient != null)
+        this.servicePatient.readByMail(patient.mail).subscribe((retPatient: Patient) => {
+            if (retPatient != null)
                 exist = true
         })
         if (exist)
@@ -74,11 +74,11 @@ export class CheckService {
         if (regexpUsername.test(patient.username) == false)
             return "Korisničko ima mora imati barem 8 karaktera."
 
-
         returnMessage = this.checkPasswordFormat(patient.password);
         if (returnMessage != "")
             return returnMessage
 
+        console.log("prosao")
         return ""
     }
 }

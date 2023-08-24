@@ -28,7 +28,7 @@ export class ManagerNotificationComponent implements OnInit {
 
     deactivate(notification) {
         notification.active = !notification.active
-        this.notificationService.update(notification).subscribe((newNotification: Notification) => {
+        this.notificationService.update(notification).subscribe(() => {
             this.ngOnInit()
         })
     }
@@ -47,11 +47,7 @@ export class ManagerNotificationComponent implements OnInit {
             this.alert.style.visibility = "visible"
             return
         }
-
-        let id = Math.random().toString(36).substr(2, 9);
-
-
-        this.notificationService.create(this.newNotification).subscribe((notification: Notification) => {
+        this.notificationService.create(this.newNotification).subscribe(() => {
             this.ngOnInit()
         })
     }

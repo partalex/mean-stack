@@ -48,9 +48,9 @@ export class PatientScheduleAppointmentComponent implements OnInit {
         }
         this.newAppointment.doctorId = this.doctor._id
         this.newAppointment.patientId = this.patientId
-        this.newAppointment._id = Math.random().toString(36).substr(2, 9);
+        this.newAppointment._id = Math.random().toString(36);
 
-        this.serviceAppointment.create(this.newAppointment).subscribe((appointment: Appointment) => {
+        this.serviceAppointment.create(this.newAppointment).subscribe(() => {
             this.ngOnInit()
         })
     }

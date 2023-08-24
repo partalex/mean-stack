@@ -65,7 +65,7 @@ export class ManagerApprovePatientComponent implements OnInit {
     }
 
     changeDoctor(doctor) {
-        this.serviceDoctor.update(doctor).subscribe((newDoctor: Doctor) => {
+        this.serviceDoctor.update(doctor).subscribe(() => {
             this.ngOnInit()
         })
     }

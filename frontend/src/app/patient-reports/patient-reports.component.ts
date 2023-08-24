@@ -53,7 +53,7 @@ export class PatientReportsComponent implements OnInit {
 
     cancelAppointment(appointment: Appointment) {
         appointment.canceled = !appointment.canceled
-        this.serviceAppointment.update(appointment).subscribe((newAppointment: Appointment) => {
+        this.serviceAppointment.update(appointment).subscribe(() => {
             this.ngOnInit()
         })
     }
