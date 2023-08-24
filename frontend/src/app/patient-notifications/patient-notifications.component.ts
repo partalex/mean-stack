@@ -3,33 +3,50 @@ import {NotificationService} from "../services/notification.service";
 import {Notification} from "../../model/notification";
 
 @Component({
-  selector: 'app-patient-notifications',
-  templateUrl: './patient-notifications.component.html',
-  styleUrls: ['./patient-notifications.component.css']
+    selector: 'app-patient-notifications',
+    templateUrl: './patient-notifications.component.html',
+    styleUrls: ['./patient-notifications.component.css']
 })
 export class PatientNotificationsComponent implements OnInit {
 
-  constructor(private serviceNotification: NotificationService) {
-  }
+    constructor(private serviceNotification: NotificationService) {
+    }
 
-  patientId = localStorage.getItem("loggedInPatient")
+    patientId = localStorage.getItem("loggedInPatient")
 
-  ngOnInit(): void {
-    this.getAllNotifications()
-  }
+    ngOnInit(): void {
+        this.getAllNotifications()
+    }
 
-  updateSeen(notification) {
-    notification.seen = !notification.seen
-    this.serviceNotification.update(notification).subscribe((newNotification: Notification) => {
-      this.ngOnInit()
-    })
-  }
+    toLocalDate(date: Date) {
+        return new Date(date).toLocaleDateString()
+    }
 
-  notifications: Notification[]
+    toLocaleTimeString(date: Date) {
+        return new Date(date).toLocaleTimeString()
+    }
 
-  getAllNotifications() {
-    this.serviceNotification.readAllByPatientId(this.patientId).subscribe((notifications: Notification[]) => {
-      this.notifications = notifications
-    })
-  }
+    notifications: Notification[]
+
+
+    didISaw(notification) {
+        return notification.seenByPatients.includes(this.patientId)
+    }
+
+    setSeen(notification) {
+        if (!this.didISaw(notification))
+            notification.seenByPatients.push(this.patientId)
+        this.serviceNotification.update(notification).subscribe((newNotification: Notification) => {
+            this.ngOnInit()
+        })
+    }
+
+    getAllNotifications() {
+        this.serviceNotification.readAllByPatientId(this.patientId).subscribe((notifications: Notification[]) => {
+            // this.notifications = notifications
+            // filter out the notifications that are not active
+            this.notifications = notifications.filter(notification => notification.active)
+        })
+    }
+
 }

@@ -19,6 +19,7 @@ import {PatientDoctorsComponent} from "./patient-doctors/patient-doctors.compone
 import {PatientReportsComponent} from "./patient-reports/patient-reports.component";
 import {PatientDoctorProfileComponent} from "./patient-doctor-profile/patient-doctor-profile.component";
 import {DoctorPatientRecordComponent} from "./doctor-patient-record/doctor-patient-record.component";
+import {ManagerNotificationComponent} from "./manager-notification/manager-notification.component";
 
 const routes: Routes = [
   {path: "", component: UnregisteredAboutComponent},
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path: "manager", component: ManagerApprovePatientComponent},
   {path: "manager/approve", component: ManagerApprovePatientComponent},
   {path: "manager/registerDoctor", component: ManagerRegisterDoctorComponent},
+  {path: "manager/notification", component: ManagerNotificationComponent},
   {path: "manager/medicineChanges", component: ManagerMedicineChangesComponent},
 ];
 

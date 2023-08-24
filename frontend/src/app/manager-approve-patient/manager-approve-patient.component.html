@@ -1,7 +1,7 @@
 <app-navigation-manager></app-navigation-manager>
 <legend class="text-center">Menadžer vidi sve pacijente</legend>
 
-<div class="table-responsive-sm">
+<div class="table-responsive-sm m-2">
     <table class="table table-light table-bordered border-2">
         <thead>
         <tr>
@@ -12,18 +12,14 @@
             <th>Mejl</th>
             <th>Adresa</th>
             <th>Telefon</th>
+            <th>Pristup</th>
+            <th>Obrisan</th>
             <th>Akcije</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let patient of patients;  let i = index">
             <td>{{i + 1}}</td>
-            <!--      <td>-->
-            <!--        <div class="d-grid">-->
-            <!--          <button (click)="changeApprovedPatient(patient)" class="btn btn-secondary  btn-sm"-->
-            <!--                  type="button">{{buttonApprovedText(patient)}}</button>-->
-            <!--        </div>-->
-            <!--      </td>-->
             <td>
                 <input type="text" class="form-control" [(ngModel)]="patient.firstname">
             </td>
@@ -42,7 +38,23 @@
             <td>
                 <input type="text" class="form-control" [(ngModel)]="patient.phone">
             </td>
-            <td>Akcija</td> <!-- TODO -->
+            <td>
+                <select class="form-select" [(ngModel)]="patient.approved">
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-select" [(ngModel)]="patient.deleted">
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+            </td>
+            <td>
+                <button (click)="changePatient(patient)" class="btn btn-dark"
+                        type="button">Sačuvaj
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -50,7 +62,7 @@
 
 <legend class="text-center">Menadžer vidi sve lekare</legend>
 
-<div class="table-responsive-sm">
+<div class="table-responsive-sm m-2">
     <table class="table table-light table-bordered border-2">
         <thead>
         <tr>
@@ -64,19 +76,14 @@
             <th>Licenca</th>
             <th>Specijalizacija</th>
             <th>Ogranak medicine</th>
+            <th>Pristup</th>
+            <th>Blokiran</th>
             <th>Akcije</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let doctor of doctors;  let i = index">
-            <td>{{i + 1}}</td>
-            <!--      <td>-->
-            <!--        <div class="d-grid">-->
-            <!--          <button (click)="changeApprovedDoctor(doctor)" class="btn btn-secondary  btn-sm"-->
-            <!--                  type="button">{{buttonApprovedText(doctor)}}-->
-            <!--          </button>-->
-            <!--        </div>-->
-            <!--      </td>-->
+            <td [ngClass]="{'danger' : doctor.approved}">{{i + 1}}</td>
             <td>
                 <input type="text" class="form-control" [(ngModel)]="doctor.firstname">
             </td>
@@ -99,15 +106,37 @@
                 <input type="text" class="form-control" [(ngModel)]="doctor.licenceId">
             </td>
             <td>
-                <input type="text" class="form-control" [(ngModel)]="doctor.specialization">
+                <select class="form-select" [(ngModel)]="doctor.specialization">
+                    <option *ngFor="let specialization of specializations"
+                            [value]="specialization">{{specialization._id}}
+                    </option>
+                </select>
             </td>
             <td>
                 <input type="text" class="form-control" [(ngModel)]="doctor.medicineBranch">
             </td>
-            <td>Akcija</td> <!-- TODO -->
+            <td>
+                <select class="form-select" [(ngModel)]="doctor.approved">
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-select" [(ngModel)]="doctor.deleted">
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+            </td>
+            <td>
+                <button (click)="changeDoctor(doctor)" class="btn btn-dark"
+                        type="button">Sačuvaj
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-
+<div id="alert" class="alert alert-danger" role="alert">
+    {{message}}
+</div>

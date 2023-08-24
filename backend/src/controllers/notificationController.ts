@@ -1,6 +1,5 @@
 import express from 'express';
 import NotificationModel from "../models/notifications";
-import AppointmentTypeModel from "../models/appointmentType";
 
 export class NotificationController {
     create = (req: express.Request, res: express.Response) => {
@@ -27,7 +26,8 @@ export class NotificationController {
         let notification = new NotificationModel(req.body.notification);
         NotificationModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    'seen': notification.seen
+                    'active': notification.active,
+                    'seenByPatients': notification.seenByPatients
                 },
             },
             {new: true}, (err, patient) => {

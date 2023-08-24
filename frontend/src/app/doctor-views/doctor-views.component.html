@@ -56,7 +56,11 @@
                 <a routerLink="/doctor/patientRecord/{{appointment.patientId}}">{{appointment.patientId}}</a>
             </td>
             <td>{{appointment.reason}}</td>
-            <td>{{appointment.date}}</td>
+            <td>
+                {{toLocalDate(appointment.date)}}
+                <br>
+                {{toLocaleTimeString(appointment.date)}}
+            </td>
             <td *ngIf="appointment.canceled" class="table-danger">Da</td>
             <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
             <td>
@@ -80,9 +84,64 @@
     </table>
 </div>
 
-<div id="alert" class="alert alert-danger " role="alert">
+<div id="alert" class="alert alert-danger m-2" role="alert">
     <div>
         {{message}}
     </div>
 </div>
 
+<legend class="text-center">Moji izveštaj</legend>
+
+<div class="table-responsive-sm m-2">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Pregled</th>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Datum</th>
+            <th>Akcija</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let report of myReports;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{report.appointmentId}}</td>
+            <td>{{report.name}}</td>
+            <td>{{report.description}}</td>
+            <td>
+                {{toLocalDate(report.date)}}
+                <br>
+                {{toLocaleTimeString(report.date)}}
+            </td>
+            <td>
+                Nema
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td>Novo</td>
+            <td>
+                <select [(ngModel)]="newReport.appointmentId" class="form-select" aria-label="Default select example">
+                    <option *ngFor="let appointment of appointmentsNotCanceled" [value]="appointment._id">
+                        {{appointment.appointmentType}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input [(ngModel)]="newReport.name" type="text" class="form-control" placeholder="Naziv">
+            </td>
+            <td>
+                <input [(ngModel)]="newReport.description" type="text" class="form-control" placeholder="Opis">
+            </td>
+            <td>
+                <input [(ngModel)]="newReport.date" type="datetime-local" class="form-control">
+            </td>
+            <td>
+                <button (click)="addReport()" class="btn btn-secondary btn-sm" type="button">Dodaj</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

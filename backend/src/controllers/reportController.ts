@@ -69,7 +69,6 @@ export class ReportController {
 
     readByDoctorId = (req: express.Request, res: express.Response) => {
         let doctorId = req.body.doctorId;
-        // find appointments by doctorId and join with reports by appointmentId
         AppointmentModel.find({'doctorId': doctorId}, (err, appointments) => {
             if (err) {
                 console.log(err);

@@ -1,0 +1,47 @@
+<app-navigation-manager></app-navigation-manager>
+
+<legend class="text-center">Akcije i promocije</legend>
+
+
+<div class="table-responsive-sm m-2">
+    <table class="table table-light table-bordered border-2">
+
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Vidjeno</th>
+            <th>Akcija</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let notification of notifications; let i = index">
+            <td [ngClass]="{'table-danger':!notification.active}">{{i + 1}}</td>
+            <td>{{notification.name}}</td>
+            <td>{{notification.description}}</td>
+            <td>{{notification.seenByPatients}}</td>
+            <td>
+                <button class="btn btn-dark" (click)="deactivate(notification)">Aktivacija</button>
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td>Novo</td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="newNotification.name">
+            </td>
+            <td colspan="2">
+                <input type="text" class="form-control" [(ngModel)]="newNotification.description">
+            </td>
+            <td>
+                <button class="btn btn-dark" (click)="addNotification()">Dodaj</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="alert" class="alert alert-danger m-2" role="alert">
+    {{message}}
+</div>

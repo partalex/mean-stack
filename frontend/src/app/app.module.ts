@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
+
 import {FormsModule} from "@angular/forms";
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -34,6 +35,7 @@ import {
 } from './patient-schedule-appointment/patient-schedule-appointment.component';
 import { PatientDoctorProfileComponent } from './patient-doctor-profile/patient-doctor-profile.component';
 import { DoctorPatientRecordComponent } from './doctor-patient-record/doctor-patient-record.component';
+import { ManagerNotificationComponent } from './manager-notification/manager-notification.component';
 
 @NgModule({
     declarations: [
@@ -66,6 +68,7 @@ import { DoctorPatientRecordComponent } from './doctor-patient-record/doctor-pat
         PatientScheduleAppointmentComponent,
         PatientDoctorProfileComponent,
         DoctorPatientRecordComponent,
+        ManagerNotificationComponent,
     ],
     imports: [
         BrowserModule,

@@ -32,10 +32,14 @@ export class DoctorController {
                     'username': doctor.username,
                     'password': doctor.password,
                     'approved': doctor.approved,
+                    'deleted': doctor.deleted,
                     'address': doctor.address,
-                    'phone': doctor.phone,
                     'mail': doctor.mail,
-                    'image': doctor.image
+                    'image': doctor.image,
+                    'phone': doctor.phone,
+                    'licenceId': doctor.licenceId,
+                    'specialization': doctor.specialization,
+                    'medicineBranch': doctor.medicineBranch
                 },
             },
             {new: true}, (err, newDoctor) => {

@@ -31,7 +31,7 @@ export class UnregisteredLoginDoctorComponent implements OnInit {
         }
         this.serviceSession.loginDoctor(this.username, this.password).subscribe((doctor: Doctor) => {
             if (doctor != null) {
-                if (doctor.approved) {
+                if (doctor.approved && doctor.deleted == false) {
                     localStorage.setItem("loggedInDoctor", doctor._id)
                     this.router.navigate(["doctor"]).then(r => console.log(r))
                 } else {

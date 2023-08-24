@@ -5,7 +5,7 @@ export class ReportsAppointment{
     appointmentId: string;
     name: string;
     description: string;
-    date: string;
+    date: Date;
     appointment: Appointment[]
 
 }

@@ -3,57 +3,70 @@ import {Patient} from "../../model/patient";
 import {PatientService} from "../services/patient.service";
 import {Doctor} from "../../model/doctor";
 import {DoctorService} from "../services/doctor.service";
+import {Specialization} from "../../model/specialization";
+import {SpecializationService} from "../services/specialization.service";
 
 @Component({
-  selector: 'app-manager-approve-patient',
-  templateUrl: './manager-approve-patient.component.html',
-  styleUrls: ['./manager-approve-patient.component.css']
+    selector: 'app-manager-approve-patient',
+    templateUrl: './manager-approve-patient.component.html',
+    styleUrls: ['./manager-approve-patient.component.css']
 })
 export class ManagerApprovePatientComponent implements OnInit {
 
-  constructor(private servicePatient: PatientService, private serviceDoctor: DoctorService) {
-  }
-
-  ngOnInit(): void {
-    this.getAllPatients()
-    this.getAllDoctors()
-  }
-
-  patients: Patient[]
-  doctors: Doctor[]
-
-  buttonApprovedText(patient) {
-    if (patient.approved) {
-      return "Oduzmi"
-    } else {
-      return "Dozvoli"
+    constructor(private servicePatient: PatientService, private serviceDoctor: DoctorService, private specializationService: SpecializationService) {
     }
-  }
 
-  getAllPatients() {
-    this.servicePatient.readAll().subscribe((patients: Patient[]) => {
-      this.patients = patients
-    })
-  }
+    ngOnInit(): void {
+        this.getAllPatients()
+        this.getAllDoctors()
+        this.getAllSpecializations()
+        this.alert = document.getElementById("alert")
+        this.alert.style.visibility = "hidden"
+        this.message = ""
+    }
 
-  getAllDoctors() {
-    this.serviceDoctor.readAll().subscribe((doctors: Doctor[]) => {
-      this.doctors = doctors
-    })
-  }
+    patients: Patient[]
+    doctors: Doctor[]
+    specializations: Specialization[]
+    message: string
+    alert: HTMLElement;
 
-  changeApprovedPatient(patient) {
-    patient.approved = !patient.approved
-    this.servicePatient.update(patient).subscribe((newPatient: Patient) => {
-      patient = newPatient
-      this.ngOnInit()
-    })
-  }
+    getAllSpecializations() {
+        this.specializationService.readAll().subscribe((specializations: Specialization[]) => {
+            this.specializations = specializations
+        })
+    }
 
-  changeApprovedDoctor(doctor) {
-    doctor.approved = !doctor.approved
-    this.serviceDoctor.update(doctor).subscribe((newDoctor: Doctor) => {
-      this.ngOnInit()
-    })
-  }
+    buttonApprovedText(patient) {
+        if (patient.approved) {
+            return "Oduzmi"
+        } else {
+            return "Dozvoli"
+        }
+    }
+
+    getAllPatients() {
+        this.servicePatient.readAll().subscribe((patients: Patient[]) => {
+            this.patients = patients
+        })
+    }
+
+    getAllDoctors() {
+        this.serviceDoctor.readAll().subscribe((doctors: Doctor[]) => {
+            this.doctors = doctors
+        })
+    }
+
+    changePatient(patient) {
+        this.servicePatient.update(patient).subscribe((newPatient: Patient) => {
+            patient = newPatient
+            this.ngOnInit()
+        })
+    }
+
+    changeDoctor(doctor) {
+        this.serviceDoctor.update(doctor).subscribe((newDoctor: Doctor) => {
+            this.ngOnInit()
+        })
+    }
 }

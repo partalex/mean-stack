@@ -28,15 +28,16 @@ export class PatientController {
         let patient = req.body.patient;
         PatientModel.findOneAndUpdate({'_id': _id}, {
                 $set: {
-                    firstname: patient.firstname,
-                    lastname: patient.lastname,
-                    username: patient.username,
-                    password: patient.password,
-                    approved: patient.approved,
-                    address: patient.address,
-                    phone: patient.phone,
-                    mail: patient.mail,
-                    image: patient.image
+                    'firstname': patient.firstname,
+                    'lastname': patient.lastname,
+                    'username': patient.username,
+                    'password': patient.password,
+                    'approved': patient.approved,
+                    'deleted': patient.deleted,
+                    'address': patient.address,
+                    'phone': patient.phone,
+                    'mail': patient.mail,
+                    'image': patient.image
                 },
             },
             {new: true}, (err, patient) => {

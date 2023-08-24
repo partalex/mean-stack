@@ -6,6 +6,7 @@ let Doctor = new Scheme({
     _id: {
         type: String,
         required: true,
+        alias: "id"
     },
     firstname: {
         type: String,

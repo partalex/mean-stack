@@ -36,6 +36,10 @@ export class PatientScheduleAppointmentComponent implements OnInit {
         });
     }
 
+    dateToString(date: Date) {
+        return new Date(date).toLocaleDateString() + " " + new Date(date).toLocaleTimeString()
+    }
+
     scheduleAppointment() {
         if (this.newAppointment.reason == "" || this.newAppointment.appointmentType == "" || this.newAppointment.date == null) {
             this.message = "Sva polja moraju biti popunjena."

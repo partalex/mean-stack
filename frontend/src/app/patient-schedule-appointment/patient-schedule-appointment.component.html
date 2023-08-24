@@ -7,7 +7,7 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Tip pregleda</th>
+            <th>Vrsta</th>
             <th>Ukratno</th>
             <th>Više</th>
             <th>Specijalizacija</th>
@@ -38,7 +38,7 @@
         <tr>
             <th>#</th>
             <th>Pregled</th>
-            <th>Razlog pregelda</th>
+            <th>Razlog</th>
             <th>Datum</th>
             <th>Otkazan</th>
         </tr>
@@ -48,7 +48,8 @@
             <td>{{i + 1}}</td>
             <td>{{appointment.appointmentType}}</td>
             <td>{{appointment.reason}}</td>
-            <td>{{appointment.date}}</td>
+<!--            <td>{{appointment.date}}</td>-->
+            <td>{{dateToString(appointment.date)}}</td>
             <td *ngIf="appointment.canceled" class="table-danger">Da</td>
             <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
         </tr>

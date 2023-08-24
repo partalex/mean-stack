@@ -35,4 +35,8 @@ export class ReportService {
     readByPatientId(patientId) {
         return this.http.post(`${this.uri}/readByPatientId`, {patientId: patientId})
     }
+
+    readByDoctorId(doctorId) {
+        return this.http.post(`${this.uri}/readByDoctorId`, {doctorId: doctorId})
+    }
 }

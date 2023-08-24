@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 const Scheme = mongoose.Schema;
 
 let Notification = new Scheme({
-    patientId: {
-        type: String,
+    seenByPatients: {
+        type: Array,
         required: true
     },
-    seen: {
+    active: {
         type: Boolean,
         required: true
     },
