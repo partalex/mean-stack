@@ -109,7 +109,7 @@
         <tbody>
         <tr *ngFor="let report of myReports;  let i = index">
             <td>{{i + 1}}</td>
-            <td>{{report.appointmentId}}</td>
+            <td>{{getAppointmentTypeName(report.appointmentId)}}</td>
             <td>{{report.name}}</td>
             <td>{{report.description}}</td>
             <td>
@@ -127,7 +127,7 @@
             <td>Novo</td>
             <td>
                 <select [(ngModel)]="newReport.appointmentId" class="form-select" aria-label="Default select example">
-                    <option *ngFor="let appointment of appointmentsNotCanceled" [value]="appointment._id">
+                    <option *ngFor="let appointment of appointmentsRegular" [value]="appointment._id">
                         {{appointment.appointmentType}}
                     </option>
                 </select>

@@ -24,5 +24,9 @@ appointmentRouter.route('/readByPatientId').post(
     (req, res) => new AppointmentController().readByPatientId(req, res)
 )
 
+appointmentRouter.route('/readByDoctorIdAndDontHaveReport').post(
+    (req, res) => new AppointmentController().readByDoctorIdAndDontHaveReport(req, res)
+)
+
 
 export default appointmentRouter;

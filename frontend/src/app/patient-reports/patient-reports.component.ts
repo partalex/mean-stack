@@ -70,6 +70,7 @@ export class PatientReportsComponent implements OnInit {
         let doc = new jsPDF()
         autoTable(doc, {html: '#tableReports'})
         doc.save('table.pdf')
+        // sava to
     }
 
 

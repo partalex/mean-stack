@@ -72,6 +72,30 @@ export class AppointmentController {
                 res.json(appointments)
         })
     }
+    readByDoctorIdAndDontHaveReport = (req: express.Request, res: express.Response) => {
+        let doctorId = req.body.doctorId
+        AppointmentModel.aggregate([
+            {
+                $lookup: {
+                    from: "reports",
+                    localField: "_id",
+                    foreignField: "appointmentId",
+                    as: "reports"
+                }
+            },
+            {
+                $match: {
+                    "doctorId": doctorId,
+                    "canceled": false,
+                }
+            }
+        ], (err, appointments) => {
+            if (err)
+                console.log(err)
+            else
+                res.json(appointments)
+        })
+    }
 
     readByPatientId = (req: express.Request, res: express.Response) => {
         let patientId = req.body.patientId;

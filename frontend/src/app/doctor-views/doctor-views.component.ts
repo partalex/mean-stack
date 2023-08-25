@@ -30,6 +30,14 @@ export class DoctorViewsComponent implements OnInit {
 
         this.appointmentsDescendingSorted = false
         this.reportsDescendingSorted = false
+        this.getRegularAppointments()
+
+    }
+
+    getRegularAppointments() {
+        this.serviceAppointment.readByDoctorIdAndDontHaveReport(this.doctorId).subscribe((appointmentsRegular: Appointment[]) => {
+            this.appointmentsRegular = appointmentsRegular
+        })
     }
 
     cancelAppointment(appointment) {
@@ -56,7 +64,7 @@ export class DoctorViewsComponent implements OnInit {
     }
 
     appointments: Appointment[]
-    appointmentsNotCanceled: Appointment[]
+    appointmentsRegular: Appointment[]
     registeredAppointmentTypes: AppointmentType[]
     myReports: Report[]
     alert: HTMLElement;
@@ -72,6 +80,12 @@ export class DoctorViewsComponent implements OnInit {
     }
 
     addReport() {
+        if (this.appointmentsRegular.length == 0) {
+            this.message = "Nemate zakazanih pregleda."
+            this.alert.style.visibility = "visible"
+            return
+        }
+
         if (this.newReport.appointmentId == "" || this.newReport.name == "" || this.newReport.description == "" || this.newReport.date == null) {
             this.message = "Niste uneli sve podatke."
             this.alert.style.visibility = "visible"
@@ -87,10 +101,14 @@ export class DoctorViewsComponent implements OnInit {
     sortAppointments() {
         this.appointmentsDescendingSorted = !this.appointmentsDescendingSorted
         if (this.appointmentsDescendingSorted)
-            this.appointmentsNotCanceled.sort((a, b) => (a.date < b.date) ? 1 : -1)
+            this.appointmentsRegular.sort((a, b) => (a.date < b.date) ? 1 : -1)
         else
-            this.appointmentsNotCanceled.sort((a, b) => (a.date > b.date) ? 1 : -1)
+            this.appointmentsRegular.sort((a, b) => (a.date > b.date) ? 1 : -1)
 
+    }
+
+    getAppointmentTypeName(appointmentId) {
+        return this.appointments.find(appointment => appointment._id == appointmentId).appointmentType
     }
 
     sortReports() {
@@ -110,7 +128,8 @@ export class DoctorViewsComponent implements OnInit {
     readAllByDoctorId(doctorId) {
         this.serviceAppointment.readByDoctorId(doctorId).subscribe((appointments: Appointment[]) => {
             this.appointments = appointments
-            this.appointmentsNotCanceled = this.appointments.filter(appointment => appointment.canceled == false)
         })
     }
+
+
 }

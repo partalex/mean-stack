@@ -40,5 +40,8 @@ export class AppointmentService {
   readByPatientId(patientId) {
     return this.http.post(`${this.uri}/readByPatientId`, {patientId: patientId})
   }
+  readByDoctorIdAndDontHaveReport(doctorId) {
+    return this.http.post(`${this.uri}/readByDoctorIdAndDontHaveReport`, {doctorId: doctorId})
+  }
 
 }
