@@ -8,6 +8,7 @@ import appointmentRouter from "./routers/appointment.routes";
 import appointmentTypeRouter from "./routers/appointmentType.routes";
 import unregisteredRouter from './routers/unregistred.routes';
 import reportRouter from "./routers/report.routes";
+import reportPdfRouter from "./routers/reportPdf.routes";
 import specializationRouter from "./routers/specialization.routes";
 import notificationRouter from "./routers/notification.routes";
 
@@ -29,6 +30,7 @@ router.use('/unregistered', unregisteredRouter);
 router.use('/appointment', appointmentRouter);
 router.use('/appointmentType', appointmentTypeRouter);
 router.use('/report', reportRouter);
+router.use('/reportPdf', reportPdfRouter);
 router.use('/specialization', specializationRouter);
 router.use('/notification', notificationRouter);
 

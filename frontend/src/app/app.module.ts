@@ -37,6 +37,7 @@ import { PatientDoctorProfileComponent } from './patient-doctor-profile/patient-
 import { DoctorPatientRecordComponent } from './doctor-patient-record/doctor-patient-record.component';
 import { ManagerNotificationComponent } from './manager-notification/manager-notification.component';
 import {NgOptimizedImage} from "@angular/common";
+import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 
 @NgModule({
     declarations: [
@@ -70,6 +71,7 @@ import {NgOptimizedImage} from "@angular/common";
         PatientDoctorProfileComponent,
         DoctorPatientRecordComponent,
         ManagerNotificationComponent,
+        ReportPdfComponent,
     ],
     imports: [
         BrowserModule,

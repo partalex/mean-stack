@@ -5,6 +5,8 @@ import {AppointmentService} from "../services/appointment.service";
 import {ReportsAppointment} from "../../model/help-stuctures/reportAppointment";
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
+import {ReportPdfService} from "../services/reportPdf.service";
+import {ReportPdf} from "../../model/reportPdf";
 
 @Component({
     selector: 'app-patient-reports',
@@ -13,7 +15,7 @@ import autoTable from 'jspdf-autotable'
 })
 export class PatientReportsComponent implements OnInit {
 
-    constructor(private serviceReport: ReportService, private serviceAppointment: AppointmentService) {
+    constructor(private serviceReport: ReportService, private serviceAppointment: AppointmentService, private reportPdfService: ReportPdfService) {
     }
 
     ngOnInit(): void {
@@ -55,7 +57,6 @@ export class PatientReportsComponent implements OnInit {
             })
             this.appointmentsNonDescendingSorted = true
         }
-
     }
 
     toLocalDate(date: Date) {
@@ -70,9 +71,12 @@ export class PatientReportsComponent implements OnInit {
         let doc = new jsPDF()
         autoTable(doc, {html: '#tableReports'})
         doc.save('table.pdf')
-        // sava to
-    }
 
+        let reportPdf = new ReportPdf(doc.output('datauristring'))
+        this.reportPdfService.create(reportPdf).subscribe(() => {
+        })
+
+    }
 
     getMyReports(patientId) {
         this.serviceReport.readByPatientId(patientId).subscribe((reports: ReportsAppointment[]) => {
@@ -92,5 +96,4 @@ export class PatientReportsComponent implements OnInit {
             this.ngOnInit()
         })
     }
-
 }
