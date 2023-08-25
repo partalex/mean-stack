@@ -6,8 +6,7 @@ export class PatientController {
         let patient = new PatientModel(req.body.patient);
         patient.save((err, resp) => {
             if (err) {
-                console.log(err);
-                res.status(400).json({'message': 'error'});
+                res.status(400).json({'message': 'Korisničko ime ili mejl već postoji.'});
             } else {
                 res.json({"message": "ok"})
             }

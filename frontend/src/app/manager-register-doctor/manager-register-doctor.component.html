@@ -6,81 +6,83 @@
 
 <form class="row m-2">
 
-  <div class="col-md-6">
-    <img class="img-thumbnail" src="{{image}}" height="300" width="300">
-  </div>
+    <div class="col-md-6">
+        <img class="img-thumbnail" src="{{doctor.image}}" height="300" width="300">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputfirstname" class="form-label">Ime</label>
-    <input type="text" class="form-control" id="inputfirstname" [(ngModel)]="firstname" name="firstname">
+    <div class="col-md-6">
+        <label for="inputfirstname" class="form-label">Ime</label>
+        <input type="text" class="form-control" id="inputfirstname" [(ngModel)]="doctor.firstname" name="firstname">
 
-    <label for="inputLastname" class="form-label">Prezime</label>
-    <input type="text" class="form-control" id="inputLastname" [(ngModel)]="lastname" name="lastname">
+        <label for="inputLastname" class="form-label">Prezime</label>
+        <input type="text" class="form-control" id="inputLastname" [(ngModel)]="doctor.lastname" name="lastname">
 
-    <label for="inputUsername" class="form-label">Koričniko ime</label>
-    <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" name="username">
+        <label for="inputUsername" class="form-label">Koričniko ime</label>
+        <input type="text" class="form-control" id="inputUsername" [(ngModel)]="doctor.username" name="username">
 
-    <label for="inputPassword" class="form-label">Lozinka</label>
-    <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" name="password">
+        <label for="inputPassword" class="form-label">Lozinka</label>
+        <input type="password" class="form-control" id="inputPassword" [(ngModel)]="doctor.password" name="password">
 
-    <label for="inputConfirm" class="form-label">Potvrda lozinke</label>
-    <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm" name="passwordConfirm">
-  </div>
+        <label for="inputConfirm" class="form-label">Potvrda lozinke</label>
+        <input type="password" class="form-control" id="inputConfirm" [(ngModel)]="passwordConfirm"
+               name="passwordConfirm">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Adresa</label>
-    <input type="text" class="form-control" id="inputAddress" [(ngModel)]="address" name="address">
-  </div>
+    <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Adresa</label>
+        <input type="text" class="form-control" id="inputAddress" [(ngModel)]="doctor.address" name="address">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputPhone" class="form-label">Kontakt telefon</label>
-    <input type="text" class="form-control" id="inputPhone" [(ngModel)]="phone" name="phone">
-  </div>
+    <div class="col-md-6">
+        <label for="inputPhone" class="form-label">Kontakt telefon</label>
+        <input type="text" class="form-control" id="inputPhone" [(ngModel)]="doctor.phone" name="phone">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputMail" class="form-label">Mejl</label>
-    <input type="email" class="form-control" id="inputMail" [(ngModel)]="mail" name="email">
-  </div>
+    <div class="col-md-6">
+        <label for="inputMail" class="form-label">Mejl</label>
+        <input type="email" class="form-control" id="inputMail" [(ngModel)]="doctor.mail" name="email">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputLicenceId" class="form-label">Broj licence</label>
-    <input type="text" class="form-control" id="inputLicenceId" [(ngModel)]="licenceId" name="licenceId">
-  </div>
+    <div class="col-md-6">
+        <label for="inputLicenceId" class="form-label">Broj licence</label>
+        <input type="text" class="form-control" id="inputLicenceId" [(ngModel)]="doctor.licenceId" name="licenceId">
+    </div>
 
-  <div class="col-md-6">
-    <label for="inputSpecialization" class="form-label">Specijalizacija</label>
-    <select class="form-select" aria-label="Default select example" id="inputSpecialization"
-            [(ngModel)]="specialization" name="specialization">
-      <option selected>Odaberite specijalizaciju</option>
-      <option *ngFor="let spec of specializations">{{spec._id}}</option>
-    </select>
+    <div class="col-md-6">
+        <label for="inputSpecialization" class="form-label">Specijalizacija</label>
+        <select class="form-select" aria-label="Default select example" id="inputSpecialization"
+                [(ngModel)]="doctor.specialization" name="specialization">
+            <option selected>Odaberite specijalizaciju</option>
+            <option *ngFor="let spec of specializations">{{spec._id}}</option>
+        </select>
 
-  </div>
+    </div>
 
-  <div class="col-md-6">
-    <label for="formFile" class="form-label">Otpremite fotografiju</label>
-    <input (change)="onSelectFile($event)" class="form-control" type="file" id="formFile" accept=".png, .jpg">
-  </div>
+    <div class="col-md-6">
+        <label for="formFile" class="form-label">Otpremite fotografiju</label>
+        <input (change)="onSelectFile($event)" class="form-control" type="file" id="formFile" accept=".png, .jpg">
+    </div>
 
-  <div class="col-12">
-    <label for="inputMediciceBranch" class="form-label">Ogranak medicine</label>
-    <input type="text" class="form-control" id="inputMediciceBranch" [(ngModel)]="medicineBranch" name="mediciceBranch">
-  </div>
+    <div class="col-12">
+        <label for="inputMediciceBranch" class="form-label">Ogranak medicine</label>
+        <input type="text" class="form-control" id="inputMediciceBranch" [(ngModel)]="doctor.medicineBranch"
+               name="mediciceBranch">
+    </div>
 
 
-  <div class="col-12">
-    <br>
-    <button type="submit" (click)="registerDoctor()" class="btn btn-dark">Registruj lekara</button>
-  </div>
+    <div class="col-12">
+        <br>
+        <button type="submit" (click)="registerDoctor()" class="btn btn-dark">Registruj lekara</button>
+    </div>
 
 </form>
 
-<div id="alert" class="alert alert-danger" role="alert">
-  {{message}}
+<div id="alert" class="alert alert-danger m-2" role="alert">
+    {{message}}
 </div>
 
-<div id="alertSuccess" class="alert alert-success" role="alert">
-  {{message}}
+<div id="alertSuccess" class="alert alert-success m-2" role="alert">
+    {{message}}
 </div>
 
 

@@ -3,6 +3,7 @@ import {Patient} from "../../model/patient";
 import {Router} from "@angular/router";
 import {CheckService} from "../services/check.service";
 import {PatientService} from "../services/patient.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
     selector: 'app-register-patient',
@@ -17,10 +18,6 @@ export class RegisterPatientComponent implements OnInit {
         this.alert = document.getElementById("alert");
         this.alert.style.visibility = "hidden"
         this.patient = new Patient("", "", "", "", false, "", "", "", this.defaultImage);
-    }
-
-    getRandomId() {
-        return Math.random().toString(36);
     }
 
     passwordConfirm = "";
@@ -59,16 +56,16 @@ export class RegisterPatientComponent implements OnInit {
             this.alert.style.visibility = "visible"
             return
         }
-        this.patient._id = this.getRandomId()
+        this.patient._id = Math.random().toString(36)
         this.patientService.create(this.patient).subscribe((resp: Object) => {
-            if (resp['message'] == 'ok')
-                this.router.navigate(["patient"]).then(() => console.log("Navigated to patient")
-                )
-            else {
-                this.message = "Korisničko ime ili email je zauzet."
+                if (resp['message'] == 'ok')
+                    this.router.navigate(["patient"])
+            },
+            (error: HttpErrorResponse) => {
+                this.message = "Korisničko ime ili mejl je zauzet."
                 this.alert.style.visibility = "visible"
             }
-        });
+        );
     }
 }
 

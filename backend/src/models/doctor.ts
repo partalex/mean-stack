@@ -52,6 +52,7 @@ let Doctor = new Scheme({
     },
     licenceId: {
         type: String,
+        unique: true,
         required: true
     },
     specialization: {

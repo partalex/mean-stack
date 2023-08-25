@@ -25,25 +25,13 @@ export class PatientService {
         return this.http.post(`${this.uri}/update`, {patient: patient})
     }
 
-    delete(id) {
-        return this.http.post(`${this.uri}/delete`, {id: id})
-    }
-
-    readByUsername(username) {
-        return this.http.post(`${this.uri}/readByUsername`, {username: username})
-    }
-
-    readByMail(mail) {
-        return this.http.post(`${this.uri}/readByMail`, {mail: mail})
-    }
-
     readAll() {
         return this.http.post(`${this.uri}/readAll`, {})
     }
 
     logOutPatient() {
         localStorage.removeItem("loggedInPatient")
-        this.router.navigate(['/loginPatient']).then(r => console.log(r))
+        this.router.navigate(['/loginPatient'])
     }
 
 }
