@@ -104,13 +104,13 @@ export class InitializationService {
         })
 
         //  ============= Doctors ==================
-        let doctor1 = new Doctor("Đoko", "Ević", "doctor1", "Doctrqwe1$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor1@gmail.com", defaultImage, "0123456799", specialization1._id, specialization1._id);
-        let doctor2 = new Doctor("Ivan", "Grgurović", "doctor2", "Doctrqwe2$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor2@gmail.com", defaultImage, "8012345673", specialization2._id, specialization2._id);
-        let doctor3 = new Doctor("Slavoljub", "Zorić", "doctor3", "Doctrqwe3$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor3@gmail.com", defaultImage, "8901234567", specialization3._id, specialization3._id);
-        let doctor4 = new Doctor("Anastasije", "Todorović", "doctor4", "Doctrqwe4$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor4@gmail.com", defaultImage, "9901234567", specialization4._id, specialization4._id);
-        let doctor5 = new Doctor("Ljuba", "Gavrilović", "doctor5", "Doctrqwe5$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor5@gmail.com", defaultImage, "1101234567", specialization5._id, specialization5._id);
-        let doctor6 = new Doctor("Jovan", "Ignjatović", "doctor6", "Doctrqwe6$", "0123456789", false, "Rankeova 16, Novi Sad", "doctor6@gmail.com", defaultImage, "11d01234567", specialization6._id, specialization5._id);
-        let doctor7 = new Doctor("Petar", "Nikolić", "doctor7", "Doctrqwe7$", "0123456789", false, "Rankeova 16, Novi Sad", "doctor7@gmail.com", defaultImage, "11a01234567", specialization7._id, specialization5._id, true);
+        let doctor1 = new Doctor("Đoko", "Ević", "doctorDR1", "Doctrqwe1$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor1@gmail.com", "0123456799", specialization1._id, specialization1._id);
+        let doctor2 = new Doctor("Ivan", "Grgurović", "doctorDR2", "Doctrqwe2$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor2@gmail.com", "8012345673", specialization2._id, specialization2._id);
+        let doctor3 = new Doctor("Slavoljub", "Zorić", "doctorDR3", "Doctrqwe3$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor3@gmail.com", "8901234567", specialization3._id, specialization3._id);
+        let doctor4 = new Doctor("Anastasije", "Todorović", "doctorDR4", "Doctrqwe4$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor4@gmail.com", "9901234567", specialization4._id, specialization4._id);
+        let doctor5 = new Doctor("Ljuba", "Gavrilović", "doctorDR5", "Doctrqwe5$", "0123456789", true, "Rankeova 16, Novi Sad", "doctor5@gmail.com", "1101234567", specialization5._id, specialization5._id);
+        let doctor6 = new Doctor("Jovan", "Ignjatović", "doctorDR6", "Doctrqwe6$", "0123456789", false, "Rankeova 16, Novi Sad", "doctor6@gmail.com", "11d01234567", specialization6._id, specialization5._id);
+        let doctor7 = new Doctor("Petar", "Nikolić", "doctorDR7", "Doctrqwe7$", "0123456789", false, "Rankeova 16, Novi Sad", "doctor7@gmail.com", "11a01234567", specialization7._id, specialization5._id, true);
 
         this.doctorService.create(doctor1).subscribe(() => {
         })

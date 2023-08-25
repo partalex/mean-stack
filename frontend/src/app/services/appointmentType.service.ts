@@ -13,7 +13,7 @@ export class AppointmentTypeService {
     constructor(private http: HttpClient) {
     }
 
-    create(appointmentType) {
+    create(appointmentType: AppointmentType) {
         return this.http.post(`${this.uri}/create`, {appointmentType: appointmentType})
     }
 

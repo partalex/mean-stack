@@ -23,7 +23,7 @@ export class DoctorService {
   }
 
   update(doctor) {
-    return this.http.post(`${this.uri}/create`, {doctor: doctor})
+    return this.http.post(`${this.uri}/update`, {doctor: doctor})
   }
 
   delete(id) {
@@ -54,6 +54,5 @@ export class DoctorService {
   readAllJoinSpecialization() {
     return this.http.post(`${this.uri}/readAllJoinSpecialization`, {})
   }
-
 
 }

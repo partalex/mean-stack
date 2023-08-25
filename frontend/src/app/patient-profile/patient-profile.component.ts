@@ -11,7 +11,6 @@ import {CheckService} from "../services/check.service";
 export class PatientProfileComponent implements OnInit {
 
     constructor(private servicePatient: PatientService, private serviceCheck: CheckService) {
-        this.readById(localStorage.getItem("loggedInPatient"))
     }
 
     ngOnInit(): void {
@@ -19,46 +18,9 @@ export class PatientProfileComponent implements OnInit {
         this.alert.style.visibility = "hidden"
         this.alertSuccess = document.getElementById("alertSuccess")
         this.alertSuccess.style.visibility = "hidden"
-    }
 
-    flipDisabled() {
-        this.changing = !this.changing
-        if (this.changing) {
-            document.getElementById("fieldset").removeAttribute("disabled")
-            document.getElementById("saveChanges").removeAttribute("disabled")
-        } else {
-            document.getElementById("fieldset").setAttribute("disabled", "true")
-            document.getElementById("saveChanges").setAttribute("disabled", "true")
-        }
-    }
-
-    flipDisabledPassword() {
-        this.changingPassword = !this.changingPassword
-        if (this.changingPassword) {
-            document.getElementById("fieldsetPassword").removeAttribute("disabled")
-            document.getElementById("saveNewPassword").removeAttribute("disabled")
-        } else {
-            document.getElementById("fieldsetPassword").setAttribute("disabled", "true")
-            document.getElementById("saveNewPassword").setAttribute("disabled", "true")
-        }
-    }
-
-    buttonDisabledText() {
-        if (!this.changing) {
-            return "Izmeni informacije"
-        }
-        return "Ne menjaj informacije"
-    }
-
-    saveChanges() {
-        if (this.patient.username == "") {
-            this.alert.style.visibility = "visible"
-            this.message = "Username cannot be empty.";
-            return
-        }
-        this.message = "Uspešno ste izmenili informacije."
-        this.message = "Uspešno ste izmenili informacije."
-        this.update()
+        this.patient = new Patient("", "", "", "", false, "", "", "")
+        this.getPatient(localStorage.getItem("loggedInPatient"))
     }
 
     onSelectFile(event) {
@@ -66,29 +28,42 @@ export class PatientProfileComponent implements OnInit {
             let reader = new FileReader()
             reader.readAsDataURL(event.target.files[0])
             reader.onload = (event: any) => {
-                this.patient.image = event.target.result
+                this.newImage = event.target.result
+                let img = new Image()
+                img.src = this.newImage
+                img.onload = () => {
+                    if (img.height > 300 || img.width > 300) {
+                        this.message = "Slika mora biti manja od 300x300px."
+                        this.alert.style.visibility = "visible"
+                        return
+
+                    } else if (img.height < 100 || img.width < 100) {
+                        this.message = "Slika mora biti veća od 100x100px."
+                        this.alert.style.visibility = "visible"
+                        return
+                    }
+                    this.patient.image = this.newImage
+                }
             }
         }
     }
 
-    // fill with empty values
-    patient: Patient = new Patient("", "", "", "", false, "", "", "", ""    )
-    checkPassword = ""
-    newPassword = ""
-    checkNewPassword = ""
+    patient: Patient
+    checkPassword: string
+    newPassword: string
+    checkNewPassword: string
+    newImage: string
     message: string;
-    changing = false;
-    changingPassword = false;
     alert: HTMLElement;
     alertSuccess: HTMLElement
 
-    readById(id) {
-        this.servicePatient.read(id).subscribe((patient: Patient) => {
+    getPatient(patientId) {
+        this.servicePatient.read(patientId).subscribe((patient: Patient) => {
             this.patient = patient
         })
     }
 
-    saveNewPassword() {
+    updatePassword() {
 
         // check if new password is empty
         if (this.newPassword == "" || this.checkNewPassword == "" || this.patient.password == "") {
@@ -119,19 +94,22 @@ export class PatientProfileComponent implements OnInit {
 
         // set new password
         this.patient.password = this.newPassword
-        this.update()
+        this.updateInfo()
         this.servicePatient.logOutPatient()
     }
 
-    buttonDisabledPasswordText() {
-        if (!this.changingPassword)
-            return "Promeni lozinku"
-        return "Ne menjaj lozinku"
-    }
+    updateInfo() {
 
-    update() {
-        this.servicePatient.update(this.patient).subscribe((patient: Patient) => {
-            this.patient = patient
+        this.message = this.serviceCheck.checkPatientInfo(this.patient)
+        if (this.message != "") {
+            this.alert.style.visibility = "visible"
+            return
+        }
+
+        this.servicePatient.update(this.patient).subscribe(() => {
+            this.ngOnInit()
+            this.alertSuccess.style.visibility = "visible"
+            this.message = "Uspešno ste izmenili informacije."
         })
     }
 }

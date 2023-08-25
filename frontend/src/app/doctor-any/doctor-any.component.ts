@@ -3,6 +3,7 @@ import {AppointmentType} from "../../model/appointmentType";
 import {AppointmentTypeService} from "../services/appointmentType.service";
 import {Specialization} from "../../model/specialization";
 import {SpecializationService} from "../services/specialization.service";
+import {DoctorService} from "../services/doctor.service";
 
 @Component({
     selector: 'app-doctor-any',
@@ -11,7 +12,7 @@ import {SpecializationService} from "../services/specialization.service";
 })
 export class DoctorAnyComponent implements OnInit {
 
-    constructor(private serviceAppointmentType: AppointmentTypeService, private serviceSpecialization: SpecializationService) {
+    constructor(private serviceAppointmentType: AppointmentTypeService, private serviceSpecialization: SpecializationService, private doctorService: DoctorService) {
     }
 
     ngOnInit(): void {
@@ -31,9 +32,10 @@ export class DoctorAnyComponent implements OnInit {
     alert: HTMLElement;
     alertSuccess: HTMLElement;
     specializations: Specialization[]
-    selectionSelected = ""
+
 
     createNewAppointment() {
+        this.alert.style.visibility = "hidden"
         console.log(this.appointmentType)
         if (this.appointmentType.description == "" || this.appointmentType.descriptionStrong == "" || this.appointmentType.specialization == "" || this.appointmentType.price == 0) {
             this.message = "Sva polja moraju biti popunjena."
@@ -41,17 +43,28 @@ export class DoctorAnyComponent implements OnInit {
             return
         }
 
-        if (this.appointmentType.price < 0) {
-            this.message = "Price can't be negative!"
+        if (this.appointmentType.price < 0 || this.appointmentType.price % 500 != 0) {
+            this.message = "Cena pregleda mora biti: pozitivan broj, umnozak broja 500."
             this.alert.style.visibility = "visible"
             return
         }
 
-        this.alert.style.visibility = "hidden"
+        if (this.appointmentType.duration < 0 || this.appointmentType.duration % 15 != 0) {
+            this.message = "Trajanje pregleda mora biti: pozitivan broj, umnozak broja 15."
+            this.alert.style.visibility = "visible"
+            return
+        }
+
+        // add doctorId to appointmentType.doctors
+        this.appointmentType.doctors.push(localStorage.getItem("loggedInDoctor"))
+
 
         this.serviceAppointmentType.create(this.appointmentType).subscribe(() => {
             this.ngOnInit()
         })
+
+        this.alertSuccess.style.visibility = "visible"
+        this.message = "Uspesno ste kreirali novi tip pregleda."
 
     }
 

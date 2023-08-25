@@ -24,7 +24,7 @@ export class ManagerRegisterDoctorComponent implements OnInit {
     this.getAllSpecializations()
     this.message = ""
     this.passwordConfirm = ""
-    this.doctor = new Doctor("", "", "", "", "", false, "", "", this.defaultImage, "", "", "")
+    this.doctor = new Doctor("", "", "", "", "", false, "", "", "", "", "")
   }
 
   specializations: Specialization[]

@@ -13,9 +13,6 @@ import {Specialization} from "../../model/specialization";
 export class DoctorProfileComponent implements OnInit {
 
     constructor(private serviceDoctor: DoctorService, private serviceSpecialization: SpecializationService, private serviceCheck: CheckService) {
-        this.readById(localStorage.getItem("loggedInDoctor"))
-        this.getAllSpecializations()
-
     }
 
     ngOnInit(): void {
@@ -23,6 +20,9 @@ export class DoctorProfileComponent implements OnInit {
         this.alert.style.visibility = "hidden"
         this.alertSuccess = document.getElementById("alertSuccess")
         this.alertSuccess.style.visibility = "hidden"
+        this.doctor = new Doctor("", "", "", "", "", false, "", "", "", "", "")
+        this.getDoctor(localStorage.getItem("loggedInDoctor"))
+        this.getAllSpecializations()
     }
 
     dropDownClicked(specialization) {
@@ -30,52 +30,10 @@ export class DoctorProfileComponent implements OnInit {
         this.doctor.specialization = specialization
     }
 
-
     getAllSpecializations() {
         this.serviceSpecialization.readAll().subscribe((specializations: Specialization[]) => {
             this.specializations = specializations
         })
-    }
-
-    flipDisabled() {
-        this.changing = !this.changing
-        if (this.changing) {
-            document.getElementById("fieldset").removeAttribute("disabled")
-            document.getElementById("saveChanges").removeAttribute("disabled")
-        } else {
-            document.getElementById("fieldset").setAttribute("disabled", "true")
-            document.getElementById("saveChanges").setAttribute("disabled", "true")
-        }
-    }
-
-    flipDisabledPassword() {
-        this.changingPassword = !this.changingPassword
-        if (this.changingPassword) {
-            document.getElementById("fieldsetPassword").removeAttribute("disabled")
-            document.getElementById("saveNewPassword").removeAttribute("disabled")
-        } else {
-            document.getElementById("fieldsetPassword").setAttribute("disabled", "true")
-            document.getElementById("saveNewPassword").setAttribute("disabled", "true")
-        }
-    }
-
-    buttonDisabledText() {
-        if (!this.changing) {
-            return "Izmeni informacije"
-        }
-        return "Ne menjaj informacije"
-    }
-
-    saveChanges() {
-        if (this.doctor.username == "") {
-            this.alert.style.visibility = "visible"
-            this.message = "Username cannot be empty.";
-            return
-        }
-        this.alertSuccess.style.visibility = "visible"
-        this.message = "Uspešno ste izmenili informacije."
-        console.log("this.doctor")
-        this.update()
     }
 
     onSelectFile(event) {
@@ -83,31 +41,46 @@ export class DoctorProfileComponent implements OnInit {
             let reader = new FileReader()
             reader.readAsDataURL(event.target.files[0])
             reader.onload = (event: any) => {
-                this.doctor.image = event.target.result
+                this.newImage = event.target.result
+                let img = new Image()
+                img.src = this.newImage
+                img.onload = () => {
+                    if (img.height > 300 || img.width > 300) {
+                        this.message = "Slika mora biti manja od 300x300px."
+                        this.alert.style.visibility = "visible"
+                        return
+
+                    } else if (img.height < 100 || img.width < 100) {
+                        this.message = "Slika mora biti veća od 100x100px."
+                        this.alert.style.visibility = "visible"
+                        return
+                    }
+                    this.doctor.image = this.newImage
+                }
             }
         }
     }
 
-    doctor: Doctor = new Doctor("", "", "", "", "", false, "", "", "", "", "", "")
-    checkPassword = ""
-    newPassword = ""
-    checkNewPassword = ""
-    dropdownSelected = ""
+    doctor: Doctor
+    checkPassword: string
+    newPassword: string
+    newImage: string
+    checkNewPassword: string
+    dropdownSelected: string
     message: string;
-    changing = false;
-    changingPassword = false;
     alert: HTMLElement;
     alertSuccess: HTMLElement
     specializations: Specialization[]
 
-    readById(id) {
-        this.serviceDoctor.read(id).subscribe((doctor: Doctor) => {
+    getDoctor(doctorId) {
+        this.serviceDoctor.read(doctorId).subscribe((doctor: Doctor) => {
             this.doctor = doctor
             this.dropdownSelected = doctor.specialization
         })
     }
 
-    saveNewPassword() {
+    updatePassword() {
+
         // check if new password is empty
         if (this.newPassword == "" || this.checkNewPassword == "" || this.doctor.password == "") {
             this.message = "Polja ne smeju biti prazna."
@@ -129,6 +102,7 @@ export class DoctorProfileComponent implements OnInit {
             return
         }
 
+        // check if password format is correct
         this.message = this.serviceCheck.checkPasswordFormat(this.newPassword);
         if (this.message != "") {
             this.alert.style.visibility = "visible"
@@ -137,21 +111,21 @@ export class DoctorProfileComponent implements OnInit {
 
         // set new password
         this.doctor.password = this.newPassword
-        this.update()
+        this.updateInfo()
         this.serviceDoctor.logOutDoctor()
     }
 
-    buttonDisabledPasswordText() {
-        if (!this.changingPassword)
-            return "Promeni lozinku"
-        return "Ne menjaj lozinku"
-    }
+    updateInfo() {
+        this.message = this.serviceCheck.checkDoctorInfo(this.doctor)
+        if (this.message != "") {
+            this.alert.style.visibility = "visible"
+            return
+        }
 
-    update() {
-        this.serviceDoctor.update(this.doctor).subscribe((doctor: Doctor) => {
-            this.doctor = doctor
+        this.serviceDoctor.update(this.doctor).subscribe(() => {
+            this.ngOnInit()
+            this.alertSuccess.style.visibility = "visible"
+            this.message = "Uspešno ste izmenili informacije."
         })
     }
-
-    protected readonly console = console;
 }
