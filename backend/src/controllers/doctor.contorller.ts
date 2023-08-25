@@ -5,12 +5,10 @@ export class DoctorController {
     create = (req: express.Request, res: express.Response) => {
         let doctor = new DoctorModel(req.body.doctor);
         doctor.save((err, resp) => {
-            if (err) {
-                console.log(err);
+            if (err)
                 res.status(400).json({'message': 'error'});
-            } else {
+            else
                 res.json({"message": "ok"})
-            }
         })
     }
     read = (req: express.Request, res: express.Response) => {
@@ -80,26 +78,31 @@ export class DoctorController {
         let mail = req.body.mail;
 
         DoctorModel.findOne({'mail': mail}, (err, doctor) => {
-            if (err) {
+            if (err)
                 console.log(err);
-            } else {
+            else
                 res.json(doctor);
-            }
         });
     };
 
     search = (req: express.Request, res: express.Response) => {
-        let firstname = req.body.firstname
-        let lastname = req.body.lastname
-        let specialization = req.body.specialization
+        let search = req.body.search;
+        let firstname = search.firstname;
+        let lastname = search.lastname;
+        let specialization = search.specialization;
 
-        let query;
-        DoctorModel.find({'firstname': {$regex: firstname}}, (err, q1) => {
-            if (err) console.log(err)
+        DoctorModel.find({
+            'firstname': {$regex: firstname, $options: 'i'},
+            'lastname': {$regex: lastname, $options: 'i'},
+            'specialization': {$regex: specialization, $options: 'i'},
+        }, (err, doctors) => {
+            if (err)
+                console.log(err);
             else
-                res.json(q1)
-        })
-    };
+                res.json(doctors);
+        });
+
+    }
 
     readAllJoinSpecialization = (req: express.Request, res: express.Response) => {
         DoctorModel.aggregate([
@@ -112,11 +115,10 @@ export class DoctorController {
                 },
             }
         ], (err, doctor) => {
-            if (err) {
+            if (err)
                 console.log(err);
-            } else {
+            else
                 res.json(doctor);
-            }
         });
     }
 }

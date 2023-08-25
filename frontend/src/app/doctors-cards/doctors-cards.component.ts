@@ -13,23 +13,16 @@ export class DoctorsCardsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getAllDoctors()
         this.searchedFirstname = "";
         this.searchedLastname = "";
         this.searchedSpecialization = "";
+        this.search()
     }
 
-    doctors: Doctor[]
     searchedFirstname: string
     searchedLastname: string
     searchedSpecialization: string
-    searchResult: Doctor[];
-
-    getAllDoctors() {
-        this.serviceDoctor.readAll().subscribe((doctors: Doctor[]) => {
-            this.doctors = doctors
-        })
-    }
+    doctors: Doctor[];
 
     sortPressed = {
         "name": false,
@@ -43,9 +36,8 @@ export class DoctorsCardsComponent implements OnInit {
             lastname: this.searchedLastname,
             specialization: this.searchedSpecialization
         }
-        this.serviceDoctor.search({data}).subscribe((doctors: Doctor[]) => {
-            this.searchResult = doctors
-            console.log(this.searchResult)
+        this.serviceDoctor.search(data).subscribe((doctors: Doctor[]) => {
+            this.doctors = doctors
         });
     }
 
