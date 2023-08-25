@@ -140,3 +140,42 @@
 <div id="alert" class="alert alert-danger" role="alert">
     {{message}}
 </div>
+
+<legend class="text-center">Menadžer vidi sve menadzere</legend>
+
+<div class="table-responsive-sm m-2">
+    <table class="table table-light table-bordered border-2">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Korisniko ime</th>
+            <th>Lozinka</th>
+            <th>Akcija</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let manager of managers;  let i = index">
+            <td>{{i + 1}}</td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="manager.firstname">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="manager.lastname">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="manager.username">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="manager.password">
+            </td>
+            <td>
+                <button (click)="changeManager(manager)" class="btn btn-dark"
+                        type="button">Sačuvaj
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

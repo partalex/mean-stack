@@ -23,4 +23,34 @@ export class ManagerController {
             }
         })
     }
+
+    readAll = (req: express.Request, res: express.Response) => {
+        ManagerModel.find({}, (err, managers) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(managers);
+            }
+        })
+    }
+
+    update = (req: express.Request, res: express.Response) => {
+        let _id = req.body.manager._id;
+        let manager = new ManagerModel(req.body.manager);
+        ManagerModel.findOneAndUpdate({'_id': _id}, {
+                $set: {
+                    'firstname': manager.firstname,
+                    'lastname': manager.lastname,
+                    'username': manager.username,
+                    'password': manager.password,
+                    'image': manager.image
+                },
+            },
+            {new: true}, (err, newManager) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(newManager);
+            })
+    }
 }

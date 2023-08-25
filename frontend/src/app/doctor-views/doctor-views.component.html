@@ -30,7 +30,6 @@
         </tbody>
     </table>
 </div>
-
 <legend class="text-center">Zakazani pregledi</legend>
 <br>
 
@@ -43,6 +42,7 @@
             <th>Pacijent</th>
             <th>Razlog pregelda</th>
             <th>Datum</th>
+            <th>Vreme</th>
             <th>Otkazan</th>
             <th>Akcija</th>
             <th>Razlog</th>
@@ -58,7 +58,8 @@
             <td>{{appointment.reason}}</td>
             <td>
                 {{toLocalDate(appointment.date)}}
-                <br>
+            </td>
+            <td>
                 {{toLocaleTimeString(appointment.date)}}
             </td>
             <td *ngIf="appointment.canceled" class="table-danger">Da</td>
@@ -78,11 +79,11 @@
             <td *ngIf="appointment.canceled">
                 <input disabled [(ngModel)]="appointment.reasonForCanceling" type="text" class="form-control">
             </td>
-
         </tr>
         </tbody>
     </table>
 </div>
+<button (click)="sortAppointments()" class="btn btn-dark m-2" type="button">Sortiraj po vremenu</button>
 
 <div id="alert" class="alert alert-danger m-2" role="alert">
     <div>
@@ -101,6 +102,7 @@
             <th>Naziv</th>
             <th>Opis</th>
             <th>Datum</th>
+            <th>Vreme</th>
             <th>Akcija</th>
         </tr>
         </thead>
@@ -112,7 +114,8 @@
             <td>{{report.description}}</td>
             <td>
                 {{toLocalDate(report.date)}}
-                <br>
+            </td>
+            <td>
                 {{toLocaleTimeString(report.date)}}
             </td>
             <td>
@@ -135,7 +138,7 @@
             <td>
                 <input [(ngModel)]="newReport.description" type="text" class="form-control" placeholder="Opis">
             </td>
-            <td>
+            <td colspan="2">
                 <input [(ngModel)]="newReport.date" type="datetime-local" class="form-control">
             </td>
             <td>
@@ -145,3 +148,5 @@
         </tbody>
     </table>
 </div>
+
+<button (click)="sortReports()" class="btn btn-dark m-2" type="button">Sortiraj po vremenu</button>

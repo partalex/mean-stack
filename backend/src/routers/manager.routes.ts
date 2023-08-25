@@ -9,5 +9,11 @@ managerRouter.route('/read').post(
 managerRouter.route('/create').post(
     (req, res) => new ManagerController().create(req, res)
 )
+managerRouter.route('/readAll').post(
+    (req, res) => new ManagerController().readAll(req, res)
+)
+managerRouter.route('/update').post(
+    (req, res) => new ManagerController().update(req, res)
+)
 
 export default managerRouter;

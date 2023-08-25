@@ -45,8 +45,7 @@ export class DoctorController {
                     console.log(err);
                 else
                     res.json(newDoctor);
-            }
-        );
+            });
     }
     delete = (req: express.Request, res: express.Response) => {
         let id = req.body.id;

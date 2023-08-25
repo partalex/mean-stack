@@ -21,4 +21,12 @@ export class ManagerService {
     create(manager: Manager) {
         return this.http.post(`${this.uri}/create`, {manager: manager})
     }
+
+    readAll() {
+        return this.http.post(`${this.uri}/readAll`, {})
+    }
+
+    update(manager: Manager) {
+        return this.http.post(`${this.uri}/update`, {manager: manager})
+    }
 }

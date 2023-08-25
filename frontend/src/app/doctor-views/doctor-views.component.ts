@@ -27,6 +27,9 @@ export class DoctorViewsComponent implements OnInit {
         this.readRegisteredAppointments(this.doctorId)
         this.getMyReports(this.doctorId)
         this.newReport = new Report("", "", "")
+
+        this.appointmentsDescendingSorted = false
+        this.reportsDescendingSorted = false
     }
 
     cancelAppointment(appointment) {
@@ -59,6 +62,8 @@ export class DoctorViewsComponent implements OnInit {
     alert: HTMLElement;
     message: string;
     newReport: Report
+    appointmentsDescendingSorted: boolean
+    reportsDescendingSorted: boolean
 
     getMyReports(doctorId) {
         this.reportService.readByDoctorId(doctorId).subscribe((reports: Report[]) => {
@@ -77,6 +82,23 @@ export class DoctorViewsComponent implements OnInit {
             this.ngOnInit()
         })
 
+    }
+
+    sortAppointments() {
+        this.appointmentsDescendingSorted = !this.appointmentsDescendingSorted
+        if (this.appointmentsDescendingSorted)
+            this.appointmentsNotCanceled.sort((a, b) => (a.date < b.date) ? 1 : -1)
+        else
+            this.appointmentsNotCanceled.sort((a, b) => (a.date > b.date) ? 1 : -1)
+
+    }
+
+    sortReports() {
+        this.reportsDescendingSorted = !this.reportsDescendingSorted
+        if (this.reportsDescendingSorted)
+            this.myReports.sort((a, b) => (a.date < b.date) ? 1 : -1)
+        else
+            this.myReports.sort((a, b) => (a.date > b.date) ? 1 : -1)
     }
 
     readRegisteredAppointments(doctorId) {

@@ -16,6 +16,48 @@ export class PatientReportsComponent implements OnInit {
     constructor(private serviceReport: ReportService, private serviceAppointment: AppointmentService) {
     }
 
+    ngOnInit(): void {
+        let patientId = localStorage.getItem("loggedInPatient")
+        this.getMyReports(patientId)
+        this.getMyAppointments(patientId)
+        this.reportsNonDescendingSorted = false
+        this.appointmentsNonDescendingSorted = false
+    }
+
+    reports: ReportsAppointment[]
+    appointments: Appointment[]
+    reportsNonDescendingSorted: boolean
+    appointmentsNonDescendingSorted: boolean
+
+    sortReports() {
+        if (this.reportsNonDescendingSorted) {
+            this.reports.sort((a, b) => {
+                return new Date(a.date).getTime() - new Date(b.date).getTime()
+            })
+            this.reportsNonDescendingSorted = false
+        } else {
+            this.reports.sort((a, b) => {
+                return new Date(b.date).getTime() - new Date(a.date).getTime()
+            })
+            this.reportsNonDescendingSorted = true
+        }
+    }
+
+    sortAppointments() {
+        if (this.appointmentsNonDescendingSorted) {
+            this.appointments.sort((a, b) => {
+                return new Date(a.date).getTime() - new Date(b.date).getTime()
+            })
+            this.appointmentsNonDescendingSorted = false
+        } else {
+            this.appointments.sort((a, b) => {
+                return new Date(b.date).getTime() - new Date(a.date).getTime()
+            })
+            this.appointmentsNonDescendingSorted = true
+        }
+
+    }
+
     toLocalDate(date: Date) {
         return new Date(date).toLocaleDateString()
     }
@@ -30,14 +72,6 @@ export class PatientReportsComponent implements OnInit {
         doc.save('table.pdf')
     }
 
-    ngOnInit(): void {
-        let patientId = localStorage.getItem("loggedInPatient")
-        this.getMyReports(patientId)
-        this.getMyAppointments(patientId)
-    }
-
-    reports: ReportsAppointment[]
-    appointments: Appointment[]
 
     getMyReports(patientId) {
         this.serviceReport.readByPatientId(patientId).subscribe((reports: ReportsAppointment[]) => {

@@ -37,7 +37,9 @@
     </table>
 </div>
 
-<!-- button dark toPdf() -->
+<!--button for sort-->
+<button class="btn btn-dark m-2" (click)="sortReports()">Sortiraj izveštaje</button>
+
 <button class="btn btn-dark m-2" (click)="toPdf()">Preuzmi izveštaje</button>
 
 <legend class="text-center">Moji pregledi</legend>
@@ -51,6 +53,7 @@
             <th>Lekar</th>
             <th>Razlog</th>
             <th>Datum</th>
+            <th>Vreme</th>
             <th>Otkazan</th>
             <th>Akcija</th>
         </tr>
@@ -62,6 +65,7 @@
             <td>{{appointment.doctorId}}</td>
             <td>{{appointment.reason}}</td>
             <td>{{toLocalDate(appointment.date)}}</td>
+            <td>{{toLocaleTimeString(appointment.date)}}</td>
             <td *ngIf="appointment.canceled" class="table-danger">Da</td>
             <td *ngIf="!appointment.canceled" class="table-success">Ne</td>
             <td>
@@ -75,6 +79,8 @@
         </tbody>
     </table>
 </div>
+
+<button class="btn btn-dark m-2" (click)="sortAppointments()">Sortiraj preglede</button>
 
 
 
