@@ -3,7 +3,6 @@ import {Specialization} from "../../model/specialization";
 import {SpecializationService} from "../services/specialization.service";
 import {AppointmentType} from "../../model/appointmentType";
 import {AppointmentTypeService} from "../services/appointmentType.service";
-import {Appointment} from "../../model/appointment";
 import {Doctor} from "../../model/doctor";
 import {DoctorService} from "../services/doctor.service";
 

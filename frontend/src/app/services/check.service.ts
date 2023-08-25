@@ -11,13 +11,11 @@ export class CheckService {
     constructor(private servicePatient: PatientService) {
     }
 
-    // TODO - check if password is valid
     checkPasswordFormat(password: string) {
-        console.log(password)
-        // let regexp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\"},d)(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&]{8,14}$")
-        // if (regexp.test(password) == false) {
-        //     return "Lozinka nije u odgovarajucem formatu."
-        // }
+        let regexp = new RegExp("^(?!.*(.)(?:.*\\1){1})(?=[A-Za-z])(?=.*\\d)(?=.*[@#$%^&+=]).{8,14}$")
+        if (regexp.test(password) == false) {
+            return "Lozinka nije u odgovarajucem formatu."
+        }
         return ""
     }
 
@@ -28,31 +26,51 @@ export class CheckService {
         return ""
     }
 
-    checkRegistrationPatient(patient: Patient, passwordConfirm: string): string {
-        let returnMessage = ""
+    // async checkIsMailUnique(mail: string): Promise<string> {
+    //     let resp = this.servicePatient.readByMail(mail)
+    //     if (resp != null)
+    //         return "Pacijent sa ovim korisničkim imenom već postoji."
+    //     return ""
+    // }
 
-        // check all fields
+    // async checkIsUsernameUnique(username: string): Promise<string> {
+    //     let resp =  this.servicePatient.readByUsername(username)
+    //     if (resp != null)
+    //         return "Pacijent sa ovim korisničkim imenom već postoji."
+    //     return ""
+    // }
+
+    checkRegistrationPatient(patient: Patient, passwordConfirm: string): string {
+        let returnMessage = this.checkPasswordFormat(patient.password);
+
+        if (returnMessage != "")
+            return returnMessage
+
+        // let exist = false
+        //
+        // this.checkIsUsernameUnique(patient.username).then((value) => {
+        //     if (value != "") {
+        //         exist = true
+        //         returnMessage = value
+        //     }
+        //
+        // })
+        // if (exist)
+        //     return returnMessage
+        //
+        // this.checkIsMailUnique(patient.mail).then((value) => {
+        //     if (value != "") {
+        //         exist = true
+        //         returnMessage = value
+        //     }
+        // })
+        // if (exist)
+        //     return returnMessage
+
+
         if (patient.firstname == "" || patient.lastname == "" || patient.username == "" || patient.password == "" || passwordConfirm == "" || patient.address == "" || patient.phone == "" || patient.mail == "") {
             return "Sva polja moraju biti uneta."
         }
-
-        let exist = false
-
-        // check is username unique
-        this.servicePatient.readByUsername(patient.username).subscribe((retPatient: Patient) => {
-            if (retPatient != null)
-                exist = true
-        })
-        if (exist)
-            return "Pacijent sa ovim korisnickim imenom vec postoji."
-
-        // check is mail unique
-        this.servicePatient.readByMail(patient.mail).subscribe((retPatient: Patient) => {
-            if (retPatient != null)
-                exist = true
-        })
-        if (exist)
-            return "Pacijent sa ovim korisničkim imenom već postoji."
 
         // check is password confirmed
         returnMessage = this.checkPasswordConfirmed(patient.password, passwordConfirm)
@@ -74,11 +92,7 @@ export class CheckService {
         if (regexpUsername.test(patient.username) == false)
             return "Korisničko ima mora imati barem 8 karaktera."
 
-        returnMessage = this.checkPasswordFormat(patient.password);
-        if (returnMessage != "")
-            return returnMessage
 
-        console.log("prosao")
         return ""
     }
 }

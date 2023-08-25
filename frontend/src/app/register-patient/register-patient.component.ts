@@ -10,8 +10,7 @@ import {PatientService} from "../services/patient.service";
     styleUrls: ['./register-patient.component.css']
 })
 export class RegisterPatientComponent implements OnInit {
-    constructor(private router: Router, private serviceCheck: CheckService, private patientService: PatientService
-    ) {
+    constructor(private router: Router, private serviceCheck: CheckService, private patientService: PatientService) {
     }
 
     ngOnInit(): void {
@@ -43,33 +42,30 @@ export class RegisterPatientComponent implements OnInit {
                         this.message = "Slika mora biti manja od 300x300px."
                         this.alert.style.visibility = "visible"
                         this.patient.image = this.defaultImage
+
                     } else if (img.height < 100 || img.width < 100) {
                         this.message = "Slika mora biti veća od 100x100px."
                         this.alert.style.visibility = "visible"
                         this.patient.image = this.defaultImage
                     }
                 }
-
             }
         }
     }
 
     registerPatient() {
-
         this.message = this.serviceCheck.checkRegistrationPatient(this.patient, this.passwordConfirm)
-
         if (this.message != "") {
             this.alert.style.visibility = "visible"
             return
         }
-
         this.patient._id = this.getRandomId()
-
-        this.patientService.create(this.patient).subscribe(respObj => {
-            if (respObj['message'] == 'ok')
-                this.router.navigate(["patient"]).then(r => console.log(r))
+        this.patientService.create(this.patient).subscribe((resp: Object) => {
+            if (resp['message'] == 'ok')
+                this.router.navigate(["patient"]).then(() => console.log("Navigated to patient")
+                )
             else {
-                this.message = "Greška."
+                this.message = "Korisničko ime ili email je zauzet."
                 this.alert.style.visibility = "visible"
             }
         });
