@@ -20,9 +20,9 @@ export class DoctorsCardsComponent implements OnInit {
     }
 
     doctors: Doctor[]
-    searchedFirstname
-    searchedLastname
-    searchedSpecialization
+    searchedFirstname: string
+    searchedLastname: string
+    searchedSpecialization: string
     searchResult: Doctor[];
 
     getAllDoctors() {
