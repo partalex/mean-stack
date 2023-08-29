@@ -31,7 +31,7 @@ export class UnregisteredLoginManagerComponent implements OnInit {
         }
         this.service.loginManager(this.username, this.password).subscribe((manager: Manager) => {
             if (manager != null) {
-                localStorage.setItem("loggedInPatient", manager._id)
+                localStorage.setItem("loggedInManager", manager._id)
                 this.router.navigate(["manager"]).then(r => console.log(r))
             } else {
                 this.message = "Losi podaci!";
