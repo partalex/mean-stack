@@ -13,9 +13,9 @@ export class NavigationManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let loggedInDoctor = localStorage.getItem("loggedInDoctor")
-    if (loggedInDoctor == null)
-      this.router.navigate(["/loginDoctor"])
+    let loggedInManager = localStorage.getItem("loggedInManager")
+    if (loggedInManager == null)
+      this.router.navigate(["/loginManager"])
   }
 
   logOut() {
