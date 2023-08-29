@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {DoctorService} from "../services/doctor.service";
 import {Router} from "@angular/router";
 
